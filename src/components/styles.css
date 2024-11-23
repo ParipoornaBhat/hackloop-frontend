@@ -10,6 +10,7 @@
 
 
 body {
+    margin: 1px;
     overflow-x: hidden;
     color:#000;
     min-height: 100vh; 
