@@ -174,7 +174,7 @@ body {
    width: auto; /* Adjust the width to make them more compact */
    max-width: 800px; /* Limit the width */
    text-align: center;
-   padding: 45px;
+   padding: 30px;
    border-radius: 2vh;
    margin:3vh;
    position: relative;
@@ -231,13 +231,12 @@ body {
 
 /* Additional animations when cards slide in */
 .feature-card.from-left {
-    transform: translateX(-1vh) skew(-4deg); /* Start from left */
-    transform: rotateX(-360deg) rotateY(0);
+    transform: translateX(-1vh) skew(-10deg); /* Start from left */
 
 }
 
 .feature-card.from-right {
-    transform: translateX(1vh) skew(-4deg); /* Start from right */
+    transform: translateX(2vh) skew(-10deg); /* Start from right */
 
 }
 
