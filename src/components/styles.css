@@ -139,7 +139,7 @@ body {
 
 .abc {
     text-shadow: 5px 5px 12px rgb(2, 4, 88); /* Optional: adds subtle shadow to the text for better readability */
-    font-size: 10vh;
+    font-size: 50px;
     font-weight: 700;
     margin-bottom: 20px;
 }
