@@ -255,7 +255,7 @@ body {
     color: white;
     text-align: center;
     padding: 20px 0;
-    position: relative;   /* To make it stick at the bottom */
+    position: bottom;   /* To make it stick at the bottom */
     bottom: 0;            /* Position it at the bottom of the page */
     width: 100%;          /* Ensure it takes up the full width of the page */
   }
