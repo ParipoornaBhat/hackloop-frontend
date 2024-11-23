@@ -49,6 +49,8 @@ body {
 
 .navbar .logo h1 {
     font-size: 24px;
+    margin-left: auto; /* Pushes nav links to the right */
+
 }
 
 .navbar .nav-links {
@@ -107,7 +109,8 @@ body {
     }
 
     .navbar .nav-links.active {
-        display: flex; /* Show menu when 'active' class is added */
+        display: flex;
+         /* Show menu when 'active' class is added */
     }
 
     .navbar .nav-links li {
