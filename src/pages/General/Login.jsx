@@ -18,7 +18,7 @@ const LoginPage = () => {
     try {
       
       // Send POST request to the backend (via proxy in development)
-      const response = await fetch('/api/auth/get-form-data', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/get-form-data`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

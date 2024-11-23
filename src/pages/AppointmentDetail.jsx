@@ -17,7 +17,7 @@ const AppointmentDetail = () => {
       try {
         setLoading(true);
         setError(null);  // Reset any previous errors
-        const response = await fetch('/api/dappointment', {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/dappointment`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -57,7 +57,7 @@ const AppointmentDetail = () => {
   // Handle Confirm and Cancel actions
   const handleConfirm = async () => {
     try {
-      const response = await fetch(`/api/appointments/${apid}/confirm`, { method: 'POST' });
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/appointments/${apid}/confirm`, { method: 'POST' });
       if (response.ok) {
         alert('Appointment confirmed');
         setAppointmentDetails(prev => ({ ...prev, status: 'confirmed' }));
@@ -72,7 +72,7 @@ const AppointmentDetail = () => {
 
   const handleCancel = async () => {
     try {
-      const response = await fetch(`/api/appointments/${apid}/cancel`, { method: 'POST' });
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/appointments/${apid}/cancel`, { method: 'POST' });
       if (response.ok) {
         alert('Appointment cancelled');
         setAppointmentDetails(prev => ({ ...prev, status: 'cancelled' }));

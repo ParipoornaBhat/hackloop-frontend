@@ -70,7 +70,7 @@ const Apply = () => {
     };
 
     try {
-      const response = await fetch('/api/user/apply', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/user/apply`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

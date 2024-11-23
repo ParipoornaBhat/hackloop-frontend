@@ -27,7 +27,7 @@ const ManageUser = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await fetch('/api/user/users');
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/user/users`);
         const data = await response.json();
         setUsers(data);
       } catch (error) {
@@ -54,7 +54,7 @@ const ManageUser = () => {
     };
   
     try {
-      const response = await fetch('/api/user/update-role', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/user/update-role`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -69,7 +69,7 @@ const ManageUser = () => {
         // Re-fetch users to reflect the changes
         const fetchUsers = async () => {
           try {
-            const response = await fetch('/api/user/users');
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/user/users`);
             const data = await response.json();
             setUsers(data); // Update users state with the latest data
           } catch (error) {

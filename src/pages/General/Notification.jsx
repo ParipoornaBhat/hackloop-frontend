@@ -23,7 +23,7 @@ const Notification = () => {
     if (cuser && cuser._id) {
       const fetchUpdatedUserData = async () => {
         try {
-          const response = await fetch("/api/user/getuser", {
+          const response = await fetch(`${import.meta.env.VITE_API_URL}/api/user/getuser`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -70,7 +70,7 @@ const Notification = () => {
 
       // Send the updated user to the backend
       try {
-        const response = await fetch("/api/user/update-notification", {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/user/update-notification`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -96,7 +96,7 @@ const Notification = () => {
 
       // Send the request to delete notifications on the backend
       try {
-        const response = await fetch("/api/user/delete-all-notifications", {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/user/delete-all-notifications`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

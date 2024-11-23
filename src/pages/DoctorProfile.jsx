@@ -36,7 +36,7 @@ const DoctorProfile = () => {
     useEffect(() => {
         const func = async () => {
             try {
-                const response = await fetch('/api/docprofile', {
+                const response = await fetch(`${import.meta.env.VITE_API_URL}/api/docprofile`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -56,7 +56,7 @@ const DoctorProfile = () => {
         if (selectedDate) {
             const fetchAvailableSlots = async () => {
                 try {
-                    const response = await fetch('/api/getAvailableSlots', {
+                    const response = await fetch(`${import.meta.env.VITE_API_URL}/api/getAvailableSlots`, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({
@@ -82,7 +82,7 @@ const DoctorProfile = () => {
         if (selectedSlot && selectedDate) {
             try {
                 // Sending the appointment booking request to the backend
-                const response = await fetch('/api/bookAppointment', {
+                const response = await fetch(`${import.meta.env.VITE_API_URL}/api/bookAppointment`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({

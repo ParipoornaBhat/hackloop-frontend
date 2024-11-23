@@ -12,7 +12,7 @@ const ManageUser = () => {
   useEffect(() => {
     const fetchDoctors = async () => {
       try {
-        const response = await fetch('/api/user/docs');
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/user/docs`);
         const data = await response.json();
         setDoctors(data);  // Set doctors data
         setFilteredDoctors(data);  // Initially show all doctors

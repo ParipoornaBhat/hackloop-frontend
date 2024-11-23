@@ -82,7 +82,7 @@ const Profile = () => {
 
     try {
       // Sending the updated data to the server via POST
-      const response = await fetch('/api/user/applye', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/user/applye`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

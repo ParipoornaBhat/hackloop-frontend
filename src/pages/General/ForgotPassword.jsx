@@ -16,7 +16,7 @@ const LoginPage = () => {
   const navigate = useNavigate();  
   // Handle sending OTP
   const sendOtp = async () => {
-    const response = await fetch('/api/auth/send-otpf', {
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/send-otpf`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email }),
@@ -81,7 +81,7 @@ const LoginPage = () => {
     }
 
     const formData = { email, password };
-    const response = await fetch('/api/auth/get-form-data-forgot', {
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/get-form-data-forgot`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(formData),

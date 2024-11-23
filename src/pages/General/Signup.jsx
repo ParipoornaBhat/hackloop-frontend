@@ -18,7 +18,7 @@ const Signup = () => {
 
   // Handle sending OTP
   const sendOtp = async () => {
-    const response = await fetch('/api/auth/send-otp', {
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/send-otp`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email })
@@ -37,7 +37,7 @@ const Signup = () => {
 
   // Handle OTP verification
   const verifyOtp = async () => {
-    const response = await fetch('/api/auth/verifyotp', {
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/verifyotp`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ otp })
