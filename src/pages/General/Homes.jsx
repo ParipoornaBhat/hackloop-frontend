@@ -63,7 +63,7 @@ const Home = () => {
 
             <section className="hero">
                 <div className="hero-content">
-                    <h2>Welcome to ClinicCare</h2>
+                    <h2 className="abc">Welcome to ClinicCare</h2>
                     <p>Your Health, Our Priority</p>
                     <a href="/book" className="cta-btn">Book an Appointment</a>
                 </div>
