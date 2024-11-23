@@ -22,7 +22,6 @@ import AppManage from './pages/AppManage';
 function App() {
   const user = JSON.parse(localStorage.getItem('user')); // Parse user data from localStorage
   const userRole = user ? user.role : null; // Get the role of the user from the localStorage
-
   return (
     <>
       <Navbar />
