@@ -10,6 +10,7 @@
 
 
 body {
+    overflow-x: hidden;
     color:#000;
     min-height: 100vh; 
     background-image: url("./light.png");
