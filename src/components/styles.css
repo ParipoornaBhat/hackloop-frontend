@@ -1,5 +1,6 @@
 /* General Reset and Body Styles */
 * {
+     /* Ensure the body takes at least the full viewport height */
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -9,11 +10,13 @@
 
 
 body {
+    color:#000;
+    min-height: 100vh; 
     background-image: url("./light.png");
     background-repeat:no-repeat;
     background-size: cover;
     height:100vh;
-    background-color: rgba(69, 63, 63, 0.667); /* Yellow background on hover */
+    background-color: rgba(22, 20, 20, 0.667); /* Yellow background on hover */
    
 
     color: #000000;
@@ -129,7 +132,6 @@ body {
     justify-content: center;
     align-items: center;
     background: transparent;
-    
     text-align: center;
     position: relative;
 }
@@ -252,10 +254,6 @@ body {
   }
   
   /* Ensure footer remains at the bottom when content is small */
-  body {
-    min-height: 100vh;   /* Ensure the body takes at least the full viewport height */
-   
-  }
   
   .main-content {
     flex: 1;
@@ -268,8 +266,6 @@ body {
 
 /* Dark Mode */
 body.dark-mode {
-   
-
     background-image: url("./dark.png");
     background-color: #000000; /* Yellow background on hover */
     color: #ffffff;
