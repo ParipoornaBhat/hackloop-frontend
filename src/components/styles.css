@@ -52,6 +52,7 @@ body {
 }
 
 .navbar .logo h1 {
+    font-weight: 750;
     font-size: 24px;
     margin-left: auto; /* Pushes nav links to the right */
 
@@ -64,7 +65,7 @@ body {
 }
 
 .navbar .nav-links li {
-    margin-left: 30px;
+    margin: 12px;
 }
 
 .navbar .nav-links a {
@@ -140,7 +141,7 @@ body {
 .abc {
     text-shadow: 5px 5px 12px rgb(2, 4, 88); /* Optional: adds subtle shadow to the text for better readability */
     font-size: 50px;
-    font-weight: 700;
+    
     margin-bottom: 20px;
 }
 
@@ -169,7 +170,7 @@ body {
  
    opacity: 0;
    transform: translateX(100px);
-   transition: transform 1s ease, opacity 1s ease; /* Slow down animation */
+   transition: transform 1.5s ease, opacity 1s ease; /* Slow down animation */
    width: auto; /* Adjust the width to make them more compact */
    max-width: 800px; /* Limit the width */
    text-align: center;
@@ -187,7 +188,7 @@ body {
    border: 4px solid #2fff00;
    transition: all 1000ms cubic-bezier(0.23, 1, 0.32, 1);
    transform-style: preserve-3d;
-   transform: rotateX(10deg) rotateY(-10deg);
+   transform: rotateX(40deg) rotateY(-40deg);
    perspective: 1000px;
    box-shadow: 10px 10px 0 #434242;
 }
@@ -231,10 +232,13 @@ body {
 /* Additional animations when cards slide in */
 .feature-card.from-left {
     transform: translateX(-1vh) skew(-4deg); /* Start from left */
+    transform: rotateX(-360deg) rotateY(0);
+
 }
 
 .feature-card.from-right {
     transform: translateX(1vh) skew(-4deg); /* Start from right */
+
 }
 
 
