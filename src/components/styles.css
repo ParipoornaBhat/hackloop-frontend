@@ -230,11 +230,11 @@ body {
 
 /* Additional animations when cards slide in */
 .feature-card.from-left {
-    transform: translateX(-5vh) skew(-10deg); /* Start from left */
+    transform: translateX(-1vh) skew(-10deg); /* Start from left */
 }
 
 .feature-card.from-right {
-    transform: translateX(5vh) skew(-10deg); /* Start from right */
+    transform: translateX(1vh) skew(-10deg); /* Start from right */
 }
 
 
