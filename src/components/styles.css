@@ -1,0 +1,517 @@
+/* General Reset and Body Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+
+
+body {
+    background-image: url("./light.png");
+    background-repeat:no-repeat;
+    background-size: cover;
+    height:100vh;
+    background-color: rgba(69, 63, 63, 0.667); /* Yellow background on hover */
+   
+
+    color: #000000;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: background-image 0.3s ease, color 0.3s ease;
+    padding-top: 60px; /* To make sure content doesn't hide under the navbar */
+}
+
+
+
+/* Navbar Styles */
+/* Basic Navbar Styles */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    z-index: 1000;
+  
+    transform: translateY(0); /* By default, show navbar */
+    
+}
+
+
+
+.navbar.hidden {
+    transform: translateY(-100%); /* Hide navbar when scrolling down */
+    transition: transform 0.3s ease-in-out;
+}
+
+.navbar .logo h1 {
+    font-size: 24px;
+}
+
+.navbar .nav-links {
+    list-style: none;
+    display: flex;
+    margin-left: auto; /* Pushes nav links to the right */
+}
+
+.navbar .nav-links li {
+    margin-left: 30px;
+}
+
+.navbar .nav-links a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.navbar .nav-links a:hover {
+    color: #f0c040;
+}
+
+/* Hamburger Menu for Small Screens */
+.hamburger {
+    display: none; /* Hide hamburger by default */
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+    height: 25px;
+    width: 30px;
+}
+
+.hamburger .line {
+    width: 100%;
+    height: 4px;
+    background-color: white;
+    border-radius: 5px;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .navbar .nav-links {
+        display: none; /* Hide nav links initially on mobile */
+        position: absolute;
+        top: 60px; /* Below the navbar */
+        right: 0;
+        background-color: #333;
+        width: 200px; /* Set a width for the dropdown menu */
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        padding: 10px;
+        flex-direction: column;
+    }
+
+    .navbar .nav-links.active {
+        display: flex; /* Show menu when 'active' class is added */
+    }
+
+    .navbar .nav-links li {
+        margin: 10px 0; /* Spacing between items in dropdown */
+    }
+
+    .hamburger {
+        display: flex; /* Show hamburger icon on mobile */
+    }
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    
+    text-align: center;
+    position: relative;
+}
+
+.hero-content h2 {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    font-size: 20px; /* Set font size */
+    line-height: 1.6; /* Adds more line height for better readability */
+    margin-bottom: 30px; /* Creates space between the paragraph and the next element */
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2); /* Optional: adds subtle shadow to the text for better readability */
+}
+/* Features Section with matching background */
+/* Feature Section */
+/* Feature Section */
+.features {
+    display: flex;
+    flex-direction: column; /* Stack cards vertically */
+    align-items: center;
+    padding: 50px 20px;
+    background: transparent; /* Same gradient as hero section */
+    margin-top: 0; /* Remove margin for seamless connection */
+    position: relative; /* Positioning for animation */
+}
+
+/* Feature Cards */
+.feature-card {
+ 
+   opacity: 0;
+   transform: translateX(100px);
+   transition: transform 1s ease, opacity 1s ease; /* Slow down animation */
+   width: 60%; /* Adjust the width to make them more compact */
+   max-width: 800px; /* Limit the width */
+   text-align: center;
+   padding: 45px;
+   border-radius: 2vh;
+   margin: 4vh;
+   position: relative;
+   background: #090909;
+   color: #ffffff;
+   font-size: 18px;
+   display: flex;
+   justify-content: flex-start;
+   align-items: center;
+   gap: 15px;
+   border: 4px solid #2fff00;
+   transition: all 1000ms cubic-bezier(0.23, 1, 0.32, 1);
+   transform-style: preserve-3d;
+   transform: rotateX(10deg) rotateY(-10deg);
+   perspective: 1000px;
+   box-shadow: 10px 10px 0 #434242;
+}
+
+/* Yellow background for the backside of the card (for 3D effect) */
+
+
+/* Text shadow to highlight text */
+.feature-card h3, .feature-card p {
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.4); /* Stronger shadow for better readability */
+}
+
+/* When the feature card comes into view (this will be controlled via JavaScript) */
+.feature-card.visible {
+    opacity: 1;
+    transform: translateX(0) skew(-10deg); /* Move to original position */
+}
+
+/* Hover effect to create a subtle 3D look */
+.feature-card:hover {
+    color: #fffb00;
+	transform: rotateX(5deg) rotateY(1 deg) scale(1.05);
+	box-shadow: 25px 25px 0 -5px #e9b50b, 25px 25px 0 0 #000;
+}
+
+/* Feature Card Titles */
+.feature-card h3 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #fff; /* White text color */
+}
+
+/* Feature Card Description */
+.feature-card p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #ddd; /* Light gray text for description */
+}
+
+/* Additional animations when cards slide in */
+.feature-card.from-left {
+    transform: translateX(-100px) skew(-10deg); /* Start from left */
+}
+
+.feature-card.from-right {
+    transform: translateX(100px) skew(-10deg); /* Start from right */
+}
+
+
+/* Footer Section */
+.footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+}
+/* Make sure the footer is at the bottom */
+.footer {
+    background-color: #282c34;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    position: relative;   /* To make it stick at the bottom */
+    bottom: 0;            /* Position it at the bottom of the page */
+    width: 100%;          /* Ensure it takes up the full width of the page */
+  }
+  
+  /* Ensure footer remains at the bottom when content is small */
+  body {
+    min-height: 100vh;   /* Ensure the body takes at least the full viewport height */
+   
+  }
+  
+  .main-content {
+    flex: 1;
+    /* Your main content styling */
+  }
+  
+.footer p {
+    font-size: 14px;
+}
+
+/* Dark Mode */
+body.dark-mode {
+   
+
+    background-image: url("./dark.png");
+    background-color: #000000; /* Yellow background on hover */
+    color: #ffffff;
+}
+
+body.dark-mode .navbar {
+    background-color: #222;
+}
+
+
+/* Normal Mode CTA Button */
+.cta-btn {
+    padding: 12px 30px;
+    font-size: 18px;
+    background-color: #000000; /* Light yellow background for normal mode */
+    border: none;
+    border-radius: 50px; /* Rounded corners */
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth hover effect */
+    color: #fafafa;
+    transition: all 400ms cubic-bezier(0.23, 1, 0.32, 1);
+	transform: ani 2s ease-in;
+	box-shadow: 5px 10px 0 -5px #e9b50b,5px 10px 0 0 #000;;
+}
+@keyframes ani {
+    0%{opacity: 0;}
+    100%{opacity: 1;}
+}
+
+.cta-btn:hover {
+    background-color: #000000;
+    color: #eeff00;/* Darker yellow when hovering */
+    transform: rotateX(5deg) rotateY(1 deg) scale(1.05);
+	box-shadow: 8px 13px 0 -5px #e9b50b, 8px 13px 0 0 #000;
+}
+
+/* Dark Mode CTA Button */
+body.dark-mode .cta-btn {
+    background-color: #000000; /* Dark background for dark mode */
+    color: #ffffff; /* Yellow text color to match with dark mode */
+    border: 2px solid #000000; /* Optional: add border for better visibility */
+}
+.carousel-btn.dark-mode {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    color: rgb(0, 0, 0);}
+
+body.dark-mode .cta-btn:hover {
+    background-color: #000000; /* Yellow background on hover */
+    color: #eeff00; /* Dark text color when hovering */
+    transform: rotateX(5deg) rotateY(1 deg) scale(1.05);
+	box-shadow: 8px 13px 0 -5px #e9b50b, 8px 13px 0 0 #000;
+}
+
+
+body.dark-mode .footer {
+    background-color: #222;
+}
+
+body.dark-mode .feature-card {
+    background-color: #010101;
+    color: #ddd;
+}
+
+body.dark-mode .feature-card:hover {
+    background-color: #000000;
+}
+
+/* Mode Toggle Styles (Animated Switch) */
+.mode-toggle-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 50px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    border-radius: 50px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
+}
+
+input:checked + .slider {
+    background-color: #4caf50;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+
+/* Carousel Container */
+.carousel-container {
+    position: relative;
+    width: auto;
+    height: 300px;
+    perspective: 1000px;
+    margin: 1vh;
+    margin-left: 5vh;
+    margin-right: 5vh;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Carousel */
+.carousel {
+    display: flex;
+    position: absolute;
+    transform-style: preserve-3d;
+    transition: transform 1s ease; /* Add smooth transition for manual rotation */
+}
+
+/* Carousel Items */
+.carousel-item {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Carousel Navigation Buttons */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 16px;
+}
+
+.carousel-btn.prev {
+    left: 20vh;
+}
+
+.carousel-btn.next {
+    right: 20vh;
+}
+
+.carousel-btn.left {
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.carousel-btn.right {
+    right: 50%;
+    transform: translate(50%, -50%) rotate(-90deg);
+}
+
+/* Position each item in a 3D space */
+.carousel-item:nth-child(1) {
+    transform: rotateY(0deg) translateZ(150px);
+}
+
+.carousel-item:nth-child(2) {
+    transform: rotateY(90deg) translateZ(150px);
+}
+
+.carousel-item:nth-child(3) {
+    transform: rotateY(180deg) translateZ(150px);
+}
+
+.carousel-item:nth-child(4) {
+    transform: rotateY(270deg) translateZ(150px);
+}
+
+
+
+/* Flash Messages */
+div.messages {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  ul.messages {
+    list-style: none;
+    min-width: 600px;
+    max-width: 600px;
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 16px;
+  }
+  .messages .error {
+  background-color: #f87171;
+  color:#000
+}
+.messages .success {
+  background-color: #6ee7b7;
+  color:#000
+}
+.messages .warning {
+  background-color: #fcd34d;
+  color:#000
+}
+.messages .info {
+  background-color: #93c5fd;
+  color:#000
+}
+
+

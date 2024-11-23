@@ -1,0 +1,442 @@
+/* General Wrapper */
+.wrapper {
+    width: 100%;
+    max-width: 500px; /* Limit the width */
+    background: rgba(0, 0, 0, 0.5); /* Darker background for contrast */
+    border-radius: 12px;
+    padding: 30px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+      rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+      rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(8px);
+    margin-top: 5vh;
+    padding-bottom: 20px;
+  }
+  
+  /* Form Container */
+  form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 20px;
+  }
+  
+  /* Heading Style */
+  h2 {
+    font-size: 2rem;
+    color: #fff;
+    margin-bottom: 20px;
+    font-weight: 700;
+  }
+  
+  /* Input Field */
+  .input-field {
+    position: relative;
+    border-bottom: 2px solid #ccc;
+    margin: 15px 0;
+  }
+  
+  .input-field label {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    color: #aaa;
+    font-size: 16px;
+    font-weight: bold; /* Make the label text bold */
+    pointer-events: none;
+    transition: 0.2s ease;
+  }
+  
+  .input-field input {
+    width: 100%;
+    height: 40px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    color: #fff;
+    padding: 8px 0;
+    margin-top: 8px; /* Add some space for better visual alignment */
+  }
+  
+  .input-field input:focus~label,
+  .input-field input:valid~label {
+    font-size: 12px;
+    top: 0;
+    color: #fff;
+    transform: translateY(-120%);
+  }
+  
+  /* Textarea Field */
+  .textarea-field {
+    position: relative;
+    border-bottom: 2px solid #ccc;
+    margin: 15px 0;
+  }
+  
+  .textarea-field textarea {
+    width: 100%;
+    height: 120px;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+    padding: 8px;
+    font-size: 16px;
+  }
+  
+  .textarea-field label {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    color: #aaa;
+    font-size: 16px;
+    font-weight: bold; /* Make the label text bold */
+    pointer-events: none;
+    transition: 0.2s ease;
+  }
+  
+  .textarea-field textarea:focus~label,
+  .textarea-field textarea:valid~label {
+    font-size: 12px;
+    top: 0;
+    color: #fff;
+    transform: translateY(-120%);
+  }
+  
+  /* Button Style */
+  button {
+    background: #4CAF50;
+    color: #fff;
+    font-weight: 600;
+    border: none;
+    padding: 12px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  button:hover {
+    background: #45a049;
+    transform: scale(1.05);
+  }
+  
+  button:active {
+    transform: scale(0.98);
+  }
+  
+  /* Dark Mode Toggle Switch */
+  .mode-toggle-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 34px;
+    height: 20px;
+  }
+  
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 50px;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 12px;
+    width: 12px;
+    border-radius: 50px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
+  }
+  
+  input:checked + .slider {
+    background-color: #4CAF50;
+  }
+  
+  input:checked + .slider:before {
+    transform: translateX(14px);
+  }
+  
+  /* Responsive Layout for Mobile */
+  @media (max-width: 600px) {
+    .wrapper {
+      width: 90%;
+      padding: 20px;
+    }
+  
+    h2 {
+      font-size: 1.8rem;
+    }
+  
+    .input-field input,
+    .textarea-field textarea {
+      font-size: 14px;
+    }
+  
+    button {
+      padding: 10px 18px;
+      font-size: 14px;
+    }
+  }
+  /* Wrapper for time input */
+.time-input-field {
+    position: relative;
+    width: 100%;
+    margin: 15px 0;
+}
+
+/* Basic styling for the input fields */
+.time-input-field input[type="time"] {
+    width: 100%;
+    height: 40px;
+    background: #3e3d3d;
+    border: 2px solid #ccc;
+    outline: none;
+    font-size: 16px;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: 500;
+    box-sizing: border-box;
+ /* Make sure to allow the native UI */
+}
+
+/* Remove the default appearance in WebKit browsers (like Chrome/Safari) but ensure dial shows */
+.time-input-field input[type="time"]::-webkit-outer-spin-button,
+.time-input-field input[type="time"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Label styling */
+.time-input-field label {
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: #fff;
+    font-weight: bold;
+    pointer-events: none;
+    transition: all 0.2s ease;
+}
+
+/* Shrink the label when the input is focused or has a value */
+.time-input-field input[type="time"]:focus ~ label,
+.time-input-field input[type="time"]:valid ~ label {
+    font-size: 12px;
+    top: -10px;
+    transform: translateY(0);
+    color: #ffd700; /* You can change this to the color of your choice */
+}
+
+/* Focused state for time input */
+.time-input-field input[type="time"]:focus {
+    border-color: #ffd700;
+    box-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+}
+
+
+
+button, select {
+  color:white;
+    background-color: rgb(49, 49, 49);
+    text-transform: none;
+}
+/* Card container for the table */
+.manage-user-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.table-container {
+  background: rgba(255, 255, 255, 0.5); /* Slightly lighter transparent */
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px); /* Frosted glass effect */
+  max-width: 1200px;
+  width: 100%;
+  margin-top: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+/* Dark Mode Styling */
+@media (prefers-color-scheme: dark) {
+  .table-container {
+    background: rgba(0, 0, 0, 0.5); /* Darker transparent background */
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Light border for contrast */
+  }
+
+  .manage-user-title,
+  .manage-user-message {
+    color: #fff; /* White text for dark mode */
+  }
+
+  .manage-user-table th {
+    background-color: #2c3e50; /* Darker header */
+    color: #ecf0f1; /* Light header text */
+  }
+
+  .manage-user-table td {
+    border-bottom: 1px solid #444;
+  }
+
+  .manage-user-table button {
+    background-color: #34495e;
+    color: #fff;
+  }
+
+  .manage-user-table button:hover {
+    background-color: #1abc9c;
+  }
+
+  .manage-user-status-text {
+    color: #ddd; /* Light text for status */
+  }
+}
+
+/* Title Styling */
+.manage-user-title {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #333;
+}
+
+/* Styling for the message (e.g., success/error messages) */
+.manage-user-message {
+  color: #f00;
+  font-weight: bold;
+  margin-top: 20px;
+  text-align: center;
+}
+
+/* Table styling */
+.manage-user-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* Header Styling */
+.manage-user-table th {
+  padding: 12px;
+  background-color: #4e73df;
+  color: #fff;
+  text-align: left;
+  font-size: 1rem;
+}
+
+.manage-user-table td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Row hover effect */
+.manage-user-table tr:hover {
+  background-color: #f4f4f433;
+}
+
+/* Styling for action buttons */
+.manage-user-table button {
+  background-color: #4e73df;
+  color: #fff;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.manage-user-table button:hover {
+  background-color: #3a5bb7;
+}
+
+/* Styling for select dropdown */
+.manage-user-table select {
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: #000000;
+}
+
+/* Style for status text inside table cells */
+.manage-user-status-text {
+  font-size: 0.9rem;
+}
+
+.green {
+  color: green;
+}
+
+.red {
+  color: red;
+}
+
+.gray {
+  color: gray;
+}
+
+/* Container for making the table scrollable on small screens */
+.table-scroll-container {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch; /* For smooth scrolling on touch devices */
+  margin-bottom: 20px; /* Space between the table and the rest of the content */
+}
+
+/* Responsive Design - Make the table more responsive on smaller screens */
+@media (max-width: 768px) {
+  .table-container {
+    padding: 15px;
+  }
+
+  .manage-user-table {
+    font-size: 0.9rem;
+  }
+
+  .manage-user-table th,
+  .manage-user-table td {
+    padding: 8px;
+  }
+
+  .manage-user-table button {
+    padding: 6px 12px;
+  }
+}
