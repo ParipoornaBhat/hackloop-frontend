@@ -1,5 +1,5 @@
 {
- "proxy": "https://sarvam-mern.onrender.com",
+ "proxy": "https://hackloop-backend.onrender.com",
  "name": "client",
  "private": true,
  "version": "0.0.0",
