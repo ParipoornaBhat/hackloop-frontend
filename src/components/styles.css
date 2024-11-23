@@ -215,7 +215,7 @@ body {
 
 /* Feature Card Titles */
 .feature-card h3 {
-    font-size: 28px;
+    font-size: 5vh;
     margin-bottom: 20px;
     font-weight: bold;
     color: #fff; /* White text color */
@@ -223,7 +223,7 @@ body {
 
 /* Feature Card Description */
 .feature-card p {
-    font-size: 18px;
+    font-size: 3vh;
     line-height: 1.6;
     color: #ddd; /* Light gray text for description */
 }
