@@ -1,121 +1,193 @@
-/* Semi-transparent dark background card with smooth transition */
-.appointment-details-container {
-    padding: 20px;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .appointment-card {
-    background: rgba(0, 0, 0, 0.795); /* Semi-transparent dark background */
-    color: #fff;
-    padding: 20px;
-    border-radius: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-    width: 100%;
-    max-width: 800px;
-    transition: all 0.5s ease-in-out; /* Smooth transition */
-    opacity: 0;
-    animation: fadeIn 1s forwards;
-  }
-  
-  /* Fade-in effect for smoother loading */
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-  
-  /* Heading styles */
-  .heading-large {
-    font-size: 2.5em;
-    font-weight: bold;
-    margin-bottom: 15px;
-    text-align: center;
-  }
-  
-  .heading-medium {
-    font-size: 1.8em;
-    font-weight: 600;
-    margin-bottom: 10px;
-  }
-  
-  .heading-small {
-    font-size: 1.2em;
-    font-weight: 500;
-    margin-bottom: 5px;
-  }
-  
-  /* Info row style for inline display */
-  .info-row {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-  }
-  
-  .info-row p {
-    margin: 0;
-    font-size: 1.2em;
-  }
-  
-  .medication-list {
-    margin-top: 10px;
-  }
-  
-  .medication-detail {
-    padding: 10px;
-    border: 1px solid #ddd;
-    background-color: #000000;
-    margin-bottom: 10px;
-  }
-  
-  .medication-detail p {
-    margin: 5px 0;
-  }
-  
-  /* Status section */
-  .status-section p {
-    font-size: 1.2em;
-    color: #f1c40f;
-    font-weight: bold;
-    margin-top: 10px;
-  }
-  
-  /* Action buttons */
-  .action-buttons {
-    display: flex;
-    gap: 15px;
-    margin-top: 20px;
-  }
-  
-  .btn-confirm, .btn-cancel {
-    padding: 12px 20px;
-    font-size: 1em;
-    border: none;
-    cursor: pointer;
-    border-radius: 8px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .btn-confirm {
-    background-color: #4CAF50;
-    color: #fff;
-  }
-  
-  .btn-confirm:hover {
-    background-color: #45a049;
-  }
-  
-  .btn-cancel {
-    background-color: #f44336;
-    color: #fff;
-  }
-  
-  .btn-cancel:hover {
-    background-color: #e53935;
-  }
-  
+/* Appointment Detail Card */
+.appointment-detail-card {
+  background-color: #0000008c;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+/* Title */
+.appointment-title {
+  font-size: 2rem;
+  color: #f9f7f7;
+  margin-bottom: 20px;
+}
+
+/* Appointment Info */
+.appointment-info p {
+  margin: 5px 0;
+}
+
+/* Time Slot Section */
+.appointment-time-slot {
+  background-color: #5c5c5c81;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.appointment-time-slot p {
+  margin: 5px 0;
+}
+
+/* Description Section */
+.appointment-description {
+  background-color: #5c5c5c81;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.appointment-description p {
+  color: #fdfdfd;
+  line-height: 1.6;
+}
+
+/* Prescriptions Section */
+.prescription-section {
+  background-color: #5c5c5c81;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.prescription-item {
+  margin-bottom: 20px;
+}
+
+.medication-list {
+  margin-top: 10px;
+}
+
+.medication-detail {
+  background-color: #5c5c5c81;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+}
+
+.medication-detail p {
+  margin: 5px 0;
+}
+
+/* Appointment Actions Section */
+.appointment-actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.appointment-actions button {
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.appointment-confirm-button {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.appointment-cancel-button {
+  background-color: #f44336;
+  color: white;
+}
+
+/* Prescription Form */
+.appointment-prescription-form {
+  background-color: #5c5c5c81;
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.appointment-prescription-form h3 {
+  margin-bottom: 20px;
+}
+
+.appointment-diagnosis label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.appointment-diagnosis input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.appointment-medications {
+  margin-top: 20px;
+}
+
+.appointment-medication {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.appointment-medication input {
+  width: 100%;
+  padding: 8px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button[type="button"] {
+  padding: 8px 16px;
+  background-color: #5c5c5c81;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button[type="button"]:hover {
+  background-color: #8f8a8a;
+}
+
+.appointment-submit-prescription {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.appointment-submit-prescription:hover {
+  background-color: #45a049;
+}
+
+/* Loading, Error, No Appointment States */
+.appointment-loading,
+.appointment-error,
+.appointment-no-appointment {
+  text-align: center;
+  padding: 20px;
+  font-size: 1.2rem;
+  color: #555;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.appointment-loading {
+  color: #4CAF50;
+}
+
+.appointment-error {
+  color: #f44336;
+}
+
+.appointment-no-appointment {
+  color: #f1c40f;
+}
