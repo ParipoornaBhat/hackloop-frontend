@@ -37,7 +37,7 @@ const PrescriptionManage = () => {
     return date.toLocaleDateString();  // "MM/DD/YYYY" format by default
   };
 
-  return (<><br/><br/><br/><br/>
+  return (<><br/><br/>
     <div className="prescription-manage-container">
       <div className="prescription-manage-card-wrapper">
         <h2 className="prescription-manage-heading">Prescription Management</h2>

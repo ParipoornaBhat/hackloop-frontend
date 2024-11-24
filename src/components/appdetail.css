@@ -115,6 +115,7 @@
 }
 
 .appointment-diagnosis input {
+  color:black;
   width: 100%;
   padding: 8px;
   border: 1px solid #ccc;
@@ -132,7 +133,8 @@
   margin-bottom: 20px;
 }
 
-.appointment-medication input {
+.appointment-medications input {
+  color:black;
   width: 100%;
   padding: 8px;
   margin: 5px 0;
@@ -155,7 +157,7 @@ button[type="button"]:hover {
 
 .appointment-submit-prescription {
   background-color: #4CAF50;
-  color: white;
+  color: rgb(0, 0, 0);
   border: none;
   padding: 10px 20px;
   border-radius: 5px;

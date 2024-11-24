@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom';  // Importing useParams
 import React, { useState, useEffect } from 'react';
 import '../components/appdetail.css'
 const AppointmentDetail = () => {
+  const cuser = JSON.parse(localStorage.getItem('user'));
   const { apid } = useParams();  // Get the appointment ID from the URL
   const [appointmentDetails, setAppointmentDetails] = useState({
     prescriptions: []  // Default empty array for prescriptions
@@ -67,6 +68,7 @@ const AppointmentDetail = () => {
           alert('Appointment confirmed');
           setAppointmentDetails(prev => ({ ...prev, status: 'confirmed' }));
           setNotification('Appointment has been confirmed.');
+          window.location.reload();
         } else {
           alert('Failed to confirm appointment: ' + data.message);
         }
@@ -109,6 +111,22 @@ const AppointmentDetail = () => {
       }
     } catch (error) {
       alert('Error completing appointment');
+    }
+  };
+  const handleCancel = async () => {
+    try {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/appointments/${apid}/cancel`, { method: 'POST' });
+      if (response.ok) {
+        alert('Appointment cancelled');
+        setAppointmentDetails(prev => ({ ...prev, status: 'cancelled' }));
+        setNotification('Appointment has been cancelled.');
+        window.location.reload();
+
+      } else {
+        alert('Failed to cancel appointment');
+      }
+    } catch (error) {
+      alert('Error cancelling appointment');
     }
   };
 
@@ -190,15 +208,18 @@ const AppointmentDetail = () => {
         )}
 
         {/* Confirm and Cancel buttons for Doctor */}
-        {appointmentDetails.status === 'requested' && (
+        {cuser.role === 'DOCTOR' && appointmentDetails.status === 'requested' && (
           <div className="appointment-actions">
             <button onClick={handleConfirm} className="appointment-confirm-button">Confirm</button>
             <button onClick={handleCancel} className="appointment-cancel-button">Cancel</button>
-          </div>
-        )}
+          </div>)}
+          {cuser.role === 'PATIENT' && appointmentDetails.status === 'requested' && (
+          <div className="appointment-actions">
+            <button onClick={handleCancel} className="appointment-cancel-button">Cancel</button>
+          </div>)}
 
         {/* Prescription form for Doctor */}
-        {appointmentDetails.status === 'confirmed' && (
+        {cuser.role === 'DOCTOR' && appointmentDetails.status === 'confirmed' && (
           <div className="appointment-prescription-form">
             <h3>Add Prescription</h3>
             <div className="appointment-diagnosis">
@@ -213,7 +234,7 @@ const AppointmentDetail = () => {
             <div className="appointment-medications">
               <h4>Medications</h4>
               {newPrescription.medications.map((med, index) => (
-                <div key={index} className="appointment-medication">
+                <div key={index} className="appointment-medication-row">
                   <input 
                     type="text" 
                     value={med.name} 
@@ -232,16 +253,18 @@ const AppointmentDetail = () => {
                     onChange={(e) => handleMedicationChange(index, 'instructions', e.target.value)} 
                     placeholder="Instructions" 
                   />
-                  <button type="button" onClick={() => handleRemoveMedication(index)}>Remove</button>
+                  <button type="button" onClick={() => handleRemoveMedication(index)} className="appointment-remove-medication-button">Remove</button>
                 </div>
               ))}
-              <button type="button" onClick={handleAddMedication}>Add Medication</button>
+              <button type="button" onClick={handleAddMedication} className="appointment-add-medication-button">Add Medication</button>
             </div>
-
-            <button onClick={handleAddPrescription} className="appointment-submit-prescription">Submit Prescription</button>
+            <button onClick={handleAddPrescription} className="appointment-add-prescription-button">Complete Appointment & Add Prescription</button>
           </div>
         )}
+        <p><strong>Status:</strong> {appointmentDetails.status}</p>
       </div>
+             
+      
     </>
   );
 };

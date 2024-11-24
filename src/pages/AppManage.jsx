@@ -82,7 +82,7 @@ const AppManage = () => {
                   className="app-manage__appointment-card" 
                   onClick={() => handleAppointmentClick(_id)}
                 >
-                  <h3 className="app-manage__appointment-card-title">{`Appointment with Dr. ${doctor.firstname}`}</h3>
+                  <h3 className="app-manage__appointment-card-title">{`Appointment with Dr. ${doctor.doctorProfile.firstname}`}</h3>
                   <p className="app-manage__appointment-card-date">{`Date: ${new Date(appointmentDate).toLocaleString()}`}</p>
                   <p className="app-manage__appointment-card-status">{`Status: ${status}`}</p>
                   <div className="app-manage__appointment-card-actions">
