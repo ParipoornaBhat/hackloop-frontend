@@ -90,11 +90,11 @@ body {
     display: flex;
     margin-left: auto; /* Pushes nav links to the right */
     margin-right: 45px;
-
 }
 
 .navbar .nav-links li {
-    margin: 8px;
+    font-size: 2vh;
+    margin: 6px;
 }
 
 .navbar .nav-links a {
