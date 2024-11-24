@@ -18,6 +18,8 @@ import BookApp from './pages/DocList';
 import DoctorProfile from './pages/DocAvlAndBook';
 import AppointmentDetail from './pages/AppointmentDetail';
 import AppManage from './pages/AppManage';
+import PrescriptionManage from './pages/PrescriptionManage';
+
 
 function App() {
   const user = JSON.parse(localStorage.getItem('user')); // Parse user data from localStorage
@@ -38,6 +40,7 @@ function App() {
         {/* Role-based Routes */}
         {userRole === 'ADMIN' && <Route path="/user/manage" element={<Manageuser />} />}
         {userRole === 'PATIENT' &&<Route path="/appmanage" element={<AppManage />} />}
+        {userRole === 'PATIENT' &&<Route path="/prescriptions" element={<PrescriptionManage />} />}
         {userRole==='DOCTOR' &&<Route path="/appmanage" element={<AppManage />} />}
         {userRole === 'PATIENT' && <Route path="/apply" element={<Apply />} />}
         {userRole === 'PATIENT' && <Route path="/book" element={<BookApp />} />}
