@@ -6,9 +6,9 @@
   padding: 2rem;
   margin: 2rem 1rem;               /* Margin around the container */
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;            /* Center all content */
-  justify-content: flex-start;     /* Start the content from the top */
+  justify-content: center;     /* Start the content from the top */
   width: 100%;                     /* Full width */
   max-width: 1200px;               /* Maximum width for larger screens */
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);  /* Shadow for card effect */
@@ -173,6 +173,7 @@ button:hover {
 
   .profile-details, .doctor-profile-details {
     font-size: 0.9rem;
+    flex-direction: row;
   }
 
   .availableSlots {
