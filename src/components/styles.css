@@ -60,11 +60,13 @@ body {
 }
 
 .navbar .logo-container img {
-    height: 2.5rem; /* Adjust logo height */
+    height: 3.5rem;
+    border-radius: 25%; /* Adjust logo height */
+    text-shadow: 5px 5px 10px white;
 }
 
 .navbar .logo-container .logo-text {
-    margin-left: 10px;
+    margin-left: 20px;
     display: flex;
     flex-direction: column; /* Stack the text vertically */
     justify-content: center;
@@ -87,6 +89,7 @@ body {
     list-style: none;
     display: flex;
     margin-left: auto; /* Pushes nav links to the right */
+    margin-right: 25px;
 }
 
 .navbar .nav-links li {

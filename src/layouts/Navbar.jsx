@@ -63,7 +63,7 @@ const Navbar = () => {
             <img
                 src="/Alpha.jpeg" // Path to your logo image (from the public folder)
                 alt="Logo"
-                className="h-10" // Adjust the height of the logo as needed
+                className="h-15" // Adjust the height of the logo as needed
             />
             <div className="logo-text">
                 <h2 className="team-name">Alpha_Coders</h2>
