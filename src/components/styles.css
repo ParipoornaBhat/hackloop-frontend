@@ -89,11 +89,12 @@ body {
     list-style: none;
     display: flex;
     margin-left: auto; /* Pushes nav links to the right */
-    margin-right: 25px;
+    margin-right: 45px;
+
 }
 
 .navbar .nav-links li {
-    margin: 12px;
+    margin: 8px;
 }
 
 .navbar .nav-links a {
@@ -117,6 +118,7 @@ body {
     gap: 5px;
     justify-content: center;
     align-items: center;
+    margin-right: 45px;
     height: 25px;
     width: 30px;
 }
