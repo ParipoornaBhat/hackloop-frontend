@@ -90,7 +90,7 @@ const Signup = () => {
       return;
     }
     const formData = { user, email, password };
-    const response = await fetch('/api/auth/get-form-data-reg', {
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/get-form-data-reg`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(formData)
