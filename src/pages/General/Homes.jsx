@@ -129,13 +129,7 @@ const Home = () => {
                     <h3>Patient History</h3>
                     <p>Maintain an accurate record of your health journey.</p>
                 </div>
-                <div
-                    className={`feature-card ${visibleCards.includes('card5') ? 'visible from-left' : ''}`}
-                    id="card5"
-                >
-                    <h3>Real-Time Notifications</h3>
-                    <p>Receive updates about appointments, test results, and more directly on your device.</p>
-                </div>
+               
             </section>
             <VideoCarousel />
             <br/><br/>
