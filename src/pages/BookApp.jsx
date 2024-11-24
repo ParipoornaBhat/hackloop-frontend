@@ -58,11 +58,11 @@ const ManageUser = () => {
   };
 
   return (
-    <> <br /><br /><br /><br />
-      <div>
-       
-        <h1>Doctor Lists</h1>
-        {message && <p>{message}</p>}
+    <> 
+      <br /><br /><br /><br />
+      <div className="manage-user-container">
+        <h1 className="manage-user-heading">Doctor Lists</h1>
+        {message && <p className="manage-user-message">{message}</p>}
 
         {/* Search Bar */}
         <div>
@@ -71,49 +71,48 @@ const ManageUser = () => {
             placeholder="Search doctors by name"
             value={searchQuery}
             onChange={handleSearchChange}
-            className="search-bar"
+            className="search-bar-input"
           />
         </div>
 
+        <br />
+
         {/* Specialization Filter */}
         <div>
-        <select onChange={handleSpecializationChange} value={specializationFilter} className="specialization-filter">
-  <option value=""  selected>All Specializations</option>
-  <option value="cardiologist">Cardiologist</option>
-  <option value="dermatologist">Dermatologist</option>
-  <option value="neurologist">Neurologist</option>
-  <option value="pediatrician">Pediatrician</option>
-  <option value="orthopedist">Orthopedist</option>
-  <option value="gastroenterologist">Gastroenterologist</option>
-  <option value="psychiatrist">Psychiatrist</option>
-  <option value="dentist">Dentist</option>
-  <option value="radiologist">Radiologist</option>
-  <option value="gynecologist">Gynecologist</option>
-  <option value="urologist">Urologist</option>
-  <option value="surgeon">Surgeon</option>
-  <option value="endocrinologist">Endocrinologist</option>
-  <option value="oncologist">Oncologist</option>
-  {/* Add more specializations here */}
-</select>
-
+          <select onChange={handleSpecializationChange} value={specializationFilter} className="specialization-dropdown">
+            <option value="" selected>All Specializations</option>
+            <option value="cardiologist">Cardiologist</option>
+            <option value="dermatologist">Dermatologist</option>
+            <option value="neurologist">Neurologist</option>
+            <option value="pediatrician">Pediatrician</option>
+            <option value="orthopedist">Orthopedist</option>
+            <option value="gastroenterologist">Gastroenterologist</option>
+            <option value="psychiatrist">Psychiatrist</option>
+            <option value="dentist">Dentist</option>
+            <option value="radiologist">Radiologist</option>
+            <option value="gynecologist">Gynecologist</option>
+            <option value="urologist">Urologist</option>
+            <option value="surgeon">Surgeon</option>
+            <option value="endocrinologist">Endocrinologist</option>
+            <option value="oncologist">Oncologist</option>
+          </select>
         </div>
+
+        <br />
 
         {/* Doctors List */}
         {filteredDoctors.length === 0 ? (
-          <p>No doctors found.</p>
+          <p className="no-doctors-message">No doctors found.</p>
         ) : (
-          <div className="doctor-list">
+          <div className="doctor-list-container">
             {filteredDoctors.map((doctor) => (
-              <div key={doctor.doctorProfile._id} className="doctor-card" >
-                <h2>{doctor.doctorProfile.firstname} {doctor.doctorProfile.lastname}</h2>
-                <p><strong>Specialization:</strong> {doctor.doctorProfile?.specialization || "Not Available"}</p>
-                <p><strong>Experience:</strong> {doctor.doctorProfile?.experience || "Not Available"} years</p>
-                <p><strong>Fees per Consultation:</strong> ₹{doctor.doctorProfile?.feeperconsultation || "Not Available"}</p>
-                <p><strong>Availability:</strong> {doctor.doctorProfile.from1} - {doctor.doctorProfile.to1}, {doctor.doctorProfile.from2} - {doctor.doctorProfile.to2}</p>
-                {/* Book Appointment Button */console.log(doctor)}
-                <a href={`/doctor/${doctor._id}`} className="book-appointment-btn">
-                  Book Appointment
-                </a>
+              <div key={doctor.doctorProfile._id} className="doctor-card-item">
+                <h2 className="doctor-card-title">{doctor.doctorProfile.firstname} {doctor.doctorProfile.lastname}</h2>
+                <p className="doctor-card-info"><strong>Specialization:</strong> {doctor.doctorProfile?.specialization || "Not Available"}</p>
+                <p className="doctor-card-info"><strong>Experience:</strong> {doctor.doctorProfile?.experience || "Not Available"} years</p>
+                <p className="doctor-card-info"><strong>Fees per Consultation:</strong> ₹{doctor.doctorProfile?.feeperconsultation || "Not Available"}</p>
+                <p className="doctor-card-info"><strong>Availability:</strong> {doctor.doctorProfile.from1} - {doctor.doctorProfile.to1}, {doctor.doctorProfile.from2} - {doctor.doctorProfile.to2}</p>
+                <a href={`/doctor/${doctor._id}`} className="book-appointment-button">Book Appointment</a>
               </div>
             ))}
           </div>

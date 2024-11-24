@@ -1,268 +1,193 @@
-/* appointment.css */
+/* General Container for the DoctorProfile component */
+.doctor-profile-container {
+  background: rgba(0, 0, 0, 0.7);  /* Darker background with transparency */
+  backdrop-filter: blur(10px);     /* Apply blur effect */
+  border-radius: 15px;             /* Rounded corners for the entire container */
+  padding: 2rem;
+  margin: 2rem 1rem;               /* Margin around the container */
+  display: flex;
+  flex-direction: column;
+  align-items: center;            /* Center all content */
+  justify-content: flex-start;     /* Start the content from the top */
+  width: 100%;                     /* Full width */
+  max-width: 1200px;               /* Maximum width for larger screens */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);  /* Shadow for card effect */
+}
 
-/* Appointment Card Styling */
-.appointmentCard {
-    position: relative;
-    max-width: 600px;
-    width: 100%;
-    margin: 0 auto;
-    padding: 20px;
-    background: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
-    border-radius: 15px;
-    backdrop-filter: blur(10px); /* Blur effect */
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease-in-out;
-    opacity: 0;
-    animation: fadeIn 1s forwards;
+/* Heading Styles */
+.doctor-profile-heading {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 2rem;
+  text-align: center; /* Center the heading */
+}
+
+/* Profile Details */
+.profile-details, .doctor-profile-details {
+  font-size: 1rem;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.profile-details p, .doctor-profile-details p {
+  margin-bottom: 1rem;
+}
+
+.doctor-profile-details h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 1.5rem;
+}
+
+/* Date Picker Styling */
+.date-picker-container {
+  margin-bottom: 2rem;
+}
+
+.react-datepicker-wrapper {
+  display: inline-block;
+}
+
+.react-datepicker__input-container input {
+  width: 100%;
+  padding: 0.8rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: #f5f5f5;
+  color: #333;
+  transition: all 0.3s ease;
+}
+
+body.dark-mode .react-datepicker__input-container input {
+  background-color: #333;
+  color: #fff;
+  border: 1px solid #555;
+}
+
+/* DatePicker popper styling */
+.react-datepicker__triangle {
+  display: none; /* Remove the triangle */
+}
+
+.react-datepicker__header {
+  background-color: #333;
+  color: #fff;
+  border-radius: 10px 10px 0 0;
+  padding: 0.5rem;
+  text-align: center;
+}
+
+.react-datepicker__day--disabled {
+  background-color: #ddd;
+}
+
+.react-datepicker__day--selected {
+  background-color: #007bff;
+  color: white;
+}
+
+.react-datepicker__day--today {
+  font-weight: bold;
+  color: #007bff;
+}
+
+/* Available Slots Section */
+.availableSlots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.slotButton {
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 0.5rem;
+}
+
+.slotButton:hover {
+  background-color: #0056b3;
+}
+
+.slotButton.selected {
+  background-color: #28a745;
+}
+
+.slotButton:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Description Textarea */
+textarea {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  background-color: #f5f5f5;
+  color: #333;
+  margin-bottom: 1.5rem;
+  resize: vertical;
+}
+
+body.dark-mode textarea {
+  background-color: #333;
+  color: #fff;
+  border: 1px solid #555;
+}
+
+/* Appointment Booking Button */
+button {
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  background-color: #28a745;
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 1.5rem;
+}
+
+button:hover {
+  background-color: #218838;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .doctor-profile-container {
+    padding: 1rem;
   }
-  
-  @keyframes fadeIn {
-    to {
-      opacity: 1;
-    }
+
+  .doctor-profile-heading {
+    font-size: 1.5rem; /* Adjust font size */
   }
-  
-  /* Date Picker Container */
-  .datePickerContainer {
-    
-    text-align: center;
-    margin-bottom: 20px;
+
+  .profile-details, .doctor-profile-details {
+    font-size: 0.9rem;
   }
-  
-  /* Buttons */
-  button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 12px 24px;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-top: 20px;
-    width: 100%;
-  }
-  
-  button:hover {
-    background-color: #45a049;
-  }
-  
-  button:disabled {
-    background-color: #ddd;
-    cursor: not-allowed;
-  }
-  
-  /* Textarea */
-  textarea {
-    width: 100%;
-    height: 80px;
-    padding: 10px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    resize: none;
-    background-color: rgba(255, 255, 255, 0.2);
-    color: inherit;
-    margin-top: 20px;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-  }
-  
-  textarea:focus {
-    outline: none;
-    border-color: #4CAF50;
-  }
-  
-  /* Available Slots */
+
   .availableSlots {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    flex-wrap: wrap;
-    margin-top: 20px;
+    flex-direction: column;
   }
-  
+
   .slotButton {
-    background-color: rgb(87, 87, 87);
-    color: #333;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    width: 100%;  /* Stack the slots vertically on small screens */
   }
-  
-  .slotButton:hover {
-    background-color: #4CAF50;
-    color: white;
-  }
-  
-  .slotButton.selected {
-    background-color: green;
-    color: white;
-  }
-  
-  .slotButton:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-  }
-  
-  /* Media Queries for Responsiveness */
-  @media (max-width: 768px) {
-    .appointmentCard {
-      padding: 15px;
-    }
-  
-    button, textarea {
-      width: 100%;
-    }
-  }
-  
-  /* Light Mode Styles (default) */
-  body {
-    background-color: #f5f5f5;
-    color: #333;
-  }
-  
+
   textarea {
-    color: #333;
+    font-size: 0.9rem;
   }
-  
-  /* Dark Mode Styles */
-  @media (prefers-color-scheme: dark) {
-    /* Appointment Card in Dark Mode */
-    .appointmentCard {
-      background: rgba(0, 0, 0, 0.4); /* Dark transparent background */
-      color: #f1f1f1;
-      box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.6);
-    }
-  
-    /* Button in Dark Mode */
-    button {
-      background-color: #4CAF50;
-      color: #f1f1f1;
-    }
-  
-    button:hover {
-      background-color: #45a049;
-    }
-  
-    /* Textarea in Dark Mode */
-    textarea {
-      background-color: rgba(255, 255, 255, 0.1); /* Slightly transparent for dark mode */
-      color: #f1f1f1;
-      border-color: #444;
-    }
-  
-    /* Available Slot Buttons */
-    .slotButton {
-      background-color: #444; /* Darker background */
-      color: #f1f1f1;
-    }
-  
-    .slotButton.selected {
-      background-color: green;
-      color: white;
-    }
-  
-    .slotButton:hover {
-      background-color: #4CAF50;
-      color: white;
-    }
-  
-    /* Additional Styling for Inputs */
-    input, textarea, button {
-      color: #f1f1f1;
-    }
-  
-    /* Light Background for Dark Mode */
-    .appointmentCard {
-      background: rgba(0, 0, 0, 0.5); /* Dark background with blur */
-    }
-  
-    /* Form text and button highlights */
-    button:disabled {
-      background-color: #666;
-      cursor: not-allowed;
-    }
+
+  button {
+    width: 100%;  /* Make the button full width on smaller screens */
   }
-  
-  /* Ensure that the datepicker dropdown appears below the input */
-.datepicker-wrapper .react-datepicker__portal {
-    position: absolute !important;  /* Ensures the calendar floats properly in the DOM */
-    z-index: 9999;  /* Keeps the dropdown above other page elements */
-    margin-top: 5px;  /* Ensures dropdown is placed slightly below the input */
-  }
-  
-  /* Hide the small triangle that usually points to the input field */
-  .react-datepicker__triangle {
-    display: none;
-  }
-  
-  /* Custom styling for the header of the DatePicker */
-  .react-datepicker__header {
-    background-color: #f1f1f1;  /* Sets a custom background for the header */
-    border-bottom: 1px solid #ddd;  /* Optional: Adds a border for separation */
-    padding: 10px;  /* Adds padding for a cleaner look */
-  }
-  
-  /* Custom styling for the month grid */
-  .react-datepicker__month {
-    background-color: #f9f9f9;  /* Sets a custom background for the month grid */
-    border-radius: 8px;  /* Adds rounded corners for a modern look */
-    padding: 10px;
-  }
-  
-  /* Custom styling for the days of the week */
-  .react-datepicker__day-name {
-    font-weight: bold;  /* Makes the day names bold for better visibility */
-    color: #3e3b3b;  /* Adjusts the color of the day names */
-  }
-  
-  /* Custom styling for the day cells */
-  .react-datepicker__day {
-    font-size: 16px;  /* Increases font size for better readability */
-    color: #333;  /* Sets the default color for the days */
-    border-radius: 50%;  /* Makes the day cells circular */
-    transition: background-color 0.3s ease;  /* Smooth transition for hover effect */
-  }
-  
-  .react-datepicker__day:hover {
-    background-color: #5b5b5b;  /* Changes background color when hovering over a day */
-    color: rgb(32, 31, 31);  /* Changes text color to white on hover */
-  }
-  
-  /* Styling for selected day */
-  .react-datepicker__day--selected {
-    background-color: #007bff;  /* Changes background color for selected day */
-    color: white;  /* Changes the color of the text to white for selected day */
-    font-weight: bold;  /* Optional: Makes the selected day bold */
-  }
-  
-  /* Styling for today’s date */
-  .react-datepicker__day--today {
-    border: 2px solid #007bff;  /* Adds a border to today's date */
-    background-color: #e9f0ff;  /* Adds a light background for today’s date */
-  }
-  
-  /* Styling for disabled dates */
-  .react-datepicker__day--disabled {
-    background-color: #d3d3d3;  /* Sets a grey background color for disabled dates */
-    color: #9e9e9e;  /* Lighter grey text for disabled dates */
-    pointer-events: none;  /* Disables interaction with disabled dates */
-  }
-  
-  /* Ensure the input is styled correctly */
-  .react-datepicker__input-container input {
-    background-color: #494949;  /* Light background for the input */
-    color: black;  /* Text color for the input */
-    padding: 8px 12px;
-    border-radius: 4px;
-    border: 1px solid #ddd;
-    width: 100%;
-  }
-  
-  .react-datepicker__input-container input:focus {
-    outline: none;
-    border-color: #007bff;  /* Focus border color */
-  }
-  
+}

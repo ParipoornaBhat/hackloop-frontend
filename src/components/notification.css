@@ -1,205 +1,101 @@
-/* General Container for Notification Section */
+/* Notification Container */
 .notification-container {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  width: 100%;
-  padding: 20px;
-  box-sizing: border-box;
-  margin-top: 20px;
-  background: rgba(255, 255, 255, 0.7); /* Transparent white for light theme */
-
-}
-
-/* Card Container for Notifications (similar to the table card) */
-.notification-card-container {
-  width: 100%;
+  padding: 2rem;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   max-width: 1200px;
-  background: rgba(255, 255, 255, 0.7); /* Transparent white for light theme */
-  border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(8px); /* Frosted glass effect */
-  padding: 30px;
-  overflow: hidden;
-  margin: 0 auto;
-}
-
-@media (prefers-color-scheme: dark) {
-  .notification-card-container {
-    background: rgba(0, 0, 0, 0.6); /* Darker transparent background for dark mode */
-    border: 1px solid rgba(255, 255, 255, 0.1);
-  }
-  .notification-container {
-    background: rgba(0, 0, 0, 0.6); /* Darker transparent background for dark mode */
-    }
-}
-
-/* Title for the Notifications */
-.notification-container h1 {
-  font-size: 2rem;
-  margin-bottom: 20px;
-  color: #333;
-}
-
-@media (prefers-color-scheme: dark) {
-  .notification-container h1 {
-    color: #fff; /* White text for dark mode */
-  }
-}
-
-/* Notification List */
-.notification-list {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  width: 100%;
-  margin-top: 20px;
-}
-
-/* Individual Notification Card */
-.notification-card {
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 15px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  position: relative;
-  transition: transform 0.3s ease;
-  width: 100%;
-}
-
-.notification-card:hover {
-  transform: scale(1.02);
-}
-
-@media (prefers-color-scheme: dark) {
-  .notification-card {
-    background-color: #34495e;
-    border: 1px solid #2c3e50;
-    color: #fff;
-  }
-}
-
-/* Styling for Seen Notifications */
-.notification-card.seen {
-  background-color: #ecf0f1; /* Light gray background for seen notifications */
-  border: 1px solid #bdc3c7;
-}
-
-@media (prefers-color-scheme: dark) {
-  .notification-card.seen {
-    background-color: #2c3e50; /* Dark background for seen notifications */
-    border: 1px solid #34495e;
-  }
-}
-
-/* Mark as Seen Button */
-.mark-seen-button {
-  background-color: #4e73df;
+  margin: 2rem auto;
   color: white;
-  padding: 6px 15px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 0.9rem;
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  transition: background-color 0.3s ease;
 }
 
-.mark-seen-button:hover {
-  background-color: #3a5bb7;
+/* Heading */
+.notification-container h1 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  .mark-seen-button {
-    background-color: #2c3e50;
-  }
-
-  .mark-seen-button:hover {
-    background-color: #1abc9c;
-  }
-}
-
-/* Action Link for Seen Notifications */
-.notification-card a {
-  color: #3498db;
-  text-decoration: none;
-  font-size: 0.9rem;
-}
-
-.notification-card a:hover {
-  text-decoration: underline;
-}
-
-@media (prefers-color-scheme: dark) {
-  .notification-card a {
-    color: #1abc9c;
-  }
-
-  .notification-card a:hover {
-    color: #16a085;
-  }
-}
-
-/* No Notifications Styling */
-.notification-container p {
-  text-align: left;
-  font-size: 1.2rem;
-  color: #333;
-}
-
-@media (prefers-color-scheme: dark) {
-  .notification-container p {
-    color: #ddd; /* Light text for no notifications in dark mode */
-  }
-}
-
-/* Delete All Notifications Button */
+/* Delete All Button */
 .delete-all-button {
-  background-color: #e74c3c;
-  color: rgb(13, 13, 13);
-  padding: 10px 20px;
+  background-color: #ff4d4d;
+  color: white;
   border: none;
-  border-radius: 5px;
-  cursor: pointer;
+  padding: 0.8rem 1.5rem;
   font-size: 1rem;
+  cursor: pointer;
+  border-radius: 8px;
   transition: background-color 0.3s ease;
-  margin-top: 20px;
+  margin-bottom: 1.5rem;
 }
 
 .delete-all-button:hover {
-  background-color: #c0392b;
+  background-color: #cc0000;
 }
 
-@media (prefers-color-scheme: dark) {
-  .delete-all-button {
-    background-color: #c0392b;
-  }
-
-  .delete-all-button:hover {
-    background-color: #e74c3c;
-  }
+/* Notification Card Container */
+.notification-card-container {
+  margin-bottom: 2rem;
 }
 
-/* Responsive Design for Smaller Screens */
-@media (max-width: 768px) {
-  .notification-card-container {
-    padding: 15px;
-  }
+/* Unseen Notifications */
+.notification-card.unseen {
+  background-color: #007bff3f; /* Blue for unseen */
+  padding: 1.2rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
 
-  .notification-container h1 {
-    font-size: 1.8rem;
-  }
+.notification-card.unseen p {
+  font-size: 4vh;
+  margin-bottom: 1vh;
+}
 
-  .notification-card {
-    padding: 12px;
-  }
+.notification-card.unseen small {
+  color: #fff;
+  font-size: 0.85rem;
+}
 
-  .mark-seen-button,
-  .delete-all-button {
-    font-size: 0.8rem;
-    padding: 5px 10px;
-  }
+/* Seen Notifications */
+.notification-card.seen {
+  background-color: #cbcbcb3b !important; /* Force light gray background for seen notifications */
+  padding: 1.2rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  color: #f6f6f6;
+}
+
+.notification-card.seen p {
+  font-size: 4vh;
+  margin-bottom: 1rem;
+}
+
+.notification-card.seen small {
+  color: #555;
+  font-size: 0.85rem;
+}
+
+/* Mark as Seen Button */
+.notification-container .mark-seen-button {
+  background-color: #029e7ca9;
+  width: 150px;
+  color: rgb(0, 0, 0);
+  border: none;
+  padding: 0.6rem 1rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border-radius: 5px;
+
+  /* Align to the left inside the notification card */
+  margin-left: auto;  /* Ensure there's no extra margin pushing it right */
+}
+
+/* Ensure the parent container of the button uses flex */
+
+
+.mark-seen-button:hover {
+  background-color: #0056b3;
 }

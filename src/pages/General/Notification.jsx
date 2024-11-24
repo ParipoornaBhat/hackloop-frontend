@@ -124,7 +124,7 @@ const Notification = () => {
 
   return (
     <>
-      <br /><br /><br /><br />
+      <br />
 
       <div className="notification-container">
         <h1>Notifications</h1>
@@ -140,7 +140,7 @@ const Notification = () => {
               <h2>Unseen Notifications</h2>
               <div className="notification-list">
                 {unseenNotifications.map((notification, index) => (
-                  <div className="notification-card" key={index}>
+                  <div className="notification-card unseen" key={index}>
                     <p>{notification.message}</p>
 
                     {/* Form for Marking as Seen */}
@@ -159,34 +159,32 @@ const Notification = () => {
           ) : (
             <p>No new notifications</p>
           )}
-
-          </div>
-    
-          {/* Seen Notifications Section */}
-          <div className="notification-card-container">
-            {seenNotifications.length > 0 ? (
-              <div>
-                <h2>Seen Notifications</h2>
-                <div className="notification-list">
-                  {seenNotifications.map((notification, index) => (
-                    <div className="notification-card seen" key={index}>
-                      <p>{notification.message}</p>
-                      <small>{notification.type}</small>
-                      <a href={notification.onClickPath} target="_blank" rel="noopener noreferrer">
-                        Action
-                      </a>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ) : (
-              <p>No seen notifications</p>
-            )}
-          </div>
         </div>
-      </>
-    );
-  };
-  
-  export default Notification;
-  
+    
+        {/* Seen Notifications Section */}
+        <div className="notification-card-container">
+          {seenNotifications.length > 0 ? (
+            <div>
+              <h2>Seen Notifications</h2>
+              <div className="notification-list">
+                {seenNotifications.map((notification, index) => (
+                  <div className="notification-card seen" key={index}>
+                    <p>{notification.message}</p>
+                    <small>{notification.type}</small>
+                    <a href={notification.onClickPath} target="_blank" rel="noopener noreferrer">
+                      Action
+                    </a>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ) : (
+            <p>No seen notifications</p>
+          )}
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default Notification;

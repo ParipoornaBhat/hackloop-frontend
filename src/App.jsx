@@ -37,8 +37,8 @@ function App() {
         <Route path="/appointments/:apid" element={<AppointmentDetail />} />
         {/* Role-based Routes */}
         {userRole === 'ADMIN' && <Route path="/user/manage" element={<Manageuser />} />}
-        {userRole === 'PATIENT' && userRole==='DOCTOR' &&<Route path="/appmanage" element={<AppManage />} />}
-
+        {userRole === 'PATIENT' &&<Route path="/appmanage" element={<AppManage />} />}
+        {userRole==='DOCTOR' &&<Route path="/appmanage" element={<AppManage />} />}
         {userRole === 'PATIENT' && <Route path="/apply" element={<Apply />} />}
         {userRole === 'PATIENT' && <Route path="/book" element={<BookApp />} />}
         {/*{userRole === 'DOCTOR' && <Route path="/doctor" element={<DoctorPage />} />}

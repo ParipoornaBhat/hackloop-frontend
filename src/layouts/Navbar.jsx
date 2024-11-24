@@ -78,6 +78,8 @@ const Navbar = () => {
                         <li><a href="/notify">Notification</a></li>
                         {userRole === 'PATIENT' && <li><a href="/book">Book Appointment</a></li>}
                         {userRole === 'PATIENT' && <li><a href="/appmanage">Manage Appointment</a></li>}
+                        {userRole === 'DOCTOR' && <li><a href="/appmanage">Manage Appointment</a></li>}
+
                         {userRole === 'PATIENT' && <li><a href="/apply">Apply Doctor</a></li>}
                         {userRole === 'ADMIN' && <li><a href="/user/manage">Admin Dashboard</a></li>}
                         {/*userRole === 'DOCTOR' && <li><a href="/doctor">Doctor Dashboard</a></li>}

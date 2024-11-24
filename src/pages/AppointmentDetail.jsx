@@ -58,10 +58,17 @@ const AppointmentDetail = () => {
   const handleConfirm = async () => {
     try {
       const response = await fetch(`${import.meta.env.VITE_API_URL}/api/appointments/${apid}/confirm`, { method: 'POST' });
+  
+      // Check if the response is successful (status 200)
       if (response.ok) {
-        alert('Appointment confirmed');
-        setAppointmentDetails(prev => ({ ...prev, status: 'confirmed' }));
-        setNotification('Appointment has been confirmed.');
+        const data = await response.json();  // Parse the JSON response
+        if (data.success) {  // Check if success is true
+          alert('Appointment confirmed');
+          setAppointmentDetails(prev => ({ ...prev, status: 'confirmed' }));
+          setNotification('Appointment has been confirmed.');
+        } else {
+          alert('Failed to confirm appointment: ' + data.message);  // Show backend message if success is false
+        }
       } else {
         alert('Failed to confirm appointment');
       }
@@ -69,6 +76,7 @@ const AppointmentDetail = () => {
       alert('Error confirming appointment');
     }
   };
+  
 
   const handleCancel = async () => {
     try {
