@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import '../components/appointment.css';  // Using the same CSS file name as in the original code
+import { useNavigate } from 'react-router-dom'; // Import the useNavigate hook
 
 const DoctorProfile = () => {
   const [docpro, setDoc] = useState(null); // Doctor Profile
@@ -13,6 +14,7 @@ const DoctorProfile = () => {
   const [datesInNextMonth, setDatesInNextMonth] = useState([]); // Dates for the next month
   const cuser = JSON.parse(localStorage.getItem('user'));
   const { docid } = useParams();  // Get doctor ID from URL
+  const navigate = useNavigate();
 
   // Generate dates for the next month
   const generateNextMonthDates = () => {
@@ -95,7 +97,7 @@ const DoctorProfile = () => {
         const data = await response.json();
         if (data.success) {
           alert('Appointment booked successfully');
-          window.location.reload();
+          navigate('/appmanage');
         } else {
           alert(data.message || 'Failed to book appointment');
         }

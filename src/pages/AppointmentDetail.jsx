@@ -4,12 +4,17 @@ import '../components/appdetail.css';
 
 const AppointmentDetail = () => {
   const cuser = JSON.parse(localStorage.getItem('user')); // Get current user from localStorage
-
   const { apid } = useParams();  // Get the appointment ID from the URL
-  const [appointmentDetails, setAppointmentDetails] = useState(null); // State to hold appointment details
+  const [appointmentDetails, setAppointmentDetails] = useState({
+    prescriptions: []  // Default empty array for prescriptions
+  }); // State to hold appointment details
   const [loading, setLoading] = useState(true); // Loading state
   const [error, setError] = useState(null); // Error state
   const [notification, setNotification] = useState(''); // Notification state
+  const [newPrescription, setNewPrescription] = useState({ 
+    medications: [{ name: '', dosage: '', instructions: '' }], // State for new prescription form (medications array)
+    diagnosis: ''  // Diagnosis state
+  });
 
   // Fetch appointment details when component mounts or apid changes
   useEffect(() => {
@@ -43,15 +48,15 @@ const AppointmentDetail = () => {
 
   // Render loading, error, or appointment details
   if (loading) {
-    return <div className="loading">Loading...</div>;
+    return <div className="appointment-loading">Loading...</div>;
   }
 
   if (error) {
-    return <div className="error">{error}</div>;
+    return <div className="appointment-error">{error}</div>;
   }
 
   if (!appointmentDetails) {
-    return <div className="no-appointment">No appointment details available.</div>;
+    return <div className="appointment-no-appointment">No appointment details available.</div>;
   }
 
   // Handle Confirm and Cancel actions
@@ -59,7 +64,6 @@ const AppointmentDetail = () => {
     try {
       const response = await fetch(`${import.meta.env.VITE_API_URL}/api/appointments/${apid}/confirm`, { method: 'POST' });
   
-      // Check if the response is successful (status 200)
       if (response.ok) {
         const data = await response.json();  // Parse the JSON response
         if (data.success) {  // Check if success is true
@@ -76,7 +80,6 @@ const AppointmentDetail = () => {
       alert('Error confirming appointment');
     }
   };
-  
 
   const handleCancel = async () => {
     try {
@@ -93,11 +96,65 @@ const AppointmentDetail = () => {
     }
   };
 
+  // Handle new prescription submission and complete appointment
+  const handleAddPrescription = async () => {
+    try {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/completeAppointment`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          apid,
+          medication: newPrescription.medications, // Send the medications array with name, dosage, and instructions
+          diagnosis: newPrescription.diagnosis,  // Diagnosis
+          doctorId: appointmentDetails.doctor._id,
+          patientId: appointmentDetails.patient._id,
+        }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        alert('Prescription added and appointment completed.');
+        setAppointmentDetails(prev => ({
+          ...prev,
+          status: 'completed',
+          prescription: data._id,  // Save the new prescription
+          previousPrescriptions: [...prev.previousPrescriptions, data]  // Add to previous prescriptions
+        }));
+      } else {
+        alert('Failed to complete appointment and add prescription');
+      }
+    } catch (error) {
+      alert('Error completing appointment');
+    }
+  };
+
+  // Handle changes to medication form
+  const handleMedicationChange = (index, field, value) => {
+    const updatedMedications = [...newPrescription.medications];
+    updatedMedications[index][field] = value;
+    setNewPrescription({ ...newPrescription, medications: updatedMedications });
+  };
+
+  // Add new medication row
+  const handleAddMedication = () => {
+    setNewPrescription({ 
+      ...newPrescription, 
+      medications: [...newPrescription.medications, { name: '', dosage: '', instructions: '' }] 
+    });
+  };
+
+  // Remove medication row
+  const handleRemoveMedication = (index) => {
+    const updatedMedications = newPrescription.medications.filter((_, i) => i !== index);
+    setNewPrescription({ ...newPrescription, medications: updatedMedications });
+  };
+
   return (
     <>
-      <br /><br /><br /><br /><br />
-      <div className="appointment-card">
-        <h1>Appointment Details</h1>
+      <div className="appointment-detail-card">
+        <h1 className="appointment-title">Appointment Details</h1>
         <p><strong>Appointment ID:</strong> {appointmentDetails._id}</p>
 
         {/* Display patient details */}
@@ -107,7 +164,7 @@ const AppointmentDetail = () => {
 
         {/* Display doctor details */}
         {appointmentDetails.doctor && (
-          <p><strong>Doctor:</strong> {'Dr.'+appointmentDetails.doctor.doctorProfile.firstname+' '+appointmentDetails.doctor.doctorProfile.lastname || 'Unknown'}</p>
+          <p><strong>Doctor:</strong> {'Dr.' + appointmentDetails.doctor.doctorProfile.firstname + ' ' + appointmentDetails.doctor.doctorProfile.lastname || 'Unknown'}</p>
         )}
 
         {/* Appointment Date */}
@@ -115,7 +172,7 @@ const AppointmentDetail = () => {
 
         {/* Time Slot */}
         {appointmentDetails.timeSlot && (
-          <div className="time-slot">
+          <div className="appointment-time-slot">
             <h3>Time Slot</h3>
             <p><strong>Time:</strong> {appointmentDetails.timeSlot.time}</p>
             <p><strong>Start Time:</strong> {new Date(appointmentDetails.timeSlot.startTime).toLocaleString()}</p>
@@ -125,32 +182,101 @@ const AppointmentDetail = () => {
         )}
 
         {/* Description */}
-        {appointmentDetails.description && (
-          <div className="description">
-            <h3>Description</h3>
+        {appointmentDetails.description ? (
+          <div className="appointment-description">
+            <h3>Description: </h3>
             <p>{appointmentDetails.description}</p>
           </div>
-        )}
-
-        {/* Appointment Status */}
-        <p><strong>Status:</strong> {appointmentDetails.status}</p>
-
-        {/* Notification */}
-        {notification && (
-          <div className="notification">
-            <p>{notification}</p>
+        ) : (
+          <div className="appointment-description">
+            <h3>Description: </h3>
+            <p>No description available</p>
           </div>
         )}
 
-        {/* Show Confirm and Cancel buttons if user is a doctor */}
+        {/* Previous Prescriptions */}
+        <div className="appointment-prescription-details">
+          <h3>Previous Prescriptions</h3>
+          {appointmentDetails.previousPrescriptions && appointmentDetails.previousPrescriptions.length > 0 ? (
+            appointmentDetails.previousPrescriptions.map((prescription, index) => (
+              <div key={index}>
+                <p><strong>Diagnosis:</strong> {prescription.diagnosis || 'No diagnosis available'}</p>
+                {Array.isArray(prescription.medications) && prescription.medications.length > 0 ? (
+                  <div>
+                    <h4>Medications:</h4>
+                    {prescription.medications.map((med, index) => (
+                      <div key={index}>
+                        <p><strong>Medication:</strong> {med.name}</p>
+                        <p><strong>Dosage:</strong> {med.dosage}</p>
+                        <p><strong>Instructions:</strong> {med.instructions}</p>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <p>No medications available for this prescription.</p>
+                )}
+              </div>
+            ))
+          ) : (
+            <div>No previous prescriptions available.</div>
+          )}
+        </div>
+
+        {/* Status */}
+        <p><strong>Status:</strong> {appointmentDetails.status}</p>
+
+        {/* Confirm and Cancel buttons for Doctor */}
         {cuser.role === 'DOCTOR' && appointmentDetails.status === 'requested' && (
           <div className="appointment-actions">
-            <button onClick={handleConfirm} className="btn-confirm">Confirm</button>
-            <button onClick={handleCancel} className="btn-cancel">Cancel</button>
+            <button onClick={handleConfirm} className="appointment-confirm-button">Confirm</button>
+            <button onClick={handleCancel} className="appointment-cancel-button">Cancel</button>
+          </div>
+        )}
+
+        {/* Prescription form for Doctor */}
+        {cuser.role === 'DOCTOR' && appointmentDetails.status === 'confirmed' && (
+          <div className="appointment-prescription-form">
+            <h3>Add Prescription</h3>
+            <div className="appointment-diagnosis">
+              <label>Diagnosis:</label>
+              <input 
+                type="text" 
+                value={newPrescription.diagnosis} 
+                onChange={(e) => setNewPrescription({ ...newPrescription, diagnosis: e.target.value })} 
+                placeholder="Diagnosis" 
+              />
+            </div>
+            <div className="appointment-medications">
+              <h4>Medications</h4>
+              {newPrescription.medications.map((med, index) => (
+                <div key={index} className="appointment-medication-row">
+                  <input 
+                    type="text" 
+                    value={med.name} 
+                    onChange={(e) => handleMedicationChange(index, 'name', e.target.value)} 
+                    placeholder="Medication Name" 
+                  />
+                  <input 
+                    type="text" 
+                    value={med.dosage} 
+                    onChange={(e) => handleMedicationChange(index, 'dosage', e.target.value)} 
+                    placeholder="Dosage" 
+                  />
+                  <input 
+                    type="text" 
+                    value={med.instructions} 
+                    onChange={(e) => handleMedicationChange(index, 'instructions', e.target.value)} 
+                    placeholder="Instructions" 
+                  />
+                  <button type="button" onClick={() => handleRemoveMedication(index)} className="appointment-remove-medication-button">Remove</button>
+                </div>
+              ))}
+              <button type="button" onClick={handleAddMedication} className="appointment-add-medication-button">Add Medication</button>
+            </div>
+            <button onClick={handleAddPrescription} className="appointment-add-prescription-button">Complete Appointment & Add Prescription</button>
           </div>
         )}
       </div>
-      <br />
     </>
   );
 };

@@ -14,8 +14,8 @@ import ForgotPassword from './pages/General/ForgotPassword';
 import Manageuser from './pages/Manageuser';
 import Apply from './pages/Apply';
 import Notify from './pages/General/Notification';
-import BookApp from './pages/BookApp';
-import DoctorProfile from './pages/DoctorProfile';
+import BookApp from './pages/DocList';
+import DoctorProfile from './pages/DocAvlAndBook';
 import AppointmentDetail from './pages/AppointmentDetail';
 import AppManage from './pages/AppManage';
 
