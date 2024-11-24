@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-
 import '../../components/styles.css'; // Ensure this includes the provided CSS
 
 const Home = () => {
+    const cuser = JSON.parse(localStorage.getItem('user')); // Get user from localStorage
+
     // State to track the current angle of the carousel
     const [currentAngle, setCurrentAngle] = useState(0);
     const [visibleCards, setVisibleCards] = useState([]);
@@ -57,15 +58,49 @@ const Home = () => {
         };
     }, []);
 
+    // Render different button based on cuser
+    const renderButton = () => {
+        if (!cuser) {
+            // If no user is logged in, show Login button
+            return (
+                <a href="/auth/login" className="cta-btn">
+                    Login
+                </a>
+            );
+        }
+
+        // If user exists, check the role and display the appropriate button
+        switch (cuser.role) {
+            case 'PATIENT':
+                return (
+                    <a href="/book" className="cta-btn">
+                        Book an Appointment
+                    </a>
+                );
+            case 'DOCTOR':
+                return (
+                    <a href="/appmanage" className="cta-btn">
+                        Manage Appointment
+                    </a>
+                );
+            case 'ADMIN':
+                return (
+                    <a href="/user/manage" className="cta-btn">
+                        Manage Users
+                    </a>
+                );
+            default:
+                return null; // In case no matching role, return nothing
+        }
+    };
+
     return (
         <div>
-           
-
             <section className="hero">
                 <div className="hero-content">
                     <h2 className="abc">Welcome to ClinicCare</h2>
                     <p>Your Health, Our Priority</p>
-                    <a href="/book" className="cta-btn">Book an Appointment</a>
+                    {renderButton()} {/* Render the button based on the cuser role */}
                 </div>
             </section>
 
@@ -77,8 +112,12 @@ const Home = () => {
                     <div className="carousel-item">Item 3</div>
                     <div className="carousel-item">Item 4</div>
                 </div>
-                <button className="carousel-btn prev" onClick={handlePrevClick}>&#8592;</button>
-                <button className="carousel-btn next" onClick={handleNextClick}>&#8594;</button>
+                <button className="carousel-btn prev" onClick={handlePrevClick}>
+                    &#8592;
+                </button>
+                <button className="carousel-btn next" onClick={handleNextClick}>
+                    &#8594;
+                </button>
             </div>
 
             {/* Features Section */}
@@ -104,7 +143,6 @@ const Home = () => {
                     <h3>Patient History</h3>
                     <p>Maintain an accurate record of your health journey.</p>
                 </div>
-                
                 <div
                     className={`feature-card ${visibleCards.includes('card5') ? 'visible from-left' : ''}`}
                     id="card5"
@@ -112,10 +150,7 @@ const Home = () => {
                     <h3>Real-Time Notifications</h3>
                     <p>Receive updates about appointments, test results, and more directly on your device.</p>
                 </div>
-                
             </section>
-
-         
         </div>
     );
 };

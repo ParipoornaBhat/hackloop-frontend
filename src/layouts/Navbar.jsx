@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import { Link } from 'react-router-dom';
 const Navbar = () => {
     const navigate = useNavigate();
     const [isNavbarVisible, setIsNavbarVisible] = useState(true);
@@ -58,9 +58,19 @@ const Navbar = () => {
 
     return (
         <nav className={`navbar ${isNavbarVisible ? '' : 'hidden'}`} id="navbar">
-            <div className="logo">
-                <h1>ClinicCare</h1>
+            <Link to="/">
+        <div className="logo-container">
+            <img
+                src="/Alpha.jpeg" // Path to your logo image (from the public folder)
+                alt="Logo"
+                className="h-10" // Adjust the height of the logo as needed
+            />
+            <div className="logo-text">
+                <h2 className="team-name">Alpha_Coders</h2>
+                <h3 className="team-tagline">ClinicCare</h3>
             </div>
+        </div>
+    </Link>
             <div className="hamburger" onClick={toggleNav} id="hamburger">
                 <span className="line"></span>
                 <span className="line"></span>
@@ -68,7 +78,7 @@ const Navbar = () => {
             </div>
             <ul className={`nav-links ${isNavActive ? 'active' : ''}`} id="nav-links">
                 <li><a href="/">Home</a></li>
-                <li><a href="#">About</a></li>
+                <li><a href="/#about">About</a></li>
                 <li><a href="/#service">Services</a></li>
 
                 {/* Conditionally render role-based navbar items */}

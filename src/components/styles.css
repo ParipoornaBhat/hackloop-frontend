@@ -31,6 +31,7 @@ body {
 
 /* Navbar Styles */
 /* Basic Navbar Styles */
+/* Navbar Container */
 .navbar {
     position: fixed;
     top: 0;
@@ -40,25 +41,48 @@ body {
     color: white;
     padding: 20px;
     z-index: 1000;
-  
     transform: translateY(0); /* By default, show navbar */
-    
+    display: flex;
+    justify-content: space-between; /* Space between logo and nav links */
+    align-items: center;
 }
 
-
-
+/* Hidden Navbar when Scrolling */
 .navbar.hidden {
     transform: translateY(-100%); /* Hide navbar when scrolling down */
     transition: transform 0.3s ease-in-out;
 }
 
-.navbar .logo h1 {
-    font-weight: 750;
-    font-size: 24px;
-    margin-left: auto; /* Pushes nav links to the right */
-
+/* Logo and Team Name Styling */
+.navbar .logo-container {
+    display: flex;
+    align-items: center;
 }
 
+.navbar .logo-container img {
+    height: 2.5rem; /* Adjust logo height */
+}
+
+.navbar .logo-container .logo-text {
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column; /* Stack the text vertically */
+    justify-content: center;
+}
+
+.navbar .logo-container .team-name {
+    font-weight: 750;
+    font-size: 24px;
+    margin: 0;
+}
+
+.navbar .logo-container .team-tagline {
+    font-size: 14px;
+    margin-top: 2px;
+    margin: 0;
+}
+
+/* Navbar Links */
 .navbar .nav-links {
     list-style: none;
     display: flex;
@@ -74,8 +98,10 @@ body {
     color: white;
     font-weight: bold;
     font-size: 16px;
+    transition: color 0.3s ease;
 }
 
+/* Hover effect for navbar links */
 .navbar .nav-links a:hover {
     color: #f0c040;
 }
