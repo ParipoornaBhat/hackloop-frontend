@@ -78,7 +78,6 @@ const Navbar = () => {
             </div>
             <ul className={`nav-links ${isNavActive ? 'active' : ''}`} id="nav-links">
                 <li><a href="/">Home</a></li>
-                <li><a href="/#about">About</a></li>
                 <li><a href="/#service">Services</a></li>
 
                 {/* Conditionally render role-based navbar items */}
