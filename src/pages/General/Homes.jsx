@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../../components/styles.css'; // Ensure this includes the provided CSS
-
+import VideoCarousel from '../../layouts/Corousel';
 const Home = () => {
     const cuser = JSON.parse(localStorage.getItem('user')); // Get user from localStorage
 
@@ -104,21 +104,7 @@ const Home = () => {
                 </div>
             </section>
 
-            {/* Carousel Section */}
-            <div className="carousel-container">
-                <div className="carousel" style={{ transform: `rotateY(${currentAngle}deg)` }}>
-                    <div className="carousel-item">Item 1</div>
-                    <div className="carousel-item">Item 2</div>
-                    <div className="carousel-item">Item 3</div>
-                    <div className="carousel-item">Item 4</div>
-                </div>
-                <button className="carousel-btn prev" onClick={handlePrevClick}>
-                    &#8592;
-                </button>
-                <button className="carousel-btn next" onClick={handleNextClick}>
-                    &#8594;
-                </button>
-            </div>
+           
 
             {/* Features Section */}
             <section id="service" className="features">
@@ -151,6 +137,8 @@ const Home = () => {
                     <p>Receive updates about appointments, test results, and more directly on your device.</p>
                 </div>
             </section>
+            <VideoCarousel />
+            <br/><br/>
         </div>
     );
 };
