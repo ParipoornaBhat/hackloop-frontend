@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-
+import '../components/Corousel.css'
 const gifs = [
   { src: '/gif5.mp4', duration: 4000 },
   { src: '/gif4.mp4', duration: 4000 },

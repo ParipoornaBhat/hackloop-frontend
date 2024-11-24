@@ -1,0 +1,77 @@
+/* General Styles for Carousel */
+.carousel-container {
+  position: relative;
+  width: 100%;
+  max-width: 1200px; /* Default width for larger screens */
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+/* Carousel Slider */
+.carousel {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+/* Video Element */
+.carousel-video {
+  width: 100%;
+  height: 400px; /* Default height for larger screens */
+  object-fit: cover;
+}
+
+/* Navigation Dots */
+.carousel-dots {
+  position: absolute;
+  bottom: 4%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  background-color: #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.dot.active {
+  background-color: #007bff;
+  transform: scale(1.3);
+}
+
+/* Responsive Adjustments */
+
+/* For Tablets and Smaller Devices */
+@media (max-width: 1024px) {
+  .carousel-video {
+    height: 300px; /* Reduce video height for tablet screens */
+  }
+  .carousel-container {
+    max-width: 900px; /* Adjust container width for tablets */
+  }
+}
+
+/* For Mobile Devices */
+@media (max-width: 768px) {
+  .carousel-video {
+    height: 250px; /* Further reduce video height for mobile screens */
+  }
+  .carousel-container {
+    max-width: 100%; /* Ensure the container takes full width on mobile */
+  }
+}
+
+/* For Very Small Devices */
+@media (max-width: 480px) {
+  .carousel-video {
+    height: 200px; /* Minimal height for very small screens */
+  }
+  .carousel-container {
+    max-width: 100%;
+  }
+}
