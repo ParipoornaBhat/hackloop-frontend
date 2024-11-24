@@ -104,13 +104,7 @@ const Home = () => {
                     <h3>Patient History</h3>
                     <p>Maintain an accurate record of your health journey.</p>
                 </div>
-                <div
-                    className={`feature-card ${visibleCards.includes('card4') ? 'visible from-right' : ''}`}
-                    id="card4"
-                >
-                    <h3>Patient Dashboard</h3>
-                    <p>View your medical data, upcoming appointments, and more, all in one place.</p>
-                </div>
+                
                 <div
                     className={`feature-card ${visibleCards.includes('card5') ? 'visible from-left' : ''}`}
                     id="card5"
