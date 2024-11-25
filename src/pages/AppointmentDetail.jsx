@@ -177,7 +177,6 @@ const AppointmentDetail = () => {
             <p><strong>Available:</strong> {appointmentDetails.timeSlot.available ? 'Yes' : 'No'}</p>
           </div>
         )}
-        {console.log(appointmentDetails)}
         {appointmentDetails.previousPrescriptions && appointmentDetails.previousPrescriptions.length > 0 ? (
   <div className="prescription-section">
     <h3 className="heading-medium">Previous Prescriptions</h3>
