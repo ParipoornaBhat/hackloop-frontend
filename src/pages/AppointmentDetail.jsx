@@ -177,32 +177,39 @@ const AppointmentDetail = () => {
             <p><strong>Available:</strong> {appointmentDetails.timeSlot.available ? 'Yes' : 'No'}</p>
           </div>
         )}
-{appointmentDetails.previousPrescriptions && appointmentDetails.previousPrescriptions.length > 0 && (
-          <div className="prescription-section">
-            <h3 className="heading-medium">Previous Prescriptions</h3>
-            {appointmentDetails.previousPrescriptions.map((prescription, index) => (
-              <div key={index} className="prescription-item">
-                <h4 className="heading-small">Diagnosis: {prescription.diagnosis || 'No diagnosis available'}</h4>
-                {prescription.medications && prescription.medications.length > 0 && (
-                  <div className="medication-list">
-                    {prescription.medications.map((med, idx) => (
-                      <div key={idx} className="medication-detail">
-                        <p><strong>Medication:</strong> {med.name}</p>
-                        <p><strong>Dosage:</strong> {med.dosage}</p>
-                        <p><strong>Instructions:</strong> {med.instructions}</p>
-                      </div>
-                    ))}
-                  </div>
-                )}
+        {console.log(appointmentDetails)}
+        {appointmentDetails.previousPrescriptions && appointmentDetails.previousPrescriptions.length > 0 ? (
+  <div className="prescription-section">
+    <h3 className="heading-medium">Previous Prescriptions</h3>
+    {appointmentDetails.previousPrescriptions.map((prescription, index) => (
+      <div key={index} className="prescription-item">
+        <h4 className="heading-small">Diagnosis: {prescription.diagnosis || 'No diagnosis available'}</h4>
+        {prescription.medications && prescription.medications.length > 0 ? (
+          <div className="medication-list">
+            {prescription.medications.map((med, idx) => (
+              <div key={idx} className="medication-detail">
+                <p><strong>Medication:</strong> {med.name}</p>
+                <p><strong>Dosage:</strong> {med.dosage}</p>
+                <p><strong>Instructions:</strong> {med.instructions}</p>
               </div>
             ))}
           </div>
+        ) : (
+          <p>No medications available</p>
         )}
-        {/* Description */}
-        <div className="appointment-description">
-          <h3>Description: </h3>
-          <p>{appointmentDetails.description || 'No description available'}</p>
-        </div>
+      </div>
+    ))}
+  </div>
+) : (
+  <p>No EPR (No Previous Prescription were available) available</p>
+)}
+
+{/* Description */}
+<div className="appointment-description">
+  <h3>Description: </h3>
+  <p>{appointmentDetails.description || 'No description available'}</p>
+</div>
+
 
         {/* Previous Prescriptions */}
         
@@ -261,6 +268,34 @@ const AppointmentDetail = () => {
             <button onClick={handleAddPrescription} className="appointment-add-prescription-button">Complete Appointment & Add Prescription</button>
           </div>
         )}
+
+{appointmentDetails.prescription ? (
+  <div className="prescription-section">
+    <h3 className="heading-medium">Prescription</h3>
+    <div className="prescription-item">
+      <h4 className="heading-small">Diagnosis: {appointmentDetails.prescription.diagnosis || 'No diagnosis available'}</h4>
+      {appointmentDetails.prescription.medication && appointmentDetails.prescription.medication.length > 0 ? (
+        <div className="medication-list">
+          {appointmentDetails.prescription.medication.map((med, idx) => (
+            <div key={idx} className="medication-detail">
+              <p><strong>Medication:</strong> {med.name}</p>
+              <p><strong>Dosage:</strong> {med.dosage}</p>
+              <p><strong>Instructions:</strong> {med.instructions}</p>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <p>No medications available</p>
+      )}
+    </div>
+  </div>
+) : (
+  <p>No prescription available</p>
+)}
+
+{/* Description */}
+
+
         <p><strong>Status:</strong> {appointmentDetails.status}</p>
       </div>
              
