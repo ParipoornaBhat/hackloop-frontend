@@ -6,6 +6,9 @@
 
 # Hi ,, Judges
 
+for the best viewing expirience use PCs
+in Mobile use desktop view in landscape
+
 sarvam.tech
 (sarvam=Everything)😅
 test it out using the following credentials
