@@ -296,13 +296,14 @@ button, select {
 /* Dark Mode Styling */
 @media (prefers-color-scheme: dark) {
   .table-container {
+    color:white;
     background: rgba(0, 0, 0, 0.5); /* Darker transparent background */
     border: 1px solid rgba(255, 255, 255, 0.1); /* Light border for contrast */
   }
 
   .manage-user-title,
   .manage-user-message {
-    color: #fff; /* White text for dark mode */
+    color: #fc0b0b; /* White text for dark mode */
   }
 
   .manage-user-table th {
@@ -333,7 +334,7 @@ button, select {
   font-size: 2rem;
   margin-bottom: 20px;
   text-align: center;
-  color: #333;
+  color: #c2c6eb;
 }
 
 /* Styling for the message (e.g., success/error messages) */
