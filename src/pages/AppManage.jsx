@@ -116,7 +116,7 @@ const AppManage = () => {
                         Cancel
                       </button>
                     )}
-                    {isDoctor && (
+                    {isDoctor && (<>
                       <button
                         className="app-manage__confirm-button"
                         onClick={(e) => {
@@ -126,7 +126,16 @@ const AppManage = () => {
                       >
                         Confirm
                       </button>
-                    )}
+                      <button
+                      className="app-manage__cancel-button"
+                      onClick={(e) => {
+                        e.stopPropagation(); // Prevent event from bubbling up to parent div
+                        handleAction('cancel', _id);
+                      }}
+                    >
+                      Cancel
+                    </button>
+                    </>)}
                   </>
                 )}
                 {status === 'confirmed' && isDoctor && (
@@ -134,7 +143,7 @@ const AppManage = () => {
                     className="app-manage__complete-button"
                     onClick={(e) => {
                       e.stopPropagation(); // Prevent event from bubbling up to parent div
-                      handleAction('complete', _id);
+                      navigate(`/appointments/${_id}`)
                     }}
                   >
                     Complete
