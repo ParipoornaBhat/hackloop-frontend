@@ -177,15 +177,7 @@ const AppointmentDetail = () => {
             <p><strong>Available:</strong> {appointmentDetails.timeSlot.available ? 'Yes' : 'No'}</p>
           </div>
         )}
-
-        {/* Description */}
-        <div className="appointment-description">
-          <h3>Description: </h3>
-          <p>{appointmentDetails.description || 'No description available'}</p>
-        </div>
-
-        {/* Previous Prescriptions */}
-        {appointmentDetails.previousPrescriptions && appointmentDetails.previousPrescriptions.length > 0 && (
+{appointmentDetails.previousPrescriptions && appointmentDetails.previousPrescriptions.length > 0 && (
           <div className="prescription-section">
             <h3 className="heading-medium">Previous Prescriptions</h3>
             {appointmentDetails.previousPrescriptions.map((prescription, index) => (
@@ -206,6 +198,14 @@ const AppointmentDetail = () => {
             ))}
           </div>
         )}
+        {/* Description */}
+        <div className="appointment-description">
+          <h3>Description: </h3>
+          <p>{appointmentDetails.description || 'No description available'}</p>
+        </div>
+
+        {/* Previous Prescriptions */}
+        
 
         {/* Confirm and Cancel buttons for Doctor */}
         {cuser.role === 'DOCTOR' && appointmentDetails.status === 'requested' && (
