@@ -6,20 +6,28 @@ const AppManage = () => {
   const [appointments, setAppointments] = useState([]);
   const [error, setError] = useState('');
   const [cuser, setCuser] = useState(null);
-
+  
   // Use the useNavigate hook to navigate programmatically
   const navigate = useNavigate();
-
+  
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('user'));
     setCuser(user);
+  
     if (!user) {
+      console.log("no user");
       setError('No user found in localStorage');
       return;
     }
-
-    // Fetch appointments from the backend
-    fetch(`${import.meta.env.VITE_API_URL}/api/appointments`)
+  
+    // Send POST request with user._id
+    fetch(`${import.meta.env.VITE_API_URL}/api/appointments`, {
+      method: 'POST',  // Use POST method
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ id: user._id }),  // Pass the user._id as an object
+    })
       .then(response => response.json())
       .then(data => {
         setAppointments(data);
@@ -28,15 +36,23 @@ const AppManage = () => {
         setError('Failed to fetch appointments');
       });
   }, []);
+  
 
   const handleAction = (action, appointmentId) => {
     const url = `${import.meta.env.VITE_API_URL}/api/appointments/${appointmentId}/${action}`;
-    
+  
     fetch(url, { method: 'POST' })
       .then(response => response.json())
       .then(() => {
-        // Refetch appointments after the action
-        fetch(`${import.meta.env.VITE_API_URL}/api/appointments`)
+        // You may want to handle the action result here if the backend sends back updated data.
+        // Refetch appointments after the action is performed
+        fetch(`${import.meta.env.VITE_API_URL}/api/appointments`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ id: cuser._id })  // Assuming 'cuser' holds the current logged-in user.
+        })
           .then(res => res.json())
           .then(data => setAppointments(data))
           .catch(() => setError('Failed to fetch updated appointments'));
@@ -45,6 +61,7 @@ const AppManage = () => {
         setError(`Failed to ${action} appointment`);
       });
   };
+  
 
   const handleAppointmentClick = (appointmentId) => {
     // Use navigate() to programmatically navigate to the appointment detail page
