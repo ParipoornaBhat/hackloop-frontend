@@ -6,8 +6,8 @@
 
 # Hi ,, Judges
 
-i know its a very beginner level project,,
-
+sarvam.tech
+(sarvam=Everything)😅
 test it out using the following credentials
 
 # Admin:
@@ -24,6 +24,7 @@ All the passwords are encrypted while saving in mongo including these account,,
 
 please note tht the otp feature cant be tested with these credentials as these are the test credential to checkout the features provided
 
+i know its a very beginner level project,,
 
 It was really a good expirience as our mentors guided really well douring the process special thanks to nandan pai and omkar prabhu,,
 
@@ -45,5 +46,5 @@ SIGNING OFF.....
 .....
 .....
 -Paripoorna Bhat[Team Lead🙃 of Alpha_coders]
-
++MERN stack dev Thanks to hackloop
 Speacial Thanks to Flc for the 🍪 🍪 🍪 
