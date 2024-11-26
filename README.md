@@ -1,5 +1,6 @@
 
-
+# Please note tht i hv used onrender for backend so logins might take 2 min for the server to come active......
+and also the credentials for testing might also hv some notification , or appointment as they r made for testing purpose other people are also able to see the working 
 
 
 
