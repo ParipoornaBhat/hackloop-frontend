@@ -1,293 +1,491 @@
 /* General Reset and Body Styles */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700;800&family=Playfair+Display:wght@600;700&display=swap');
+
 * {
      /* Ensure the body takes at least the full viewport height */
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
+    font-size:20px;
+
 }
 
-
-
+/* Apply basic styles to the body */
 body {
-    margin: 1px;
+    margin: 0;
+    padding: 0;
     overflow-x: hidden;
-    color:#000;
-    min-height: 100vh; 
-    background-image: url("./light.png");
-    background-repeat:no-repeat;
+    color: #ffffff; /* Default text color */
+    font-family: "Merriweather", Georgia, serif; /* Bold and modern font */
+    
+    background-image: url("./d3.jpg"); /* Set initial background image */
+    background-repeat: no-repeat;
     background-size: cover;
-    height:100vh;
-    background-color: rgba(255, 255, 255, 0.868); /* Yellow background on hover */
-   
+    height:1000%;
+    
+    /* Set initial opacity to 0 so it's hidden initially */
+    opacity: 0;
+    transition: opacity 4s ease-in-out; /* Fade-in effect for background image */
+    
+    padding-top: 50px; /* To ensure content doesn't hide under the navbar */
+    
+    /* Fallback background color for loading */
+    background-color: #333;
+     /* Full height of the viewport */
+}
 
-    color: #000000;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    transition: background-image 0.3s ease, color 0.3s ease;
-    padding-top: 60px; /* To make sure content doesn't hide under the navbar */
+/* Apply transition effect to the html element to control the opacity of the whole page */
+html {
+    opacity: 0; /* Initially hidden */
+    /* Full height of the viewport */
+    transition: opacity 4s ease-in-out; /* Fade-in effect for the whole page */
+}
+
+/* Once the page is loaded, the opacity will change to 1, triggering the fade-in effect */
+
+
+/* Ensure the opacity transitions to 1 */
+html,body {
+    opacity: 1; /* After the page has loaded, opacity is set to 1 */
 }
 
 
-
+.navbar.hidden {
+    transform: translateY(-180%); /* Hide navbar when scrolling down */
+    transition: transform 0.3s ease-in-out;
+}
 /* Navbar Styles */
 /* Basic Navbar Styles */
 /* Navbar Container */
+/* Importing Google Fonts */
+
+/* Global Styles for Navbar */
 .navbar {
+  position: fixed;
+  top: 10px; /* Slight margin from top */
+  left: 20px; /* Margin on the left */
+  right: 20px; /* Margin on the right */
+  width: calc(100% - 40px); /* Full width minus left and right margins */
+  padding: 10px 20px; /* Smaller padding for a compact, sleek look */
+  background: rgba(99, 99, 99, 0.529); /* Transparent dark background */
+  backdrop-filter: blur(20px); /* Blur effect for elegance */
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 15px; /* Slightly rounded corners */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Light shadow for separation */
+  transition: all 1s ease;
+}
+
+/* Hide navbar initially if `isNavbarVisible` is false */
+
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo-image {
+  height: 50px; /* Smaller logo size */
+  width: auto;
+  margin-right: 10px; /* Reduced space between logo and text */
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+}
+
+.team-name {
+  font-size: 4vh; /* Smaller font size for the team name */
+  font-weight: 800; /* Bold font for the team name */
+  font-family:  "Merriweather", Georgia, serif; /* Bold and modern font */
+   /* Uppercase letters for emphasis */
+  margin:0;
+}
+
+.team-tagline {
+  font-size: 3vh; /* Smaller font size for the tagline */
+  font-weight: 700; /* Bold but elegant */
+  font-family: 'Playfair Display', serif; /* Elegant serif font */
+  font-style: italic; /* Italic for a refined look */
+  color: #ffd700; /* Gold color for the tagline */
+}
+
+/* Hamburger menu styles */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  height: 25px;
+  cursor: pointer;
+}
+
+.hamburger .line {
+  width: 100%;
+  height: 4px;
+  background-color: #fff;
+  transition: transform 0.3s ease-in-out;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  margin-left: 25px; /* Reduced space between nav items */
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 3vh; /* Smaller font size for nav items */
+  font-weight: 600; /* Bold font for nav items */
+  padding: 8px 12px; /* Smaller padding */
+  transition: all 0.3s ease-in-out;
+  font-family: 'Poppins', sans-serif; /* Consistent font */
+}
+
+/* Hover glow effect with a different unique style */
+.nav-links a:hover {
+  color: #ffffff; /* Glow effect color */
+  text-shadow: 0 0 10px #8f8f8f, 0 0 20px #999999, 0 0 30px #a6a6a6; /* Blue glow effect */
+}
+.nav-links li:hover {
+    color: #ffffff; /* Glow effect color */
+    text-shadow: 0 0 10px #8f8f8f, 0 0 20px #999999, 0 0 30px #a6a6a6; /* Blue glow effect */
+  }
+
+/* Navbar animation for active state */
+.nav-links.active {
+  display: block;
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  background-color: rgba(0, 0, 0, 0.8); /* Darker background for dropdown */
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  width: 220px;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.nav-links li {
+  margin-bottom: 10px; /* Reduced space between items for a compact look */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Styles for smaller devices */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none; /* Hide navigation links by default */
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .hamburger {
+    display: flex; /* Show hamburger menu on smaller screens */
+  }
+
+  .nav-links.active {
+    display: flex; /* Show nav links when active */
+  }
+
+  .nav-links a {
+    font-size: 1.3rem; /* Slightly larger font size for mobile */
+    padding: 12px 0;
+    text-align: center;
+  }
+
+  .logo-container {
+    flex-direction: row;
+  }
+}
+
+/* Animation for hamburger menu when active */
+.hamburger.active .line:nth-child(1) {
+  transform: rotate(45deg) translateY(7px);
+}
+
+.hamburger.active .line:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active .line:nth-child(3) {
+  transform: rotate(-45deg) translateY(-7px);
+}
+
+.hero {
+
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    background-color: #333;
+    height: 100vh; /* Full viewport height */
+    background-color: transparent; /* Hero background color */
     color: white;
-    padding: 20px;
-    z-index: 1000;
-    transform: translateY(0); /* By default, show navbar */
     display: flex;
-    justify-content: space-between; /* Space between logo and nav links */
-    align-items: center;
-}
-
-/* Hidden Navbar when Scrolling */
-.navbar.hidden {
-    transform: translateY(-100%); /* Hide navbar when scrolling down */
-    transition: transform 0.3s ease-in-out;
-}
-
-/* Logo and Team Name Styling */
-.navbar .logo-container {
-    display: flex;
-    align-items: center;
-}
-
-.navbar .logo-container img {
-    height: 3.5rem;
-    border-radius: 25%; /* Adjust logo height */
-    text-shadow: 5px 5px 10px white;
-}
-
-.navbar .logo-container .logo-text {
-    margin-left: 20px;
-    display: flex;
-    flex-direction: column; /* Stack the text vertically */
     justify-content: center;
-}
-
-.navbar .logo-container .team-name {
-    font-weight: 750;
-    font-size: 24px;
-    margin: 0;
-}
-
-.navbar .logo-container .team-tagline {
-    font-size: 14px;
-    margin-top: 2px;
-    margin: 0;
-}
-
-/* Navbar Links */
-.navbar .nav-links {
-    list-style: none;
-    display: flex;
-    margin-left: auto; /* Pushes nav links to the right */
-    margin-right: 45px;
-}
-
-.navbar .nav-links li {
-    font-size: 2vh;
-    margin: 6px;
-}
-
-.navbar .nav-links a {
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
-    font-size: 16px;
-    transition: color 0.3s ease;
-}
-
-/* Hover effect for navbar links */
-.navbar .nav-links a:hover {
-    color: #f0c040;
-}
-
-/* Hamburger Menu for Small Screens */
-.hamburger {
-    display: none; /* Hide hamburger by default */
-    cursor: pointer;
+    align-items: center;
     flex-direction: column;
-    gap: 5px;
-    justify-content: center;
-    align-items: center;
-    margin-right: 45px;
-    height: 25px;
-    width: 30px;
-}
-
-.hamburger .line {
-    width: 100%;
-    height: 4px;
-    background-color: white;
-    border-radius: 5px;
-}
-
-/* Mobile Styles */
-@media (max-width: 768px) {
-    .navbar .nav-links {
-        display: none; /* Hide nav links initially on mobile */
-        position: absolute;
-        top: 60px; /* Below the navbar */
-        right: 0;
-        background-color: #333;
-        width: 200px; /* Set a width for the dropdown menu */
-        border-radius: 5px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-        padding: 10px;
-        flex-direction: column;
-    }
-
-    .navbar .nav-links.active {
-        display: flex;
-         /* Show menu when 'active' class is added */
-    }
-
-    .navbar .nav-links li {
-        margin: 10px 0; /* Spacing between items in dropdown */
-    }
-
-    .hamburger {
-        display: flex; /* Show hamburger icon on mobile */
-    }
-}
-
-/* Hero Section */
-.hero {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: transparent;
-    text-align: center;
-    position: relative;
-}
-
-.abc {
-    text-shadow: 5px 5px 12px rgb(2, 4, 88); /* Optional: adds subtle shadow to the text for better readability */
-    font-size: 50px;
-    
-    margin-bottom: 20px;
-}
-
-
-.hero-content p  {
-    font-size: 20px; /* Set font size */
-    line-height: 1.6; /* Adds more line height for better readability */
-    margin-bottom: 30px; /* Creates space between the paragraph and the next element */
-    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2); /* Optional: adds subtle shadow to the text for better readability */
-}
-/* Features Section with matching background */
-/* Feature Section */
-/* Feature Section */
-.features {
-    display: flex;
-    flex-direction: column; /* Stack cards vertically */
-    align-items: center;
-    padding: 50px 20px;
-    background: transparent; /* Same gradient as hero section */
-    margin-top: 0; /* Remove margin for seamless connection */
-    position: relative; /* Positioning for animation */
-}
-
-/* Feature Cards */
-.feature-card {
- 
-   opacity: 0;
-   transform: translateX(100px);
-   transition: transform 1.5s ease, opacity 1s ease; /* Slow down animation */
-   width: auto; /* Adjust the width to make them more compact */
-   max-width: 800px; /* Limit the width */
-   text-align: center;
-   padding: 30px;
-   border-radius: 2vh;
-   margin:3vh;
-   position: relative;
-   background: #090909;
-   color: #ffffff;
-   font-size: 18px;
-   display: flex;
-   justify-content: flex-start;
-   align-items: center;
-   gap: 15px;
-   border: 4px solid #2fff00;
-   transition: all 1000ms cubic-bezier(0.23, 1, 0.32, 1);
-   transform-style: preserve-3d;
-   transform: rotateX(40deg) rotateY(-40deg);
-   perspective: 1000px;
-   box-shadow: 10px 10px 0 #434242;
-}
-
-/* Yellow background for the backside of the card (for 3D effect) */
-
-
-/* Text shadow to highlight text */
-.feature-card h3, .feature-card p {
-    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.4); /* Stronger shadow for better readability */
-}
-
-/* When the feature card comes into view (this will be controlled via JavaScript) */
-.feature-card.visible {
-    opacity: 1;
-    transform: translateX(0) skew(-10deg); /* Move to original position */
-}
-
-/* Hover effect to create a subtle 3D look */
-.feature-card:hover {
-    color: #fffb00;
-	transform: rotateX(5deg) rotateY(1 deg) scale(1.05);
-	box-shadow: 25px 25px 0 -5px #e9b50b, 25px 25px 0 0 #000;
-}
-
-/* Feature Card Titles */
-.feature-card h3 {
-    font-size: 5vh;
-    margin-bottom: 20px;
-    font-weight: bold;
-    color: #fff; /* White text color */
-}
-
-/* Feature Card Description */
-.feature-card p {
-    font-size: 3vh;
-    line-height: 1.6;
-    color: #ddd; /* Light gray text for description */
-}
-
-/* Additional animations when cards slide in */
-.feature-card.from-left {
-    transform: translateX(-1vh) skew(-10deg); /* Start from left */
-
-}
-
-.feature-card.from-right {
-    transform: translateX(2vh) skew(-10deg); /* Start from right */
-
-}
-
-
-/* Footer Section */
-.footer {
-    text-align: center;
     padding: 20px;
-    background-color: #333;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+/* Hero Text Animations */
+.hero h2 {
+    text-shadow: 0 0 10px #000000, 0 0 20px #000000, 0 0 30px #000000; /* Blue glow effect */
+    flex-wrap: wrap;
+
+    font-size: 13vh;
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+}
+
+.hero p {
+    text-shadow: 0 0 10px #000000, 0 0 20px #000000, 0 0 30px #000000; /* Blue glow effect */
+
+    font-size: 5vh;
+    opacity: 0;
+    animation: fadeIn 1s forwards 0.5s;
+}
+
+/* Button Styling */
+.cta-btn {
+    display: inline-block;
+    background-color: white;
+    color: #000000;
+    padding: 12px 24px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 20px;
+    opacity: 0;
+    animation: fadeIn 1s forwards 1s;
+}
+
+.cta-btn:hover {
+    background-color: #45a049;
     color: white;
 }
+
+/* FadeIn Animation */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* General Reset */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+.content {
+    transform: translateY(20px);
+    margin: 100vh 10vh 0 10vh; /* Top margin pushes content below the hero */
+    padding: 0px 20px;
+    border-radius: 3vh;
+    background-color: #f4f4f4;
+}
+
+/* Media Query for smaller devices */
+@media screen and (max-width: 768px) {
+    .content {
+        margin: 50px 0 0 0; /* Adjust for smaller screens */
+    }
+}
+
+/* Feature Cards Container */
+.feature-container {
+    display: flex;
+    justify-content: center; /* Horizontally center cards */
+    align-items: center; /* Vertically center cards */
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    gap: 20px;
+    padding: 50px 10px;
+    margin-top: 40px;
+}
+
+/* Feature Card Styling */
+.feature-card {
+    position: relative; /* Ensures absolute elements (like the border) work well */
+    width: 70vh;
+    height: 30vh;
+    padding: 30px;
+    border-radius: 20px;
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+    margin: 0 10px;
+}
+
+/* Card Border Effect */
+.feature-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 20px;
+    z-index: -1;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Typing Animation Keyframes */
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+/* Cursor Animation for Typing Effect */
+@keyframes blink {
+    50% {
+        border-color: black;
+    }
+}
+
+/* Feature Card Styling */
+.feature-card {
+    position: relative; /* Ensures absolute elements (like the border) work well */
+    width: 100%; /* Cards take full width */
+    padding: 20px;
+    border-radius: 20px;
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+    margin: 10px 0; /* Stack cards vertically */
+    opacity: 0; /* Cards are initially invisible */
+    transform: translateY(50px); /* Cards are initially below the screen */
+    transition: opacity 0.3s, transform 0.3s; /* Smooth transition when cards come into view */
+}
+
+/* Typing Text */
+.feature-card .typed-text {
+    font-size: 6vh; /* Adjust the size as needed */
+    color: #000000;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: inline-block;
+    width: 0;
+    overflow: hidden;
+    border-right: 4px solid #000; /* Cursor effect */
+    animation: typing 3s steps(30) 1s forwards, blink 0.75s step-end infinite; /* Typing animation */
+}
+
+/* Paragraph Styling */
+.feature-card .typed-desc {
+    font-size: 4vh;
+    color: #000000;
+    line-height: 1.6;
+    display: inline-block;
+    width: 0;
+    overflow: hidden;
+    border-right: 4px solid #000; /* Cursor effect */
+    animation: typing 3s steps(30) 1.5s forwards, blink 0.75s step-end infinite; /* Typing animation */
+}
+
+/* Remove the cursor after typing */
+.feature-card .typed-text.typing-complete {
+    border-right: none;
+}
+
+.feature-card .typed-desc.typing-complete {
+    border-right: none;
+}
+
+/* Hover Effects */
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 24px rgba(255, 255, 255, 0.2);
+}
+
+.feature-card:hover::before {
+    transform: scale(1.05);
+}
+
+/* Glow Effect on Heading */
+.feature-card:hover .typed-text {
+    text-shadow: 0 0 10px rgba(86, 86, 86, 0.8), 0 0 20px rgba(71, 71, 71, 0.6);
+}
+
+/* Glow Effect on Paragraph */
+.feature-card:hover .typed-desc {
+    text-shadow: 0 0 10px rgba(85, 85, 85, 0.8);
+}
+
+/* Make the cards fade in when in view */
+.feature-card.visible {
+    opacity: 1; /* Make visible */
+    transform: translateY(0); /* Bring it to the original position */
+    transition: opacity 0.5s, transform 0.5s; /* Smooth transition */
+}
+
+/* Video Carousel */
+.video-carousel {
+    margin-top: 30px;
+    background-color: white;
+    padding: 40px;
+    border-radius: 10px;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .hero h2 {
+        font-size: 2.5rem;
+    }
+
+    .cta-btn {
+        padding: 10px 20px;
+    }
+
+    .feature-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .feature-card {
+        width: 100%; /* Full width on smaller screens */
+    }
+}
+/* Footer Section */
+
 /* Make sure the footer is at the bottom */
 .footer {
-    background-color: #282c34;
+    transform: translateY(21px);
+    background-color: #00000077;
     color: white;
     text-align: center;
     padding: 20px 0;
     position: bottom;   /* To make it stick at the bottom */
-    bottom: 0;            /* Position it at the bottom of the page */
+               /* Position it at the bottom of the page */
     width: 100%;          /* Ensure it takes up the full width of the page */
   }
   
@@ -306,7 +504,7 @@ h2.dark-mode{
 }
 /* Dark Mode */
 body.dark-mode {
-    background-image: url("./dark.png");
+    background-image: url("./d3.png");
     background-color: #000000; /* Yellow background on hover */
     color: #ffffff;
 }
@@ -316,51 +514,15 @@ body.dark-mode .navbar {
 }
 
 
-/* Normal Mode CTA Button */
-.cta-btn {
-    padding: 12px 30px;
-    font-size: 18px;
-    background-color: #000000; /* Light yellow background for normal mode */
-    border: none;
-    border-radius: 5px; /* Rounded corners */
-    cursor: pointer;
-    text-decoration: none;
-    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth hover effect */
-    color: #fafafa;
-    transition: all 400ms cubic-bezier(0.23, 1, 0.32, 1);
-	transform: ani 2s ease-in;
-	box-shadow: 5px 10px 0 -5px #e9b50b,5px 10px 0 0 #000;;
-}
-@keyframes ani {
-    0%{opacity: 0;}
-    100%{opacity: 1;}
-}
 
-.cta-btn:hover {
-    background-color: #000000;
-    color: #eeff00;/* Darker yellow when hovering */
-    transform: rotateX(5deg) rotateY(1 deg) scale(1.05);
-	box-shadow: 8px 13px 0 -5px #e9b50b, 8px 13px 0 0 #000;
-}
+
+
 
 /* Dark Mode CTA Button */
 body.dark-mode .cta-btn {
     background-color: #000000; /* Dark background for dark mode */
     color: #ffffff; /* Yellow text color to match with dark mode */
     border: 2px solid #000000; /* Optional: add border for better visibility */
-}
-.carousel-btn.dark-mode {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.7);
-    color: rgb(0, 0, 0);}
-
-body.dark-mode .cta-btn:hover {
-    background-color: #000000; /* Yellow background on hover */
-    color: #eeff00; /* Dark text color when hovering */
-    transform: rotateX(5deg) rotateY(1 deg) scale(1.05);
-	box-shadow: 8px 13px 0 -5px #e9b50b, 8px 13px 0 0 #000;
 }
 
 
@@ -428,99 +590,6 @@ input:checked + .slider {
 
 input:checked + .slider:before {
     transform: translateX(26px);
-}
-
-
-/* Carousel Container */
-.carousel-container {
-    position: relative;
-    width: auto;
-    height: 300px;
-    perspective: 1000px;
-    margin: 1vh;
-    margin-left: 5vh;
-    margin-right: 5vh;
-    background: transparent;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Carousel */
-.carousel {
-    display: flex;
-    position: absolute;
-    transform-style: preserve-3d;
-    transition: transform 1s ease; /* Add smooth transition for manual rotation */
-}
-
-/* Carousel Items */
-.carousel-item {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    font-size: 24px;
-    font-weight: bold;
-    background-color: rgba(0, 0, 0, 0.5);
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-}
-
-/* Carousel Navigation Buttons */
-.carousel-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-2%);
-    background: rgba(0, 0, 0, 0.7);
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    border-radius: 50%;
-    font-size: 16px;
-}
-
-.carousel-btn.prev {
-    width:15px;
-    height:20px;
-    left: 3vh;
-}
-
-.carousel-btn.next {
-    width:15px;
-    height:20px;
-    right: 3vh;
-}
-
-.carousel-btn.left {
-    left: 50%;
-    transform: translate(-50%, -50%) rotate(90deg);
-}
-
-.carousel-btn.right {
-    right: 50%;
-    transform: translate(50%, -50%) rotate(-90deg);
-}
-
-/* Position each item in a 3D space */
-.carousel-item:nth-child(1) {
-    transform: rotateY(0deg) translateZ(150px);
-}
-
-.carousel-item:nth-child(2) {
-    transform: rotateY(90deg) translateZ(150px);
-}
-
-.carousel-item:nth-child(3) {
-    transform: rotateY(180deg) translateZ(150px);
-}
-
-.carousel-item:nth-child(4) {
-    transform: rotateY(270deg) translateZ(150px);
 }
 
 
