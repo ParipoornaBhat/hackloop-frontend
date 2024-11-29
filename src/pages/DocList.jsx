@@ -80,7 +80,7 @@ const ManageUser = () => {
         {/* Specialization Filter */}
         <div>
           <select onChange={handleSpecializationChange} value={specializationFilter} className="specialization-dropdown">
-            <option value="" selected>All Specializations</option>
+            <option value="">All Specializations</option> {/* Updated this to not use 'selected' */}
             <option value="cardiologist">Cardiologist</option>
             <option value="dermatologist">Dermatologist</option>
             <option value="neurologist">Neurologist</option>
