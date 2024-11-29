@@ -1,0 +1,115 @@
+/* Main profile container */
+.user-profile-container {
+    position: relative;
+    padding: 40px;
+    background: rgba(0, 0, 0, 0.6); /* Dark transparent background */
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px); /* Blur effect */
+    max-width: 900px;
+    margin: 20px auto;
+    color: #fff;
+    font-family: 'Helvetica', sans-serif;
+  }
+  
+  /* Wrapper inside profile container */
+  .user-profile-wrapper {
+    background-color: rgba(0, 0, 0, 0.75);
+    padding: 30px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+  
+  /* Profile heading */
+  .user-profile-header {
+    font-size: 2.5rem;  /* Increased font size */
+    color: #FF9800;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  /* Profile details section */
+  .user-profile-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+  }
+  
+  /* Doctor profile section */
+  .doctor-profile-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+  }
+  
+  .doctor-profile-header {
+    color: #FF9800;
+    font-size: 2rem;  /* Increased font size */
+    margin-bottom: 20px;
+  }
+  
+  .doctor-profile-mixed {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+  }
+  
+  .doctor-profile-column {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .doctor-profile-label {
+    color: #FF9800;
+    font-size: 1.3rem; /* Larger label font size */
+  }
+  
+  /* Time input section */
+  .time-input-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+  }
+  
+  .time-input-group {
+    display: flex;
+    gap: 0px;
+  }
+  
+  .time-input-field-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .time-input-label {
+    color: #FF9800;
+    font-size: 1.2rem; /* Larger font size */
+  }
+  
+  .time-input-field {
+    padding: 12px;
+    font-size: 1rem; /* Larger font size */
+    border: 2px solid #FF9800;
+    border-radius: 5px;
+    background-color: #333;
+    color: #fff;
+  }
+  
+  .save-button, .edit-button {
+    padding: 12px 20px;
+    background-color: #FF9800;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .save-button:hover, .edit-button:hover {
+    background-color: #E68900;
+  }
+  

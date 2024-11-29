@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-
+import '../../components/profile.css'
 const Profile = () => {
   const [user, setUser] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
@@ -107,132 +107,206 @@ const Profile = () => {
       alert('An unexpected error occurred.');
     }
   };
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const day = String(date.getDate()).padStart(2, '0'); // Adds leading zero to single digits
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // getMonth() is zero-indexed
+    const year = date.getFullYear();
+    
+    return `${day}/${month}/${year}`;
+  };
+  return (
+    <>
+      <br /><br /><br /><br /><br /><br />
+      <div className="user-profile-container">
+        <div className="user-profile-wrapper">
+          <h1 className="user-profile-header">Profile</h1>
+  
+          <div className="user-profile-details">
+            <div className="profile-row">
+              <p><strong className="user-profile-label">Name:</strong> {user.username}</p>
+            </div>
+            <div className="profile-row">
+              <p><strong className="user-profile-label">Email:</strong> {user.email}</p>
+            </div>
+            <div className="profile-row">
+              <p><strong className="user-profile-label">Role:</strong> {user.role}</p>
+            </div>
+            <div className="profile-row">
+          
+              <p><strong className="user-profile-label">Joined On:</strong> {formatDate(user.createdAt)}</p>
 
-  return (<><br /><br /><br /><br /><br /><br />
-    <div className="frm">
-      <div className="wrapper">
-      
-      <h1>Profile</h1>
+            </div>
+            {user.updatedAt && (
+              <div className="profile-row">
+                <p><strong className="user-profile-label">Last Updated:</strong> {formatDate(user.updatedAt)}</p>
 
-      <div className="profile-details">
-        <p><strong>Name:</strong> {user.username}</p>
-        <p><strong>Email:</strong> {user.email}</p>
-        <p><strong>Role:</strong> {user.role}</p>
-        <p><strong>Joined On:</strong> {new Date(user.createdAt).toLocaleDateString()}</p>
-        {user.updatedAt && (
-          <p><strong>Last Updated:</strong> {new Date(user.updatedAt).toLocaleDateString()}</p>
-        )}
-      </div>
-
-      {user.role === 'DOCTOR' && user.doctorProfile && (
-        <div className="doctor-profile-details">
-          <h3>Doctor Profile</h3>
-          <p><strong>First Name:</strong> {user.doctorProfile.firstname}</p>
-          <p><strong>Last Name:</strong> {user.doctorProfile.lastname}</p>
-          <p><strong>Specialization:</strong> {user.doctorProfile.specialization}</p>
-          <p><strong>experience:</strong> {user.doctorProfile.experience}</p>
-
-          <p><strong>Fee per Consultation:</strong> {user.doctorProfile.feeperconsultation}</p>
-
-          {isEditing ? (
-            <>
-              <div>
-                <label>From 1 (Opening Time):</label>
-                <input 
-                  type="time" 
-                  name="from1" 
-                  value={formData.from1} 
-                  onChange={handleTimeChange} 
-                />
               </div>
-
-              <div>
-                <label>To 1 (Closing Time):</label>
-                <input 
-                  type="time" 
-                  name="to1" 
-                  value={formData.to1} 
-                  onChange={handleTimeChange} 
-                />
+            )}
+          </div>
+  
+          {user.role === 'DOCTOR' && user.doctorProfile && (
+            <div className="doctor-profile-section">
+              <h3 className="doctor-profile-header">Doctor Profile</h3>
+              <div className="doctor-profile-mixed">
+                <div className="doctor-profile-column">
+                  <div className="profile-row">
+                    <p><strong className="doctor-profile-label">First Name:</strong> {user.doctorProfile.firstname}</p>
+                  </div>
+                  <div className="profile-row">
+                    <p><strong className="doctor-profile-label">Last Name:</strong> {user.doctorProfile.lastname}</p>
+                  </div>
+                  <div className="profile-row">
+                    <p><strong className="doctor-profile-label">Specialization:</strong> {user.doctorProfile.specialization}</p>
+                  </div>
+                </div>
+  
+                <div className="doctor-profile-column">
+                  <div className="profile-row">
+                    <p><strong className="doctor-profile-label">Experience:</strong> {user.doctorProfile.experience}</p>
+                  </div>
+                  <div className="profile-row">
+                    <p><strong className="doctor-profile-label">Fee per Consultation:</strong> {user.doctorProfile.feeperconsultation}</p>
+                  </div>
+                </div>
               </div>
-
-              {formData.from2 && formData.to2 && (
+  
+              {isEditing ? (
                 <>
-                  <div>
-                    <label>From 2 (Second Opening Time):</label>
-                    <input 
-                      type="time" 
-                      name="from2" 
-                      value={formData.from2} 
-                      onChange={handleTimeChange} 
-                    />
+                  <div className="time-input-section">
+                    <div className="time-input-group">
+                      <div className="time-input-field-wrapper">
+                        <label htmlFor="from1" className="time-input-label">From 1 (Opening Time):</label>
+                        <input 
+                          type="time" 
+                          name="from1" 
+                          id="from1" 
+                          value={formData.from1} 
+                          onChange={handleTimeChange} 
+                          className="time-input-field"
+                        />
+                      </div>
+  
+                      <div className="time-input-field-wrapper">
+                        <label htmlFor="to1" className="time-input-label">To 1 (Closing Time):</label>
+                        <input 
+                          type="time" 
+                          name="to1" 
+                          id="to1" 
+                          value={formData.to1} 
+                          onChange={handleTimeChange} 
+                          className="time-input-field"
+                        />
+                      </div>
+                    </div>
                   </div>
-
-                  <div>
-                    <label>To 2 (Second Closing Time):</label>
-                    <input 
-                      type="time" 
-                      name="to2" 
-                      value={formData.to2} 
-                      onChange={handleTimeChange} 
-                    />
+  
+                  {formData.from2 && formData.to2 && (
+                    <>
+                      <div className="time-input-section">
+                        <div className="time-input-group">
+                          <div className="time-input-field-wrapper">
+                            <label htmlFor="from2" className="time-input-label">From 2 (Second Opening Time):</label>
+                            <input 
+                              type="time" 
+                              name="from2" 
+                              id="from2" 
+                              value={formData.from2} 
+                              onChange={handleTimeChange} 
+                              className="time-input-field"
+                            />
+                          </div>
+  
+                          <div className="time-input-field-wrapper">
+                            <label htmlFor="to2" className="time-input-label">To 2 (Second Closing Time):</label>
+                            <input 
+                              type="time" 
+                              name="to2" 
+                              id="to2" 
+                              value={formData.to2} 
+                              onChange={handleTimeChange} 
+                              className="time-input-field"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </>
+                  )}
+  
+                  <div className="working-days-section">
+                    <label className="working-days-label">Working Days:</label>
+                    <div className="working-days-list">
+                      {['0', '1', '2', '3', '4', '5', '6'].map((day) => (
+                        <label key={day} className="working-day-option">
+                          <input
+                            type="checkbox"
+                            value={day}
+                            checked={formData.workingDays.includes(day)}
+                            onChange={handleWorkingDaysChange}
+                            className="working-day-checkbox"
+                          />
+                          {day === '0' ? 'Sunday' :
+                           day === '1' ? 'Monday' :
+                           day === '2' ? 'Tuesday' :
+                           day === '3' ? 'Wednesday' :
+                           day === '4' ? 'Thursday' :
+                           day === '5' ? 'Friday' :
+                           day === '6' ? 'Saturday' : ''}
+                        </label>
+                      ))}
+                    </div>
                   </div>
+  
+                  <button onClick={handleSaveClick} className="save-button">Save</button>
+                </>
+              ) : (
+                <>
+                  <div className="profile-row">
+                    <p><strong className="doctor-profile-label">From 1 (Opening Time):</strong> {user.doctorProfile.from1}</p>
+                  </div>
+                  <div className="profile-row">
+                    <p><strong className="doctor-profile-label">To 1 (Closing Time):</strong> {user.doctorProfile.to1}</p>
+                  </div>
+                  {user.doctorProfile.from2 && user.doctorProfile.to2 && (
+                    <>
+                      <div className="profile-row">
+                        <p><strong className="doctor-profile-label">From 2 (Second Opening Time):</strong> {user.doctorProfile.from2}</p>
+                      </div>
+                      <div className="profile-row">
+                        <p><strong className="doctor-profile-label">To 2 (Second Closing Time):</strong> {user.doctorProfile.to2}</p>
+                      </div>
+                    </>
+                  )}
+                  <div className="profile-row">
+                    <p><strong className="doctor-profile-label">Working Days:</strong> 
+                      {user.doctorProfile.workingDays
+                        .map(day => 
+                          day === '0' ? 'Sunday' :
+                          day === '1' ? 'Monday' :
+                          day === '2' ? 'Tuesday' :
+                          day === '3' ? 'Wednesday' :
+                          day === '4' ? 'Thursday' :
+                          day === '5' ? 'Friday' :
+                          day === '6' ? 'Saturday' : ''
+                        )
+                        .join(', ')}
+                    </p>
+                  </div>
+  
+                  <button onClick={handleEditClick} className="edit-button">Edit</button>
                 </>
               )}
-
-<div>
-  <label>Working Days:</label>
-  {['0', '1', '2', '3', '4', '5', '6'].map((day) => (
-    <label key={day}>
-      <input
-        type="checkbox"
-        value={day}
-        checked={formData.workingDays.includes(day)}
-        onChange={handleWorkingDaysChange}
-      />
-      {day === '0' ? 'Sunday' :
-       day === '1' ? 'Monday' :
-       day === '2' ? 'Tuesday' :
-       day === '3' ? 'Wednesday' :
-       day === '4' ? 'Thursday' :
-       day === '5' ? 'Friday' :
-       day === '6' ? 'Saturday' : ''}
-    </label>
-  ))}
-</div>
-              <button onClick={handleSaveClick}>Save</button>
-            </>
-          ) : (
-            <>
-              <p><strong>From 1 (Opening Time):</strong> {user.doctorProfile.from1}</p>
-              <p><strong>To 1 (Closing Time):</strong> {user.doctorProfile.to1}</p>
-              {user.doctorProfile.from2 && user.doctorProfile.to2 && (
-                <>
-                  <p><strong>From 2 (Second Opening Time):</strong> {user.doctorProfile.from2}</p>
-                  <p><strong>To 2 (Second Closing Time):</strong> {user.doctorProfile.to2}</p>
-                </>
-              )}
-<p><strong>Working Days:</strong> 
-  {user.doctorProfile.workingDays
-    .map(day => 
-      day === '0' ? 'Sunday' :
-      day === '1' ? 'Monday' :
-      day === '2' ? 'Tuesday' :
-      day === '3' ? 'Wednesday' :
-      day === '4' ? 'Thursday' :
-      day === '5' ? 'Friday' :
-      day === '6' ? 'Saturday' : ''
-    )
-    .join(', ')}
-</p>
-
-              <button onClick={handleEditClick}>Edit</button>
-            </>
+            </div>
           )}
         </div>
-      )}
-    </div></div><br /><br /><br /><br /></>
+      </div>
+      <br /><br /><br /><br />
+    </>
   );
+  
+  
+  
+  
 };
 
 export default Profile;

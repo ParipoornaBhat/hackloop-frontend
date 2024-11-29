@@ -124,3 +124,22 @@ button#sp3,
 button#f3 {
     display: none;
 }
+#from2, #to2, #from1, #to1{
+  color: black; /* Sets text color to black */
+  font-size: 16px; /* Adjust font size if needed */
+}
+
+#from2:focus, #to2:focus,#from1:focus, #to1:focus {
+  border-color: #4CAF50; /* Optional: Highlight the input field when focused */
+  outline: none; /* Removes default focus outline */
+}
+
+label {
+  font-weight: bold; /* Makes the label bold */
+  color: #ffffff; /* Dark color for label text */
+  gap:5px;
+}
+
+div {
+  margin-bottom: 15px; /* Adds space between the input fields */
+}
