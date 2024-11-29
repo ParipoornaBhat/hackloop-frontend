@@ -1,13 +1,21 @@
-self.addEventListener("push", (event) => {
-  const { title, message } = event.data.json();  // Extract title and message from the push event data
-
+self.addEventListener('push', (event) => {
+  let notificationData = event.data ? JSON.parse(event.data.text()) : {};
+  const title = notificationData.title || 'New Notification';
   const options = {
-    body: message, // Display the message body in the notification
-    icon: "/logo2.png", // Set an icon for the notification
-    badge: "/badge.png", // Set a badge for the notification
+    body: notificationData.message || 'You have a new message.',
+    icon: '/Alpha.jpeg', // Change to your icon
+    badge: '/Alpha.jpeg', // Change to your badge
   };
 
   event.waitUntil(
-    self.registration.showNotification(title, options)  // Show the notification
+    self.registration.showNotification(title, options)
+  );
+});
+
+self.addEventListener('notificationclick', (event) => {
+  event.notification.close();
+  // Handle the notification click event, e.g., open a URL
+  event.waitUntil(
+    clients.openWindow(event.notification.data.url || '/')
   );
 });
