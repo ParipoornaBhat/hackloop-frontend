@@ -325,9 +325,7 @@ html,body {
     justify-content: center; /* Horizontally center cards */
     align-items: center; /* Vertically center cards */
     flex-wrap: wrap; /* Allow wrapping on smaller screens */
-   
     padding: 50px 10px;
-  
 }
 
 /* Feature Card Styling */
