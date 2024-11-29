@@ -6,7 +6,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-size:20px;
+    font-size:18px;
 
 }
 
@@ -155,12 +155,9 @@ html,body {
 /* Hover glow effect with a different unique style */
 .nav-links a:hover {
   color: #ffffff; /* Glow effect color */
-  text-shadow: 0 0 10px #8f8f8f, 0 0 20px #999999, 0 0 30px #a6a6a6; /* Blue glow effect */
+  text-shadow: 0 0 10px #fafafa, 0 0 20px #999999, 0 0 30px #fdfdfd; /* Blue glow effect */
 }
-.nav-links li:hover {
-    color: #ffffff; /* Glow effect color */
-    text-shadow: 0 0 10px #8f8f8f, 0 0 20px #999999, 0 0 30px #a6a6a6; /* Blue glow effect */
-  }
+
 
 /* Navbar animation for active state */
 .nav-links.active {
@@ -199,7 +196,11 @@ html,body {
     align-items: center;
     width: 100%;
   }
-
+  
+  .nav-links a:hover {
+    color: #ffffff; /* Glow effect color */
+    text-shadow: 0 0 10px #f30000, 0 0 20px #999999, 0 0 30px #fdfdfd; /* Blue glow effect */
+  }
   .hamburger {
     display: flex; /* Show hamburger menu on smaller screens */
   }
@@ -233,7 +234,6 @@ html,body {
 }
 
 .hero {
-
     position: fixed;
     top: 0;
     left: 0;
@@ -306,7 +306,7 @@ html,body {
 
 .content {
     transform: translateY(20px);
-    margin: 100vh 10vh 0 10vh; /* Top margin pushes content below the hero */
+    margin: 75vh 10vh 0 10vh; /* Top margin pushes content below the hero */
     padding: 0px 20px;
     border-radius: 3vh;
     background-color: #f4f4f4;
@@ -315,7 +315,7 @@ html,body {
 /* Media Query for smaller devices */
 @media screen and (max-width: 768px) {
     .content {
-        margin: 50px 0 0 0; /* Adjust for smaller screens */
+        margin: 70vh 0 0 0; /* Adjust for smaller screens */
     }
 }
 
@@ -325,9 +325,9 @@ html,body {
     justify-content: center; /* Horizontally center cards */
     align-items: center; /* Vertically center cards */
     flex-wrap: wrap; /* Allow wrapping on smaller screens */
-    gap: 20px;
+   
     padding: 50px 10px;
-    margin-top: 40px;
+  
 }
 
 /* Feature Card Styling */
@@ -480,12 +480,13 @@ html,body {
 /* Make sure the footer is at the bottom */
 .footer {
     transform: translateY(21px);
-    background-color: #00000077;
+    transform: translateX(0%);
+    background-color: #282828;
     color: white;
     text-align: center;
     padding: 20px 0;
     position: bottom;   /* To make it stick at the bottom */
-               /* Position it at the bottom of the page */
+     bottom:0;          /* Position it at the bottom of the page */
     width: 100%;          /* Ensure it takes up the full width of the page */
   }
   

@@ -129,7 +129,7 @@ const Home = () => {
                         <span className="typed-text">Appointment Booking</span>
                         <br />
                         <span className="typed-desc">Easy online booking system for patients.</span>
-                    </div><br />
+                    </div><hr/>
                     <div
                         className={`feature-card right ${visibleCards.includes('card2') ? 'visible' : 'out-of-view'}`}
                         id="card2"
@@ -137,7 +137,23 @@ const Home = () => {
                         <span className="typed-text">Prescription Management</span>
                         <br />
                         <span className="typed-desc">Download prescriptions and track your treatment.</span>
-                    </div>
+                    </div><hr/>
+                    <div
+                        className={`feature-card right ${visibleCards.includes('card3') ? 'visible' : 'out-of-view'}`}
+                        id="card3"
+                    >
+                        <span className="typed-text">Prescription Management</span>
+                        <br />
+                        <span className="typed-desc">Download prescriptions and track your treatment.</span>
+                    </div><hr/>
+                    <div
+                        className={`feature-card right ${visibleCards.includes('card4') ? 'visible' : 'out-of-view'}`}
+                        id="card4"
+                    > 
+                        <span className="typed-text">Patient History</span>
+                        <br />
+                        <span className="typed-desc">Maintain an accurate record of your health journey.</span>
+                    </div><hr/>
                 </section>
 
                 {/* Video Carousel Section */}
