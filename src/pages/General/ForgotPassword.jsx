@@ -108,11 +108,11 @@ const LoginPage = () => {
           <div className="input-field">
             <input
               type="email"
-              placeholder="Enter your email"
+              placeholder=""
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-            />
+            /><label>Enter your Email</label>
           </div>
 
           <button type="button" onClick={sendOtp}>
@@ -123,11 +123,11 @@ const LoginPage = () => {
             <div className="input-field">
               <input
                 type="number"
-                placeholder="Enter OTP"
+                placeholder=""
                 value={otp}
                 onChange={(e) => setOtp(e.target.value)}
                 required
-              />
+              /><label>Enter The OTP</label>
             </div>
           )}
 
@@ -146,7 +146,7 @@ const LoginPage = () => {
                   value={password}
                   onChange={handlePasswordChange}
                   required
-                />
+                /><label>Enter your Password</label>
               </div>
 
               <div className="input-field">
@@ -156,7 +156,7 @@ const LoginPage = () => {
                   value={confirmPassword}
                   onChange={handleConfirmPasswordChange}
                   required
-                />
+                /><label>Confirm your Password</label>
               </div>
                 
               {passwordError && <div style={{ color: 'red' }}>{passwordError}</div>}

@@ -3,7 +3,7 @@ self.addEventListener("push", (event) => {
 
   const options = {
     body: message, // Display the message body in the notification
-    icon: "/icon.png", // Set an icon for the notification
+    icon: "/logo2.png", // Set an icon for the notification
     badge: "/badge.png", // Set a badge for the notification
   };
 
