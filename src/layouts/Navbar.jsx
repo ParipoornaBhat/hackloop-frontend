@@ -61,7 +61,7 @@ const Navbar = () => {
         <Link to="/">
           <div className="logo-container">
             <img
-              src="/logo2.png" // Path to your logo image (from the public folder)
+              src="/Alpha.jpeg" // Path to your logo image (from the public folder)
               alt="Logo"
               className="logo-image"
             />

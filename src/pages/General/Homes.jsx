@@ -156,8 +156,8 @@ const Home = () => {
                     </div><hr/>
                 </section>
 
-                {/* Video Carousel Section */}
-                <VideoCarousel />
+                {/* Video Carousel Section 
+                <VideoCarousel />*/}
                 <br /><br />
             </div>
         </div>
