@@ -179,7 +179,7 @@ const AppointmentDetail = () => {
         )}
         {appointmentDetails.previousPrescriptions && appointmentDetails.previousPrescriptions.length > 0 ? (
   <div className="prescription-section">
-    <h3 className="heading-medium">Previous Prescriptions</h3>
+    <h3 className="heading-medium">Previous Prescriptions [EPR: "Electronic Patient Records]"</h3>
     {appointmentDetails.previousPrescriptions.map((prescription, index) => (
       <div key={index} className="prescription-item">
         <h4 className="heading-small">Diagnosis: {prescription.diagnosis || 'No diagnosis available'}</h4>
