@@ -110,9 +110,6 @@ const Notification = () => {
   
         if (msg.message === "All notifications marked as seen") {
           // Fetch updated user data to reflect the changes on the frontend
-          const updatedUserData = await fetchUpdatedUserData();  // You need to implement this fetchUpdatedUserData function
-          setUser(updatedUserData);  // Update state with the newly fetched data
-          localStorage.setItem('user', JSON.stringify(updatedUserData));  // Update localStorage with new user data
           window.location.reload();
         }
   

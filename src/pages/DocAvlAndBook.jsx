@@ -116,40 +116,64 @@ const DoctorProfile = () => {
 
   return (<><br/><br/><br/>
     <div className="doctor-profile-container">
-      {cuser.role === 'ADMIN' && (
-        <div className="frm">
-          <h1 className="doctor-profile-heading">Doctor Profile</h1>
-          <div className="profile-details">
-            <p><strong>Name:</strong> {docpro.username}</p>
-            <p><strong>Email:</strong> {docpro.email}</p>
-            <p><strong>Role:</strong> {docpro.role}</p>
-            <p><strong>Joined On:</strong> {new Date(docpro.createdAt).toLocaleDateString()}</p>
-            {docpro.updatedAt && (
-              <p><strong>Last Updated:</strong> {new Date(docpro.updatedAt).toLocaleDateString()}</p>
-            )}
-          </div>
+    {cuser.role === 'ADMIN' && (
+  <div className="admin-profile-container">
+    <h1 className="admin-profile-heading">Doctor Profile</h1>
+    
+    <div className="admin-profile-main">
+      <div className="admin-profile-info">
+        <p className="admin-profile-label"><strong>Name:</strong> {docpro.username}</p>
+        <p className="admin-profile-label"><strong>Email:</strong> {docpro.email}</p>
+        <p className="admin-profile-label"><strong>Role:</strong> {docpro.role}</p>
+        <p className="admin-profile-label">
+  <strong>Joined On:</strong> {new Date(docpro.createdAt).getDate().toString().padStart(2, '0')}/{(new Date(docpro.createdAt).getMonth() + 1).toString().padStart(2, '0')}/{new Date(docpro.createdAt).getFullYear()}
+</p>
+        
+        {docpro.updatedAt && (
+          <p className="admin-profile-label">
+  <strong>Last Updated:</strong> 
+  {docpro.updatedAt 
+    ? `${new Date(docpro.updatedAt).getDate().toString().padStart(2, '0')}/${
+        (new Date(docpro.updatedAt).getMonth() + 1).toString().padStart(2, '0')}/${
+        new Date(docpro.updatedAt).getFullYear()}`
+    : 'Not available'}
+</p>
+        )}
+      </div>
+
+      {/* Only render if doctorProfile exists */}
+      {docpro.doctorProfile && (
+        <div className="doctor-profile-section">
+          <h3 className="doctor-profile-heading">Doctor Profile Details</h3>
           <div className="doctor-profile-details">
-            <h3>Doctor Profile</h3>
-            <p><strong>First Name:</strong> {docpro.doctorProfile.firstname}</p>
-            <p><strong>Last Name:</strong> {docpro.doctorProfile.lastname}</p>
-            <p><strong>Specialization:</strong> {docpro.doctorProfile.specialization}</p>
-            <p><strong>Experience:</strong> {docpro.doctorProfile.experience}</p>
-            <p><strong>Fee per Consultation:</strong> {docpro.doctorProfile.feeperconsultation}</p>
-            <p><strong>Working Days:</strong> 
+            <p className="doctor-profile-item"><strong>First Name:</strong> {docpro.doctorProfile.firstname}</p>
+            <p className="doctor-profile-item"><strong>Last Name:</strong> {docpro.doctorProfile.lastname}</p>
+            <p className="doctor-profile-item"><strong>Specialization:</strong> {docpro.doctorProfile.specialization}</p>
+            <p className="doctor-profile-item"><strong>Experience:</strong> {docpro.doctorProfile.experience} years</p>
+            <p className="doctor-profile-item"><strong>Fee per Consultation:</strong> Rs. {docpro.doctorProfile.feeperconsultation}</p>
+            <p className="doctor-profile-item"><strong>Working Days:</strong> 
               {docpro.doctorProfile.workingDays
-                .map(day => day === '0' ? 'Sunday' :
-                  day === '1' ? 'Monday' :
-                  day === '2' ? 'Tuesday' :
-                  day === '3' ? 'Wednesday' :
-                  day === '4' ? 'Thursday' :
-                  day === '5' ? 'Friday' :
-                  day === '6' ? 'Saturday' : ''
-                )
-                .join(', ') }
+                .map(day => {
+                  switch(day) {
+                    case '0': return 'Sunday';
+                    case '1': return 'Monday';
+                    case '2': return 'Tuesday';
+                    case '3': return 'Wednesday';
+                    case '4': return 'Thursday';
+                    case '5': return 'Friday';
+                    case '6': return 'Saturday';
+                    default: return '';
+                  }
+                })
+                .join(', ')}
             </p>
           </div>
         </div>
       )}
+    </div>
+  </div>
+)}
+
 
       {cuser.role === 'PATIENT' && (
         <div className="appointmentCard">

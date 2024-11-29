@@ -1,4 +1,100 @@
 /* General Container for the DoctorProfile component */
+/* Container for the entire admin profile section */
+.admin-profile-container {
+  
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.874);
+}
+
+/* Heading for the profile section */
+.admin-profile-heading {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #fcfbfb;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Main profile section */
+.admin-profile-main {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* Profile info section */
+.admin-profile-info {
+  background-color: #000000b9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.admin-profile-label {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+/* Doctor Profile Details */
+.doctor-profile-section {
+  background-color: #0f0f0fb7;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.doctor-profile-heading {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #dd0606;
+  margin-bottom: 15px;
+}
+
+.doctor-profile-details {
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.doctor-profile-item {
+  color: #ffffff;
+  margin-bottom: 12px;
+}
+
+.doctor-profile-item strong {
+  color: #ffffff;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+  .admin-profile-container {
+    padding: 15px;
+  }
+
+  .admin-profile-heading {
+    font-size: 1.8rem;
+  }
+
+  .admin-profile-main {
+    gap: 20px;
+  }
+
+  .doctor-profile-heading {
+    font-size: 1.3rem;
+  }
+
+  .doctor-profile-details {
+    font-size: 0.95rem;
+  }
+}
+
+
+
+
+
+
 .doctor-profile-container {
   background: rgba(0, 0, 0, 0.7);  /* Darker background with transparency */
   backdrop-filter: blur(10px);     /* Apply blur effect */

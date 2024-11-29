@@ -1,7 +1,24 @@
 /* General Wrapper */
-.wrapper {
+.wrapper2 {
+    width: 70%;
+     /* Limit the width */
+    background: rgba(0, 0, 0, 0.5); /* Darker background for contrast */
+    border-radius: 12px;
+    padding: 10%;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+      rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+      rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(8px);
+    margin-top: 5vh;
+    padding-bottom: 20px;
+  }
+  .wrapper {
     width: 100%;
-    max-width: 500px; /* Limit the width */
+    max-width: 500px;
+     /* Limit the width */
     background: rgba(0, 0, 0, 0.5); /* Darker background for contrast */
     border-radius: 12px;
     padding: 30px;
@@ -26,7 +43,7 @@
   
   /* Heading Style */
   h2 {
-    font-size: 2rem;
+    font-size: 3rem;
     color: #fff;
     margin-bottom: 20px;
     font-weight: 700;
@@ -261,9 +278,21 @@
     border-color: #ffd700;
     box-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
 }
+.working-days h3{
+  font-size: 3vh;
+  font-weight: bolder;
+}
 
-
-
+.working-days label{
+  display:flex;
+ 
+  margin:10px;
+}
+.working-days input{
+  margin:4px;
+  height:15px;
+  width: 15px;
+}
 button, select {
   color:white;
     background-color: rgb(49, 49, 49);

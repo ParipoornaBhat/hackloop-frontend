@@ -99,43 +99,43 @@ const Apply = () => {
 
   // Wait for `cuser` to be loaded before rendering the form
   if (!cuser) {
-    return <div>Loading...</div>; // Loading message until user data is fetched
+    return (<div><br/><br/><br/><br/>Loading...</div>); // Loading message until user data is fetched
   }
 
   return (
     <>
       <br /><br /><br /><br />
       <div className="frm">
-        <div className="wrapper">
+        <div className="wrapper2">
           {/* Check if the doctor application is already submitted */}
           {cuser.isDoctorRequested ? (
             <h1>Your doctor application has been successfully submitted!</h1>
           ) : (
             <form onSubmit={handleSubmit}>
-              <h2>Doctor application</h2>
+              <h2>Doctor Application</h2>
               {/* Use the cuser._id to set the id field */}
               <input type="hidden" name="id" value={cuser._id} />
 
               <div className="input-field">
                 <input
                   type="text"
-                  placeholder="First Name"
+                  placeholder=""
                   name="firstname"
                   id="input-firstname"
                   required
                 />
-                <label>Enter your first Name</label>
+                <label>Enter your First Name</label>
               </div>
 
               <div className="input-field">
                 <input
                   type="text"
-                  placeholder="Last Name"
+                  placeholder=""
                   name="lastname"
                   id="input-lastname"
                   required
                 />
-                <label>Enter your last name</label>
+                <label>Enter your Last Name</label>
               </div>
               
               <div className="input-field">
@@ -152,7 +152,7 @@ const Apply = () => {
               <div className="input-field">
                 <input
                   type="number"
-                  placeholder="Phone"
+                  placeholder=""
                   name="phone"
                   id="input-phone"
                   value={phone}
@@ -166,14 +166,14 @@ const Apply = () => {
 
               <div className="textarea-field">
                 <textarea
-                  placeholder="Address"
+                  placeholder=""
                   name="address"
                   id="textarea-address"
                   required
                   rows="8"
                   cols="10"
                 />
-                <label>Enter your address</label>
+                <label>Enter your Address</label>
               </div>
 
               <label htmlFor="specialization">Select Doctor Specialization:</label>
@@ -200,29 +200,29 @@ const Apply = () => {
               <div className="input-field">
                 <input
                   type="number"
-                  placeholder="Experience"
+                  placeholder=""
                   name="experience"
                   id="input-experience"
                   required
                 />
-                <label>Enter your experience</label>
+                <label>Enter your Experience</label>
               </div>
 
               <div className="input-field">
                 <input
                   type="number"
-                  placeholder="Fee per Consultation"
+                  placeholder=""
                   name="feeperconsultation"
                   id="input-feeperconsultation"
                   required
                 />
-                <label>Enter fee per consultation</label>
+                <label>Enter Fee Per Consultation</label>
               </div>
 
               <div className="time-input-field">
                 <input
                   type="time"
-                  placeholder="From"
+                  placeholder=""
                   name="from1"
                   id="input-from1"
                   required
@@ -233,7 +233,7 @@ const Apply = () => {
               <div className="time-input-field">
                 <input
                   type="time"
-                  placeholder="To"
+                  placeholder=""
                   name="to1"
                   id="input-to1"
                   required
@@ -260,7 +260,7 @@ const Apply = () => {
                   <div className="time-input-field">
                     <input
                       type="time"
-                      placeholder="From"
+                      placeholder=""
                       name="from2"
                       id="input-from2"
                       required
@@ -271,7 +271,7 @@ const Apply = () => {
                   <div className="time-input-field">
                     <input
                       type="time"
-                      placeholder="To"
+                      placeholder=""
                       name="to2"
                       id="input-to2"
                       required
@@ -315,7 +315,7 @@ const Apply = () => {
                     onChange={handleWorkingDaysChange}
                   />
                   Thursday
-                </label><br/>
+                </label>
                 <label>
                   <input
                     type="checkbox"
