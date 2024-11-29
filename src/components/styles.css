@@ -285,6 +285,7 @@ body {
     background-color: #282c34;
     color: white;
     text-align: center;
+    margin-top: 100vh;
     padding: 20px 0;
     position: bottom;   /* To make it stick at the bottom */
     bottom: 0;            /* Position it at the bottom of the page */

@@ -4,7 +4,7 @@
   background: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(10px);
   border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   max-width: 1200px;
   margin: 2rem auto;
   color: white;
@@ -12,9 +12,12 @@
 
 /* Heading */
 .notification-container h1 {
+  
   text-align: center;
-  font-size: 2rem;
+  font-size: 2.5rem;
   margin-bottom: 2rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.2);
 }
 
 /* Delete All Button */
@@ -23,15 +26,18 @@
   color: white;
   border: none;
   padding: 0.8rem 1.5rem;
-  font-size: 1rem;
+  font-size: 1.2rem;
   cursor: pointer;
   border-radius: 8px;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease-in-out;
   margin-bottom: 1.5rem;
+  box-shadow: 0 5px 15px rgba(255, 77, 77, 0.4);
 }
 
 .delete-all-button:hover {
   background-color: #cc0000;
+  box-shadow: 0 8px 20px rgba(204, 0, 0, 0.6);
+  transform: translateY(-3px);
 }
 
 /* Notification Card Container */
@@ -41,61 +47,113 @@
 
 /* Unseen Notifications */
 .notification-card.unseen {
-  background-color: #007bff3f; /* Blue for unseen */
-  padding: 1.2rem;
+  background-color: #007bff3f;
+  padding: 1.5rem;
   border-radius: 8px;
   margin-bottom: 1rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 255, 0.2);
+  animation: slideIn 0.5s ease;
 }
 
 .notification-card.unseen p {
-  font-size: 4vh;
-  margin-bottom: 1vh;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  font-size:2vh;
+  color: #d1e8ff;
+  text-shadow: 1px 1px 3px rgba(0, 0, 255, 0.5);
 }
 
 .notification-card.unseen small {
-  color: #fff;
+  color: #cce7ff;
   font-size: 0.85rem;
 }
 
 /* Seen Notifications */
 .notification-card.seen {
-  background-color: #cbcbcb3b !important; /* Force light gray background for seen notifications */
-  padding: 1.2rem;
+  background-color: #cbcbcb3b;
+  padding: 1.5rem;
   border-radius: 8px;
   margin-bottom: 1rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   color: #f6f6f6;
+  animation: fadeIn 0.5s ease;
 }
 
 .notification-card.seen p {
-  font-size: 4vh;
+  font-size: 1.2rem;
   margin-bottom: 1rem;
+  color: #e0e0e0;
 }
 
 .notification-card.seen small {
-  color: #555;
+  color: #888;
   font-size: 0.85rem;
 }
 
 /* Mark as Seen Button */
-.notification-container .mark-seen-button {
-  background-color: #029e7ca9;
-  width: 150px;
-  color: rgb(0, 0, 0);
+.mark-seen-button {
+  background-color: #029e7c;
+  color: black;
   border: none;
-  padding: 0.6rem 1rem;
-  font-size: 0.9rem;
+  padding: 0.8rem 1.2rem;
+  font-size: 1rem;
   cursor: pointer;
-  border-radius: 5px;
-
-  /* Align to the left inside the notification card */
-  margin-left: auto;  /* Ensure there's no extra margin pushing it right */
+  border-radius: 6px;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 5px 10px rgba(2, 158, 124, 0.4);
+  display: inline-block;
+  position: relative;
 }
 
-/* Ensure the parent container of the button uses flex */
-
-
 .mark-seen-button:hover {
-  background-color: #0056b3;
+  background-color: #025c45;
+  color: white;
+  transform: scale(1.05);
+  box-shadow: 0 8px 15px rgba(2, 92, 69, 0.6);
+}
+
+.mark-seen-button::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  opacity: 0;
+  transition: opacity 0.2s;
+  border-radius: 6px;
+}
+
+.mark-seen-button:hover::after {
+  opacity: 1;
+}
+
+/* Animations */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* General Notification List */
+.notification-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
