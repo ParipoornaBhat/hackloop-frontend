@@ -172,8 +172,7 @@ const AppointmentDetail = () => {
           <div className="appointment-time-slot">
             <h3>Time Slot</h3>
             <p><strong>Time:</strong> {appointmentDetails.timeSlot.time}</p>
-            <p><strong>Start Time:</strong> {new Date(appointmentDetails.timeSlot.startTime).toLocaleString()}</p>
-            <p><strong>End Time:</strong> {new Date(appointmentDetails.timeSlot.endTime).toLocaleString()}</p>
+            <p><strong>Date:</strong> {new Date(appointmentDetails.timeSlot.startTime).toLocaleDateString()}</p>
             <p><strong>Available:</strong> {appointmentDetails.timeSlot.available ? 'Yes' : 'No'}</p>
           </div>
         )}
