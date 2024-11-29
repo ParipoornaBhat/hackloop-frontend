@@ -27,7 +27,7 @@ function App() {
   return (
     <>
       <Navbar />
-      <Theme />
+      {/*<Theme />*/}
       <Routes>
         <Route path="/" element={<Homes />} />
         <Route path="/auth/login" element={<Login />} />

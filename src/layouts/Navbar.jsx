@@ -58,53 +58,51 @@ const Navbar = () => {
 
     return (
         <nav className={`navbar ${isNavbarVisible ? '' : 'hidden'}`} id="navbar">
-            <Link to="/">
-        <div className="logo-container">
+        <Link to="/">
+          <div className="logo-container">
             <img
-                src="/Alpha.jpeg" // Path to your logo image (from the public folder)
-                alt="Logo"
-                className="h-15" // Adjust the height of the logo as needed
+              src="/logo2.png" // Path to your logo image (from the public folder)
+              alt="Logo"
+              className="logo-image"
             />
             <div className="logo-text">
-                <h2 className="team-name">Alpha_Coders</h2>
-                <h3 className="team-tagline">ClinicCare</h3>
+              
+              <h3 className="team-name">ClinicCare</h3>
             </div>
+          </div>
+        </Link>
+        <div className="hamburger" onClick={toggleNav} id="hamburger">
+          <span className="line"></span>
+          <span className="line"></span>
+          <span className="line"></span>
         </div>
-    </Link>
-            <div className="hamburger" onClick={toggleNav} id="hamburger">
-                <span className="line"></span>
-                <span className="line"></span>
-                <span className="line"></span>
-            </div>
-            <ul className={`nav-links ${isNavActive ? 'active' : ''}`} id="nav-links">
-                <li><a href="/">Home</a></li>
-                <li><a href="/#service">Services</a></li>
-
-                {/* Conditionally render role-based navbar items */}
-                {token ? (
-                    <>
-                        <li><a href="/profile">Profile</a></li>
-                        <li><a href="/notify">Notification</a></li>
-                        {userRole === 'PATIENT' && <li><a href="/book">Book Appointment</a></li>}
-                        {userRole === 'PATIENT' && <li><a href="/appmanage">Manage Appointment</a></li>}
-                        {userRole === 'DOCTOR' && <li><a href="/appmanage">Manage Appointment</a></li>}
-                        {userRole === 'PATIENT' && <li><a href="/prescriptions">Prescriptions</a></li>}
-
-                        {userRole === 'PATIENT' && <li><a href="/apply">Apply Doctor</a></li>}
-                        {userRole === 'ADMIN' && <li><a href="/user/manage">Admin Dashboard</a></li>}
-                        {/*userRole === 'DOCTOR' && <li><a href="/doctor">Doctor Dashboard</a></li>}
-                        {userRole === 'PATIENT' && <li><a href="/patient">Patient Dashboard</a></li>*/}
-                        <li><a href="#" onClick={handleLogout}>Logout</a></li>
-                    </>
-                ) : (
-                    <>
-                        <li><a href="/auth/login">Login</a></li>
-                        <li><a href="/auth/signup">Signup</a></li>
-                        <li><a href="/auth/fp">Forgot Password</a></li>
-                    </>
-                )}
-            </ul>
-        </nav>
+        <ul className={`nav-links ${isNavActive ? 'active' : ''}`} id="nav-links">
+          <li><Link to="/">Home</Link></li>
+          <li><a href="/#service">Services</a></li>
+      
+          {token ? (
+            <>
+              <li><a href="/profile">Profile</a></li>
+              <li><a href="/notify">Notification</a></li>
+              {userRole === 'PATIENT' && <li><a href="/book">Book Appointment</a></li>}
+              {userRole === 'PATIENT' && <li><a href="/appmanage">Manage Appointment</a></li>}
+              {userRole === 'DOCTOR' && <li><a href="/appmanage">Manage Appointment</a></li>}
+              {userRole === 'PATIENT' && <li><a href="/prescriptions">Prescriptions</a></li>}
+              {userRole === 'PATIENT' && <li><a href="/apply">Apply Doctor</a></li>}
+              {userRole === 'ADMIN' && <li><a href="/user/manage">Admin Dashboard</a></li>}
+              <li><a href="#" onClick={handleLogout}>Logout</a></li>
+            </>
+          ) : (
+            <>
+              <li><Link to="/auth/login">Login</Link></li>
+              
+            </>
+          )}
+        </ul>
+      </nav>
+      
+      
+      
     );
 };
 

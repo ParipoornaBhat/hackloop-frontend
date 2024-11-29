@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import '../../components/styles.css'; // Ensure this includes the provided CSS
+import '../../components/styles.css'; // Ensure this includes the updated CSS
 import VideoCarousel from '../../layouts/Corousel';
+
 const Home = () => {
     const cuser = JSON.parse(localStorage.getItem('user')); // Get user from localStorage
 
@@ -41,6 +42,18 @@ const Home = () => {
                 if (entry.isIntersecting) {
                     // Add 'visible' class to feature card when it's in view
                     setVisibleCards((prev) => [...prev, entry.target.id]);
+
+                    // Trigger typing animation and hide the cursor once completed
+                    const typedText = entry.target.querySelector('.typed-text');
+                    const typedDesc = entry.target.querySelector('.typed-desc');
+
+                    if (typedText && !typedText.classList.contains('typing-complete')) {
+                        typedText.classList.add('typing-complete'); // Hide cursor after typing
+                    }
+
+                    if (typedDesc && !typedDesc.classList.contains('typing-complete')) {
+                        typedDesc.classList.add('typing-complete'); // Hide cursor after typing
+                    }
                 } else {
                     // Remove 'visible' class when the card is out of view
                     setVisibleCards((prev) => prev.filter((id) => id !== entry.target.id));
@@ -96,43 +109,57 @@ const Home = () => {
 
     return (
         <div>
+            {/* Hero Section - Fixed at the top */}
             <section className="hero">
                 <div className="hero-content">
-                    <h2 className="abc">Welcome to ClinicCare</h2>
+                    <h2>Welcome to ClinicCare</h2>
                     <p>Your Health, Our Priority</p>
                     {renderButton()} {/* Render the button based on the cuser role */}
                 </div>
             </section>
 
-           
+            {/* Main Content Section */}
+            <div className="content">
+                {/* Features Section */}
+                <section id="service" className="feature-container">
+                    <div
+                        className={`feature-card left ${visibleCards.includes('card1') ? 'visible' : 'out-of-view'}`}
+                        id="card1"
+                    >
+                        <span className="typed-text">Appointment Booking</span>
+                        <br />
+                        <span className="typed-desc">Easy online booking system for patients.</span>
+                    </div><hr/>
+                    <div
+                        className={`feature-card right ${visibleCards.includes('card2') ? 'visible' : 'out-of-view'}`}
+                        id="card2"
+                    >
+                        <span className="typed-text">Prescription Management</span>
+                        <br />
+                        <span className="typed-desc">Download prescriptions and track your treatment.</span>
+                    </div><hr/>
+                    <div
+                        className={`feature-card right ${visibleCards.includes('card3') ? 'visible' : 'out-of-view'}`}
+                        id="card3"
+                    >
+                        <span className="typed-text">Prescription Management</span>
+                        <br />
+                        <span className="typed-desc">Download prescriptions and track your treatment.</span>
+                    </div><hr/>
+                    <div
+                        className={`feature-card right ${visibleCards.includes('card4') ? 'visible' : 'out-of-view'}`}
+                        id="card4"
+                    > 
+                        <span className="typed-text">Patient History</span>
+                        <br />
+                        <span className="typed-desc">Maintain an accurate record of your health journey.</span>
+                    </div><hr/>
+                </section>
 
-            {/* Features Section */}
-            <section id="service" className="features">
-                <div
-                    className={`feature-card ${visibleCards.includes('card1') ? 'visible from-left' : ''}`}
-                    id="card1"
-                >
-                    <h3>Appointment Booking</h3>
-                    <p>Easy online booking system for patients.</p>
-                </div>
-                <div
-                    className={`feature-card ${visibleCards.includes('card2') ? 'visible from-right' : ''}`}
-                    id="card2"
-                >
-                    <h3>Prescription Management</h3>
-                    <p>Download prescriptions and track your treatment.</p>
-                </div>
-                <div
-                    className={`feature-card ${visibleCards.includes('card3') ? 'visible from-left' : ''}`}
-                    id="card3"
-                >
-                    <h3>Patient History</h3>
-                    <p>Maintain an accurate record of your health journey.</p>
-                </div>
-               
-            </section>
-            <VideoCarousel />
-            <br/><br/>
+                {/* Video Carousel Section */}
+                <VideoCarousel />
+                <br /><br />
+            </div>
         </div>
     );
 };
