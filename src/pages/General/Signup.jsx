@@ -115,22 +115,22 @@ const Signup = () => {
           <div className="input-field">
             <input
               type="text"
-              placeholder="Username"
+              placeholder=""
               name="username"
               onChange={(e) => setUser(e.target.value)}
               required
-            />
+            /><label>Enter your Username</label>
           </div>
 
           <div className="input-field">
             <input
               type="email"
-              placeholder="Email"
+              placeholder=""
               name="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-            />
+            /><label>Enter your Email</label>
           </div>
 
           <button type="button" onClick={sendOtp}>
@@ -143,12 +143,12 @@ const Signup = () => {
               <div className="input-field">
                 <input
                   type="number"
-                  placeholder="Enter OTP"
+                  placeholder=""
                   name="otp"
                   value={otp}
                   onChange={(e) => setOtp(e.target.value)}
                   required
-                />
+                /><label>Enter The OTP</label>
               </div>
               <button type="button" onClick={verifyOtp}>Verify OTP</button>
             </div>
@@ -163,22 +163,22 @@ const Signup = () => {
               <div className="input-field">
                 <input
                   type={passwordVisible ? 'text' : 'password'}
-                  placeholder="Password"
+                  placeholder=""
                   name="pw"
                   value={password}
                   onChange={handlePasswordChange} // Use the onChange handler for password
                   required
-                />
+                /><label>Enter your Password</label>
               </div>
               <div className="input-field">
                 <input
                   type={passwordVisible ? 'text' : 'password'}
-                  placeholder="Confirm Password"
+                  placeholder=""
                   value={confirmPassword}
                   name="cpw"
                   onChange={handleConfirmPasswordChange} // Use the onChange handler for confirm password
                   required
-                />
+                /><label>Confirm your Password</label>
               </div>
               {passwordError && <div id="signup_err" style={{ color: 'red' }}>{passwordError}</div>}
               <div className="forget">
