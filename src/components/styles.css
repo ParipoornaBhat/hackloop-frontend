@@ -145,7 +145,7 @@ html,body {
 .nav-links a {
   color: #fff;
   text-decoration: none;
-  font-size: 3vh; /* Smaller font size for nav items */
+  font-size: 2.5vh; /* Smaller font size for nav items */
   font-weight: 600; /* Bold font for nav items */
   padding: 8px 12px; /* Smaller padding */
   transition: all 0.3s ease-in-out;

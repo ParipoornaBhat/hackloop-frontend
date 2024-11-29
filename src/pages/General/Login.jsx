@@ -77,14 +77,14 @@ const LoginPage = () => {
           <form onSubmit={handleSubmit}>
             <h2>Login</h2>
             <div className="input-field">
-              <input type="email" placeholder="Email" name="email" required />
+              <input type="email" placeholder="" name="email" required />
               <label>Enter your email</label>
             </div>
 
             <div className="input-field">
               <input
                 type={passwordVisible ? 'text' : 'password'}
-                placeholder="Password"
+                placeholder=""
                 name="password"
                 required
               />
