@@ -183,9 +183,9 @@ const AppointmentDetail = () => {
     {appointmentDetails.previousPrescriptions.map((prescription, index) => (
       <div key={index} className="prescription-item">
         <h4 className="heading-small">Diagnosis: {prescription.diagnosis || 'No diagnosis available'}</h4>
-        {prescription.medications && prescription.medications.length > 0 ? (
+        {prescription.medication && prescription.medication.length > 0 ? (
           <div className="medication-list">
-            {prescription.medications.map((med, idx) => (
+            {prescription.medication.map((med, idx) => (
               <div key={idx} className="medication-detail">
                 <p><strong>Medication:</strong> {med.name}</p>
                 <p><strong>Dosage:</strong> {med.dosage}</p>
