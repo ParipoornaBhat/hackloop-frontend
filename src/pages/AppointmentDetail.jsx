@@ -152,7 +152,7 @@ const AppointmentDetail = () => {
   };
 
   return (
-    <><br/><br/>
+    <><br/>
       <div className="appointment-detail-card">
         <h1 className="appointment-title">Appointment Details</h1>
         <p><strong>Appointment ID:</strong> {appointmentDetails._id}</p>
@@ -176,7 +176,7 @@ const AppointmentDetail = () => {
           <div className="appointment-detail-section">
             <h3 className="appointment-subheading">Time Slot</h3>
             <p><strong>Time:</strong> {appointmentDetails.timeSlot.time}</p>
-            <p><strong>Date:</strong> {new Date(appointmentDetails.timeSlot.startTime).toLocaleDateString()}</p>
+            <p><strong>Date:</strong> {new Date(appointmentDetails.timeSlot.startTime).toLocaleDateString('en-GB')}</p>
             <p><strong>Available:</strong> {appointmentDetails.timeSlot.available ? 'Yes' : 'No'}</p>
           </div>
         )}
