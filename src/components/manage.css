@@ -1,163 +1,189 @@
-/* Manage CSS */
+/* General Container for Appointment Management */
 .app-manage__container {
-    background: rgba(0, 0, 0, 0.7);  /* Darker background with transparency */
-    backdrop-filter: blur(10px);      /* Apply blur effect */
-    border-radius: 15px;              /* Rounded corners for the entire container */
-    padding: 2rem;
-    margin: 2rem 1rem;                /* Margin around the container */
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;             /* Stretch to fit the screen width */
-    justify-content: flex-start;      /* Start the content from the top */
-    width: 100%;                      /* Full width */
-    max-width: 1200px;                /* Maximum width for larger screens */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Shadow for card effect */
+  width: 80%;
+  margin: 40px auto;
+  padding: 30px;
+  background: rgba(0, 0, 0, 0.6);  /* Dark background with transparency */
+  border-radius: 15px;
+  box-shadow: 0 8px 15px rgb(248, 248, 248);
+  backdrop-filter: blur(10px);  /* Blurry background */
+}
+
+/* Heading for the appointment management section */
+.app-manage__heading {
+  text-align: center;
+  font-size: 3.5rem; /* Increased font size */
+  margin-bottom: 20px;
+  color: #f0a500; /* Yellowish-orange color */
+  font-weight: bold; /* Added bold style */
+}
+
+/* Error message styling */
+.app-manage__error {
+  color: red;
+  font-size: 1.4rem; /* Increased font size */
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Appointments section styling */
+.app-manage__appointments,
+.app-manage__appointments-history {
+  margin-bottom: 40px;
+}
+
+/* No appointments message */
+.app-manage__no-appointments {
+  font-size: 1.3rem; /* Larger font size */
+  color: #ccc;
+  text-align: center;
+}
+
+/* Appointment card styling */
+.app-manage__appointment-card {
+  background-color: rgba(0, 0, 0, 0.6); /* Dark transparent background */
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Increased gap between items */
+  width: 300px; /* Increased width for better spacing */
+  margin-bottom: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.app-manage__appointment-card:hover {
+  background-color: rgba(0, 0, 0, 0.7); /* Slightly darker on hover */
+}
+
+/* Appointment card details */
+.app-manage__appointment-card-title {
+  font-size: 1.5rem; /* Larger font size */
+  font-weight: bold;
+  color: #0a71d8; /* Dark blue color for the title */
+  text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.349); /* Subtle shadow for depth */
+}
+
+
+.app-manage__appointment-card-date,
+.app-manage__appointment-card-status {
+  font-size: 1.3rem; /* Larger font size */
+  color: #ccc;
+}
+
+/* Actions inside each appointment card */
+.app-manage__appointment-card-actions {
+  display: flex;
+  gap: 15px; /* Larger gap for action buttons */
+  margin-top: 15px;
+}
+
+.app-manage__cancel-button,
+.app-manage__confirm-button,
+.app-manage__complete-button,
+.app-manage__delete-button {
+  padding: 12px 25px; /* Larger padding for buttons */
+  font-size: 1.2rem; /* Larger font size for buttons */
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.app-manage__cancel-button {
+  background-color: #f44336; /* Red for cancel */
+  color: white;
+}
+
+.app-manage__cancel-button:hover {
+  background-color: #d32f2f;
+  transform: scale(1.05);
+}
+
+.app-manage__confirm-button {
+  background-color: #4caf50; /* Green for confirm */
+  color: white;
+}
+
+.app-manage__confirm-button:hover {
+  background-color: #388e3c;
+  transform: scale(1.05);
+}
+
+.app-manage__complete-button {
+  background-color: #007bff; /* Blue for complete */
+  color: white;
+}
+
+.app-manage__complete-button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+.app-manage__delete-button {
+  background-color: #ff9800; /* Orange for delete */
+  color: white;
+}
+
+.app-manage__delete-button:hover {
+  background-color: #f57c00;
+  transform: scale(1.05);
+}
+
+/* Flexbox container for arranging the cards in a row */
+.app-manage__appointments {
+  display: flex;
+  flex-wrap: wrap; /* Allows cards to wrap to the next row when there's not enough space */
+  gap: 20px; /* Space between the cards */
+  justify-content: space-evenly; /* Aligns cards evenly */
+}
+
+/* Appointment history title styling */
+.app-manage__appointments-history-title {
+  text-align: center;
+  font-size: 3.5rem; /* Same font size as the main heading */
+  margin-bottom: 20px;
+  color: #f0a500; /* Same yellowish-orange color */
+  font-weight: bold;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+  .app-manage__container {
+    padding: 20px;
   }
-  
-  .app-manage {
-    width: 100%;
-    background: transparent;  /* Transparent background for the inner container */
-    padding: 2rem;
-  }
-  
+
   .app-manage__heading {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #fff;
-    margin-bottom: 2rem;
-    text-align: left;            /* Align the heading to the left */
+    font-size: 2.5rem; /* Adjusted font size */
   }
-  
-  .app-manage__appointments-history-title {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #fff;
-    margin-top: 3rem;  /* Ensure there's spacing between the section above */
-    margin-bottom: 1.5rem;
-    text-align: left;   /* Align the history title to the left */
-  }
-  
-  .app-manage__error {
-    color: red;
-    margin-bottom: 1rem;
-  }
-  
-  .app-manage__appointments {
-    display: grid;
-    gap: 1.5rem;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Grid layout for cards */
-    width: 100%;
-    margin-bottom: 2rem;
-  }
-  
+
   .app-manage__appointment-card {
-    background: rgba(0, 0, 0, 0.6);  /* Semi-transparent background */
-    backdrop-filter: blur(8px);       /* Blur effect */
-    padding: 1.5rem;
-    border-radius: 8px;
-    cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 20px;
+    width: 100%; /* Full width on smaller screens */
   }
-  
-  .app-manage__appointment-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+
+  .app-manage__appointment-card-actions {
+    flex-direction: column;
+    align-items: center;
   }
-  
-  .app-manage__appointment-card-title {
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: #fff;
-    margin-bottom: 0.5rem;
-  }
-  
+
+  .app-manage__appointment-card-title,
   .app-manage__appointment-card-date,
   .app-manage__appointment-card-status {
-    color: #ccc;
-    margin-bottom: 0.5rem;
+    font-size: 1.3rem; /* Adjusted font size */
   }
-  
-  .app-manage__appointment-card-actions {
-    display: flex;
-    justify-content: space-between;
-  }
-  
+
   .app-manage__cancel-button,
   .app-manage__confirm-button,
   .app-manage__complete-button,
   .app-manage__delete-button {
-    background-color: #007bff;
-    color: #fff;
-    padding: 0.5rem 1rem;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    width: 100%;
+    padding: 14px;
+    font-size: 1.1rem;
   }
-  
-  .app-manage__cancel-button {
-    background-color: #ff4d4d;
+
+  .app-manage__appointments-history-title {
+    font-size: 2.5rem; /* Adjusted font size for responsiveness */
   }
-  
-  .app-manage__confirm-button {
-    background-color: #28a745;
-  }
-  
-  .app-manage__complete-button {
-    background-color: #ffc107;
-  }
-  
-  .app-manage__delete-button {
-    background-color: #dc3545;
-  }
-  
-  .app-manage__cancel-button:hover,
-  .app-manage__confirm-button:hover,
-  .app-manage__complete-button:hover,
-  .app-manage__delete-button:hover {
-    background-color: #333;
-  }
-  
-  .app-manage__appointments-history {
-    width: 100%;  /* Full width for the history section */
-    margin-top: 3rem;  /* Ensure there's spacing before history */
-  }
-  
-  .app-manage__no-appointments {
-    color: #fff;
-    font-size: 1.2rem;
-    text-align: center;
-    margin-top: 2rem; /* Add margin-top to make sure it appears below the heading */
-  }
-  
-  /* Mobile responsiveness */
-  @media (max-width: 768px) {
-    .app-manage__container {
-      padding: 1rem;
-    }
-  
-    .app-manage__appointment-card {
-      padding: 1rem;
-    }
-  
-    .app-manage__heading,
-    .app-manage__appointments-history-title {
-      font-size: 1.6rem; /* Slightly smaller font size on mobile */
-    }
-  
-    .app-manage__appointment-card-title {
-      font-size: 1rem;
-    }
-  
-    .app-manage__appointment-card-date,
-    .app-manage__appointment-card-status {
-      font-size: 0.9rem;
-    }
-  
-    .app-manage__appointments,
-    .app-manage__appointments-history {
-      grid-template-columns: 1fr;  /* Stack cards on top of each other for small screens */
-    }
-  }
-  
+}

@@ -18,7 +18,7 @@ body {
     color: #ffffff; /* Default text color */
     font-family: "Merriweather", Georgia, serif; /* Bold and modern font */
     
-    background-image: url("./d3.jpg"); /* Set initial background image */
+    background-image: url("./i6.jpg"); /* Set initial background image */
     background-repeat: no-repeat;
     background-size: cover;
     height:1000%;
@@ -67,7 +67,7 @@ html,body {
   right: 20px; /* Margin on the right */
   width: calc(100% - 40px); /* Full width minus left and right margins */
   padding: 10px 20px; /* Smaller padding for a compact, sleek look */
-  background: rgba(99, 99, 99, 0.529); /* Transparent dark background */
+  background: rgba(0, 0, 0, 0.795); /* Transparent dark background */
   backdrop-filter: blur(20px); /* Blur effect for elegance */
   z-index: 1000;
   display: flex;
@@ -84,6 +84,7 @@ html,body {
 .logo-container {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .logo-image {
@@ -95,6 +96,7 @@ html,body {
 .logo-text {
   display: flex;
   flex-direction: column;
+  
   color: #fff;
 }
 
@@ -147,7 +149,7 @@ html,body {
   text-decoration: none;
   font-size: 2.5vh; /* Smaller font size for nav items */
   font-weight: 600; /* Bold font for nav items */
-  padding: 8px 12px; /* Smaller padding */
+   /* Smaller padding */
   transition: all 0.3s ease-in-out;
   font-family: 'Poppins', sans-serif; /* Consistent font */
 }
@@ -164,12 +166,12 @@ html,body {
   display: block;
   position: absolute;
   top: 60px;
-  right: 20px;
+  right: 10px;
   background-color: rgba(0, 0, 0, 0.8); /* Darker background for dropdown */
   padding: 15px;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  width: 220px;
+  width: 150px;
   animation: fadeIn 0.3s ease-out;
 }
 
@@ -189,7 +191,7 @@ html,body {
 }
 
 /* Responsive Styles for smaller devices */
-@media (max-width: 768px) {
+@media (max-width: 1300px) {
   .nav-links {
     display: none; /* Hide navigation links by default */
     flex-direction: column;
@@ -482,7 +484,7 @@ html,body {
     background-color: #282828;
     color: white;
     text-align: center;
-    margin-top: 40vh;
+    margin-top: 80vh;
     padding: 20px 0;
     position: bottom;   /* To make it stick at the bottom */
      bottom:0;          /* Position it at the bottom of the page */

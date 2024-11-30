@@ -92,77 +92,6 @@
 
 
 
-
-
-
-.doctor-profile-container {
-  background: rgba(0, 0, 0, 0.7);  /* Darker background with transparency */
-  backdrop-filter: blur(10px);     /* Apply blur effect */
-  border-radius: 15px;             /* Rounded corners for the entire container */
-  padding: 2rem;
-  margin: 2rem 1rem;               /* Margin around the container */
-  display: flex;
-  flex-direction: row;
-  align-items: center;            /* Center all content */
-  justify-content: center;     /* Start the content from the top */
-  width: 100%;                     /* Full width */
-  max-width: 1200px;               /* Maximum width for larger screens */
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);  /* Shadow for card effect */
-}
-
-/* Heading Styles */
-.doctor-profile-heading {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #fff;
-  margin-bottom: 2rem;
-  text-align: center; /* Center the heading */
-}
-
-/* Profile Details */
-.profile-details, .doctor-profile-details {
-  font-size: 1rem;
-  color: #fff;
-  margin-bottom: 1rem;
-}
-
-.profile-details p, .doctor-profile-details p {
-  margin-bottom: 1rem;
-}
-
-.doctor-profile-details h3 {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #fff;
-  margin-bottom: 1.5rem;
-}
-
-/* Date Picker Styling */
-.date-picker-container {
-  margin-bottom: 2rem;
-}
-
-.react-datepicker-wrapper {
-  display: inline-block;
-}
-
-.react-datepicker__input-container input {
-  width: 100%;
-  padding: 0.8rem;
-  font-size: 1rem;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  background-color: #f5f5f5;
-  color: #333;
-  transition: all 0.3s ease;
-}
-
-body.dark-mode .react-datepicker__input-container input {
-  background-color: #333;
-  color: #fff;
-  border: 1px solid #555;
-}
-
 /* DatePicker popper styling */
 .react-datepicker__triangle {
   display: none; /* Remove the triangle */
@@ -190,101 +119,80 @@ body.dark-mode .react-datepicker__input-container input {
   color: #007bff;
 }
 
-/* Available Slots Section */
+.appointmentCard {
+  padding: 30px;
+  background: rgba(0, 0, 0, 0.7); /* Dark background with transparency */
+  backdrop-filter: blur(10px); /* Blurry background effect */
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  color: white; /* Ensure text is visible */
+  max-width: 900px;
+  margin: 20px auto;
+}
+
+.doctor-profile-heading {
+  color: rgb(255, 255, 255); /* Yellow text for headings */
+  font-size: 2.5rem; /* Larger font size for the title */
+  font-weight: bold;
+  margin-bottom: 40px;
+  padding-left: 20px;
+}
+
+
+
 .availableSlots {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-bottom: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 10px;
+  margin-top: 15px;
 }
 
 .slotButton {
-  padding: 0.8rem 1.5rem;
-  border-radius: 8px;
-  background-color: #007bff;
-  color: #fff;
-  font-size: 1rem;
+  background-color: #07ca55e1;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin: 0.5rem;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .slotButton:hover {
-  background-color: #0056b3;
+  background-color: #787878;
+  transform: scale(1.05);
 }
 
 .slotButton.selected {
-  background-color: #28a745;
+  background-color: #cdcdcb;
+  color: black;
 }
 
-.slotButton:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
-}
-
-/* Description Textarea */
 textarea {
   width: 100%;
-  padding: 1rem;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  font-size: 1rem;
-  background-color: #f5f5f5;
+  padding: 12px;
+  border-radius: 10px;
+  border: 2px solid #555;
+  background-color: rgba(255, 255, 255, 0.8);
   color: #333;
-  margin-bottom: 1.5rem;
+  margin-top: 15px;
+  min-height: 120px;
   resize: vertical;
 }
 
-body.dark-mode textarea {
-  background-color: #333;
-  color: #fff;
-  border: 1px solid #555;
-}
-
-/* Appointment Booking Button */
 button {
-  padding: 1rem 2rem;
-  border-radius: 8px;
-  background-color: #28a745;
-  color: #fff;
-  font-size: 1.2rem;
+  background-color: rgb(0, 119, 204);
+  color: black;
+  padding: 12px 20px;
+  text-align: center;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  margin-top: 20px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin-top: 1.5rem;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 button:hover {
-  background-color: #218838;
-}
-
-/* Mobile responsiveness */
-@media (max-width: 768px) {
-  .doctor-profile-container {
-    padding: 1rem;
-  }
-
-  .doctor-profile-heading {
-    font-size: 1.5rem; /* Adjust font size */
-  }
-
-  .profile-details, .doctor-profile-details {
-    font-size: 0.9rem;
-    flex-direction: row;
-  }
-
-  .availableSlots {
-    flex-direction: column;
-  }
-
-  .slotButton {
-    width: 100%;  /* Stack the slots vertically on small screens */
-  }
-
-  textarea {
-    font-size: 0.9rem;
-  }
-
-  button {
-    width: 100%;  /* Make the button full width on smaller screens */
-  }
+  background-color: #084368e4;
+  transform: scale(1.05);
 }

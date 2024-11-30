@@ -59,7 +59,7 @@ const ManageUser = () => {
 
   return (
     <> 
-      <br /><br /><br /><br />
+      <br />
       <div className="manage-user-container">
         <h1 className="manage-user-heading">Doctor Lists</h1>
         {message && <p className="manage-user-message">{message}</p>}

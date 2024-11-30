@@ -100,7 +100,7 @@ const AppManage = () => {
               onClick={() => handleAppointmentClick(_id)}
             >
               <h3 className="app-manage__appointment-card-title">{`Appointment with Dr. ${doctor.doctorProfile.firstname}`}</h3>
-              <p className="app-manage__appointment-card-date">{`Date: ${new Date(appointmentDate).toLocaleString()}`}</p>
+              <p className="app-manage__appointment-card-date">{`Date: ${new Date(appointmentDate).getDate().toString().padStart(2, '0')}/${(new Date(appointmentDate).getMonth() + 1).toString().padStart(2, '0')}/${new Date(appointmentDate).getFullYear()}`}</p>
               <p className="app-manage__appointment-card-status">{`Status: ${status}`}</p>
               <div className="app-manage__appointment-card-actions">
                 {status === 'requested' && (
@@ -194,7 +194,7 @@ const AppManage = () => {
               onClick={() => handleAppointmentClick(_id)}
             >
               <h3 className="app-manage__appointment-card-title">{`Appointment with Dr. ${doctor.firstname}`}</h3>
-              <p className="app-manage__appointment-card-date">{`Date: ${new Date(appointmentDate).toLocaleString()}`}</p>
+              <p className="app-manage__appointment-card-date">{`Date: ${new Date(appointmentDate).getDate().toString().padStart(2, '0')}/${(new Date(appointmentDate).getMonth() + 1).toString().padStart(2, '0')}/${new Date(appointmentDate).getFullYear()}`}</p>
               <p className="app-manage__appointment-card-status">{`Status: ${status}`}</p>
             </div>
           );

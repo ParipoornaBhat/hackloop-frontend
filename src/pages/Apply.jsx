@@ -104,7 +104,7 @@ const Apply = () => {
 
   return (
     <>
-      <br /><br /><br /><br />
+      <br /><br />
       <div className="frm">
         <div className="wrapper2">
           {/* Check if the doctor application is already submitted */}

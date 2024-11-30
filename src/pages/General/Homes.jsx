@@ -142,9 +142,9 @@ const Home = () => {
                         className={`feature-card right ${visibleCards.includes('card3') ? 'visible' : 'out-of-view'}`}
                         id="card3"
                     >
-                        <span className="typed-text">Prescription Management</span>
+                        <span className="typed-text">Real-Time Notifications</span>
                         <br />
-                        <span className="typed-desc">Download prescriptions and track your treatment.</span>
+                        <span className="typed-desc">Notifying updates regarding the appointments. </span>
                     </div><hr/>
                     <div
                         className={`feature-card right ${visibleCards.includes('card4') ? 'visible' : 'out-of-view'}`}

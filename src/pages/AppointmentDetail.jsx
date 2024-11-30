@@ -152,111 +152,117 @@ const AppointmentDetail = () => {
   };
 
   return (
-    <>
+    <><br/><br/>
       <div className="appointment-detail-card">
         <h1 className="appointment-title">Appointment Details</h1>
         <p><strong>Appointment ID:</strong> {appointmentDetails._id}</p>
-
-        {/* Display patient details */}
+  
+        {/* Patient Details */}
         {appointmentDetails.patient && (
-          <p><strong>Patient:</strong> {appointmentDetails.patient.username || 'Unknown'}</p>
+          <div className="appointment-detail-section">
+            <p><strong>Patient:</strong> {appointmentDetails.patient.username || 'Unknown'}</p>
+          </div>
         )}
-
-        {/* Display doctor details */}
+  
+        {/* Doctor Details */}
         {appointmentDetails.doctor && (
-          <p><strong>Doctor:</strong> {'Dr.' + appointmentDetails.doctor.doctorProfile.firstname + ' ' + appointmentDetails.doctor.doctorProfile.lastname || 'Unknown'}</p>
+          <div className="appointment-detail-section">
+            <p><strong>Doctor:</strong> {'Dr.' + appointmentDetails.doctor.doctorProfile.firstname + ' ' + appointmentDetails.doctor.doctorProfile.lastname || 'Unknown'}</p>
+          </div>
         )}
-
+  
         {/* Time Slot */}
         {appointmentDetails.timeSlot && (
-          <div className="appointment-time-slot">
-            <h3>Time Slot</h3>
+          <div className="appointment-detail-section">
+            <h3 className="appointment-subheading">Time Slot</h3>
             <p><strong>Time:</strong> {appointmentDetails.timeSlot.time}</p>
             <p><strong>Date:</strong> {new Date(appointmentDetails.timeSlot.startTime).toLocaleDateString()}</p>
             <p><strong>Available:</strong> {appointmentDetails.timeSlot.available ? 'Yes' : 'No'}</p>
           </div>
         )}
+  
+        {/* Previous Prescriptions */}
         {appointmentDetails.previousPrescriptions && appointmentDetails.previousPrescriptions.length > 0 ? (
-  <div className="prescription-section">
-    <h3 className="heading-medium">Previous Prescriptions [EPR: "Electronic Patient Records]"</h3>
-    {appointmentDetails.previousPrescriptions.map((prescription, index) => (
-      <div key={index} className="prescription-item">
-        <h4 className="heading-small">Diagnosis: {prescription.diagnosis || 'No diagnosis available'}</h4>
-        {prescription.medication && prescription.medication.length > 0 ? (
-          <div className="medication-list">
-            {prescription.medication.map((med, idx) => (
-              <div key={idx} className="medication-detail">
-                <p><strong>Medication:</strong> {med.name}</p>
-                <p><strong>Dosage:</strong> {med.dosage}</p>
-                <p><strong>Instructions:</strong> {med.instructions}</p>
+          <div className="prescription-section">
+            <h3 className="appointment-subheading">Previous Prescriptions</h3>
+            {appointmentDetails.previousPrescriptions.map((prescription, index) => (
+              <div key={index} className="prescription-item">
+                <h4 className="prescription-item-title">Diagnosis: {prescription.diagnosis || 'No diagnosis available'}</h4>
+                {prescription.medication && prescription.medication.length > 0 ? (
+                  <div className="medication-list">
+                    {prescription.medication.map((med, idx) => (
+                      <div key={idx} className="medication-detail">
+                        <p><strong>Medication:</strong> {med.name}</p>
+                        <p><strong>Dosage:</strong> {med.dosage}</p>
+                        <p><strong>Instructions:</strong> {med.instructions}</p>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <p>No medications available</p>
+                )}
               </div>
             ))}
           </div>
         ) : (
-          <p>No medications available</p>
+          <p>No EPR (Previous Prescription) available</p>
         )}
-      </div>
-    ))}
-  </div>
-) : (
-  <p>No EPR (No Previous Prescription were available) available</p>
-)}
-
-{/* Description */}
-<div className="appointment-description">
-  <h3>Description: </h3>
-  <p>{appointmentDetails.description || 'No description available'}</p>
-</div>
-
-
-        {/* Previous Prescriptions */}
-        
-
-        {/* Confirm and Cancel buttons for Doctor */}
+  
+        {/* Appointment Description */}
+        <div className="appointment-description">
+          <h3 className="appointment-subheading">Description</h3>
+          <p>{appointmentDetails.description || 'No description available'}</p>
+        </div>
+  
+        {/* Actions for Doctor */}
         {cuser.role === 'DOCTOR' && appointmentDetails.status === 'requested' && (
           <div className="appointment-actions">
             <button onClick={handleConfirm} className="appointment-confirm-button">Confirm</button>
             <button onClick={handleCancel} className="appointment-cancel-button">Cancel</button>
-          </div>)}
-          {cuser.role === 'PATIENT' && appointmentDetails.status === 'requested' && (
+          </div>
+        )}
+  
+        {/* Actions for Patient */}
+        {cuser.role === 'PATIENT' && appointmentDetails.status === 'requested' && (
           <div className="appointment-actions">
             <button onClick={handleCancel} className="appointment-cancel-button">Cancel</button>
-          </div>)}
-
-        {/* Prescription form for Doctor */}
+          </div>
+        )}
+  
+        {/* Prescription Form for Doctor */}
         {cuser.role === 'DOCTOR' && appointmentDetails.status === 'confirmed' && (
           <div className="appointment-prescription-form">
-            <h3>Add Prescription</h3>
+            <h3 className="appointment-subheading">Add Prescription</h3>
             <div className="appointment-diagnosis">
               <label>Diagnosis:</label>
-              <input 
-                type="text" 
-                value={newPrescription.diagnosis} 
-                onChange={(e) => setNewPrescription({ ...newPrescription, diagnosis: e.target.value })} 
-                placeholder="Diagnosis" 
+              <input
+                type="text"
+                value={newPrescription.diagnosis}
+                onChange={(e) => setNewPrescription({ ...newPrescription, diagnosis: e.target.value })}
+                placeholder="Diagnosis"
               />
             </div>
             <div className="appointment-medications">
               <h4>Medications</h4>
               {newPrescription.medications.map((med, index) => (
                 <div key={index} className="appointment-medication-row">
-                  <input 
-                    type="text" 
-                    value={med.name} 
-                    onChange={(e) => handleMedicationChange(index, 'name', e.target.value)} 
-                    placeholder="Medication Name" 
+                  <input
+                    type="text"
+                    value={med.name}
+                    onChange={(e) => handleMedicationChange(index, 'name', e.target.value)}
+                    placeholder="Medication Name"
                   />
-                  <input 
-                    type="text" 
-                    value={med.dosage} 
-                    onChange={(e) => handleMedicationChange(index, 'dosage', e.target.value)} 
-                    placeholder="Dosage" 
+                  <input
+                    type="text"
+                    value={med.dosage}
+                    onChange={(e) => handleMedicationChange(index, 'dosage', e.target.value)}
+                    placeholder="Dosage"
                   />
-                  <input 
-                    type="text" 
-                    value={med.instructions} 
-                    onChange={(e) => handleMedicationChange(index, 'instructions', e.target.value)} 
-                    placeholder="Instructions" 
+                  <input
+                    type="text"
+                    value={med.instructions}
+                    onChange={(e) => handleMedicationChange(index, 'instructions', e.target.value)}
+                    placeholder="Instructions"
                   />
                   <button type="button" onClick={() => handleRemoveMedication(index)} className="appointment-remove-medication-button">Remove</button>
                 </div>
@@ -266,40 +272,40 @@ const AppointmentDetail = () => {
             <button onClick={handleAddPrescription} className="appointment-add-prescription-button">Complete Appointment & Add Prescription</button>
           </div>
         )}
-
-{appointmentDetails.prescription ? (
-  <div className="prescription-section">
-    <h3 className="heading-medium">Prescription</h3>
-    <div className="prescription-item">
-      <h4 className="heading-small">Diagnosis: {appointmentDetails.prescription.diagnosis || 'No diagnosis available'}</h4>
-      {appointmentDetails.prescription.medication && appointmentDetails.prescription.medication.length > 0 ? (
-        <div className="medication-list">
-          {appointmentDetails.prescription.medication.map((med, idx) => (
-            <div key={idx} className="medication-detail">
-              <p><strong>Medication:</strong> {med.name}</p>
-              <p><strong>Dosage:</strong> {med.dosage}</p>
-              <p><strong>Instructions:</strong> {med.instructions}</p>
+  
+        {/* Prescription */}
+        {appointmentDetails.prescription ? (
+          <div className="prescription-section">
+            <h3 className="appointment-subheading">Prescription</h3>
+            <div className="prescription-item">
+              <h4 className="prescription-item-title">Diagnosis: {appointmentDetails.prescription.diagnosis || 'No diagnosis available'}</h4>
+              {appointmentDetails.prescription.medication && appointmentDetails.prescription.medication.length > 0 ? (
+                <div className="medication-list">
+                  {appointmentDetails.prescription.medication.map((med, idx) => (
+                    <div key={idx} className="medication-detail">
+                      <p><strong>Medication:</strong> {med.name}</p>
+                      <p><strong>Dosage:</strong> {med.dosage}</p>
+                      <p><strong>Instructions:</strong> {med.instructions}</p>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <p>No medications available</p>
+              )}
             </div>
-          ))}
+          </div>
+        ) : (
+          <p>No prescription available</p>
+        )}
+  
+        {/* Status */}
+        <div className="appointment-detail-section">
+          <p><strong>Status:</strong> {appointmentDetails.status}</p>
         </div>
-      ) : (
-        <p>No medications available</p>
-      )}
-    </div>
-  </div>
-) : (
-  <p>No prescription available</p>
-)}
-
-{/* Description */}
-
-
-        <p><strong>Status:</strong> {appointmentDetails.status}</p>
       </div>
-             
-      
     </>
   );
+  
 };
 
 export default AppointmentDetail;

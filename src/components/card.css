@@ -1,158 +1,109 @@
-/* General Container for the ManageUser component */
 .manage-user-container {
-  background: rgba(0, 0, 0, 0.7);  /* Darker background with transparency */
-  backdrop-filter: blur(10px);     /* Apply blur effect */
-  border-radius: 15px;             /* Rounded corners for the entire container */
-  padding: 2rem;
-  margin: 2rem 1rem;               /* Margin around the container */
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;            /* Stretch to fit the screen width */
-  justify-content: flex-start;     /* Start the content from the top */
-  width: 100%;                     /* Full width */
-  max-width: 1200px;               /* Maximum width for larger screens */
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);  /* Shadow for card effect */
+  padding: 40px 20px;
+  background: rgba(0, 0, 0, 0.7); /* Dark background with transparency */
+  backdrop-filter: blur(10px); /* Blurry background effect */
+  border-radius: 15px;
+  max-width: 1200px;
+  margin: 20px auto; /* Keeps container centered but not overly wide */
+  box-shadow: 0 4px 10px rgb(255, 255, 255);
+  color: white; /* Ensure text is visible */
+  display:flex;
+  align-items: normal;
 }
 
-/* Heading Styles for Doctor List */
 .manage-user-heading {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #fff;
-  margin-bottom: 2rem;
-  text-align: left; /* Align the heading to the left */
+  display:flex;
+  justify-content: center;
+  color: rgb(255, 145, 0); /* Yellow text for headings */
+  font-size: 3rem; /* Larger font size for the main heading */
+  font-weight: bold; /* Make the main heading bold */
+  margin-bottom: 30px;
+  padding-left: 20px;
+
 }
 
-/* Message text (error or status) */
 .manage-user-message {
-  color: #fff;
-  font-size: 1rem;
+  
+  color: rgb(255, 119, 0);
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+  padding-left: 20px;
 }
 
-/* Search Bar Styles */
-.search-bar-input,
+.search-bar-input {
+  width: 60%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 10px;
+  border: 2px solid #555;
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #333;
+  padding-left: 15px;
+}
+
 .specialization-dropdown {
-  width: 50%;  /* Set width to 50% for better control */
-  max-width: 400px;  /* Maximum width for larger screens */
-  padding: 0.8rem;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  margin-bottom: 1.5rem;
-  font-size: 1rem;
-  background-color: #f5f5f5;
-  color: #333;  /* Text color for light mode */
+  width: 60%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 10px;
+  border: 2px solid #555;
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #333;
+  padding-left: 15px;
 }
 
-/* Dark Mode Styles for Search Bar and Filter */
-body.dark-mode .search-bar-input,
-body.dark-mode .specialization-dropdown {
-  background-color: #333;  /* Dark background */
-  color: #fff;  /* Light text color */
-  border: 1px solid #555;  /* Darker border in dark mode */
+.no-doctors-message {
+  font-size: 1.5rem;
+  color: #ccc;
+  padding-left: 20px;
 }
 
-/* Focus Effect */
-.search-bar-input:focus,
-.specialization-dropdown:focus {
-  border-color: #4CAF50;  /* Green border on focus */
-  outline: none;
-}
-
-/* Specialization Filter Dropdown */
-.specialization-dropdown {
-  margin-bottom: 2rem;
-}
-
-/* Doctors List Styling */
 .doctor-list-container {
   display: grid;
-  gap: 1.5rem;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));  /* Responsive grid */
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  padding-top: 20px;
 }
 
-/* Individual Doctor Card */
 .doctor-card-item {
-  background: rgba(0, 0, 0, 0.6);  /* Semi-transparent background */
-  backdrop-filter: blur(8px);       /* Blur effect */
-  padding: 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  color: white;
+  transition: transform 0.3s ease;
+  margin-right: 10px; /* Adds spacing between cards */
 }
 
-/* Hover effect on doctor cards */
 .doctor-card-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+  transform: scale(1.05);
 }
 
-/* Doctor Card Heading */
 .doctor-card-title {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #fff;
-  margin-bottom: 1rem;
+  font-size: 1.8rem; /* Slightly larger title font */
+  color: rgb(255, 153, 0);
+  margin-bottom: 10px;
 }
 
-/* Doctor Card Information */
 .doctor-card-info {
-  color: #ccc;
-  font-size: 1rem;
-  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+  margin-bottom: 10px;
 }
 
-/* Book Appointment Button in the Doctor Card */
 .book-appointment-button {
   display: inline-block;
-  margin-top: 1rem;
-  padding: 0.8rem 1.5rem;
-  border-radius: 8px;
-  background-color: #007bff;
-  color: #fff;
-  font-size: 1rem;
+  background-color: rgb(255, 136, 0);
+  color: black;
+  padding: 10px 20px;
   text-align: center;
   text-decoration: none;
-  transition: background-color 0.3s ease;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  margin-top: 15px;
 }
 
-/* Hover effect on Book Appointment button */
 .book-appointment-button:hover {
-  background-color: #0056b3;
-}
-
-/* "No doctors found" message */
-.no-doctors-message {
-  color: #fff;
-  font-size: 1.2rem;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-/* Mobile responsiveness */
-@media (max-width: 768px) {
-  .manage-user-container {
-    padding: 1rem;
-  }
-
-  .search-bar-input,
-  .specialization-dropdown {
-    font-size: 1rem; /* Smaller font size for mobile */
-  }
-
-  .doctor-card-item {
-    padding: 1rem;
-  }
-
-  .doctor-card-title {
-    font-size: 1.2rem;
-  }
-
-  .doctor-card-info {
-    font-size: 0.9rem;
-  }
-
-  .doctor-list-container {
-    grid-template-columns: 1fr;  /* Stack doctor cards for smaller screens */
-  }
+  background-color: #ffcc00;
+  transform: scale(1.05);
 }

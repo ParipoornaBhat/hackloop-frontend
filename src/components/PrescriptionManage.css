@@ -1,104 +1,78 @@
-/* Main container for the prescription management page */
+/* Container for Prescription Management */
 .prescription-manage-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
   padding: 20px;
-  box-sizing: border-box;
-}
-.prescription-manage-container.dark-mode {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background: rgb(0, 0, 0); /* Semi-transparent dark background */
-  padding: 20px;
-  box-sizing: border-box;
-}
-
-/* Prescription management page container */
-.prescription-manage-card-wrapper {
-  background-color: rgba(61, 61, 61, 0.315); /* Light background with transparency */
-  border-radius: 15px;
-  padding: 40px;
-  width: 100%;
   max-width: 1200px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  overflow-y: auto;
+  margin: 0 auto;
+  background: rgba(0, 0, 0, 0.7);  /* Dark background with transparency */
+  border-radius: 15px;
+  box-shadow: 0 8px 15px rgba(248, 248, 248, 0.5);
+  backdrop-filter: blur(10px); /* Blurry background */
 }
 
-/* Heading styling */
+/* Prescription Management Heading */
 .prescription-manage-heading {
-  font-size: 2.2rem;
-  font-weight: bold;
-  color: #fefefe;
-  text-shadow: 5px 5cap 10px black;
-  margin-bottom: 30px;
+  font-size: 2.5rem;
+  color: #fff;
   text-align: center;
-  letter-spacing: 0.5px;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
 
-/* Error message style */
+/* Error Message */
 .prescription-manage-error {
-  color: red;
+  color: #f44336;
   text-align: center;
-  font-size: 1.2rem;
-  margin-bottom: 15px;
+  font-size: 1.1rem;
+  margin-bottom: 20px;
 }
 
-/* Prescription cards container */
+/* Container for Prescription Cards */
 .prescription-card-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); /* Cards are responsive */
-  gap: 20px;
-  margin-top: 30px;
+  grid-template-columns: repeat(auto-fill, minmax(450px, 1fr)); /* Increased card width */
+  gap: 30px; /* More space between cards */
+  padding: 20px;
 }
 
-/* Individual prescription card styling */
+/* Prescription Card */
 .prescription-card {
-  background-color: #080808d8;
+  background-color: rgba(0, 0, 0, 0.6); /* Dark background */
+  padding: 30px; /* Increased padding */
   border-radius: 12px;
-  padding: 25px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
   cursor: pointer;
-  text-align: left;
-  color:white;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
+  transition: transform 0.3s ease;
+  max-width: 450px; /* Fixed width for better control */
 }
 
 .prescription-card:hover {
-  transform: translateY(-5px); /* Hover effect to make the card rise */
-  box-shadow: 0 6px 18px rgba(5, 5, 5, 0.678);
+  transform: scale(1.05); /* Zoom effect on hover */
 }
 
-/* Prescription card title */
+/* Title of Prescription */
 .prescription-card-title {
-  font-size: 1.6rem;
-  font-weight: 700;
-  color: #ffffff;
-  margin-bottom: 10px;
-  text-transform: capitalize;
+  font-size: 2rem; /* Larger font size */
+  font-weight: bold;
+  color: #ff9800;
+  margin-bottom: 15px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-/* Prescription card details */
+/* Prescription Card Text */
 .prescription-card-text {
-  font-size: 1rem;
-  color: #ffffff;
-  margin-top: 5px;
+  font-size: 1.2rem;
+  color: #fff;
+  margin-bottom: 10px;
 }
 
-/* Medication list styling */
+/* Medication List */
 .prescription-card-medication-list {
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
 .prescription-card-medication-item {
-  font-size: 1rem;
-  color: #fefefe;
+  font-size: 1.2rem;
+  color: #f0a500;
   margin-bottom: 8px;
 }
 
@@ -106,53 +80,60 @@
   font-weight: bold;
 }
 
-/* Prescription action buttons */
-.prescription-card-actions {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 10px;
+/* Doctor Info Section */
+.prescription-card-doctor-info {
+  margin-top: 20px;
 }
 
-/* Button styling for actions */
 .prescription-card-button {
-  padding: 8px 5px;
-  font-size: 1rem;
-  border: none;
-  border-radius: 5px;
+  background-color: #1976d2;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 1.1rem;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-/* View button styling */
+.prescription-card-button:hover {
+  background-color: #1565c0;
+  transform: scale(1.05);
+}
+
 .prescription-card-button-view {
-  background-color: #2196F3;
-  color: white;
-}
-
-.prescription-card-button-view:hover {
-  background-color: #1976D2;
-  transform: translateY(-3px);
-}
-
-/* Empty state for no prescriptions */
-.prescription-manage-no-prescriptions {
-  font-size: 1.2rem;
-  color: #888;
+  width: 100%;
   text-align: center;
-  margin-top: 10px;
 }
 
-/* Responsive typography */
+/* Prescription Management No Prescriptions */
+.prescription-manage-no-prescriptions {
+  text-align: center;
+  color: #ccc;
+  font-size: 1.2rem;
+  padding-top: 20px;
+}
+
+/* Prescription Card Actions (View Button) */
+.prescription-card-actions {
+  margin-top: 20px;
+  text-align: center;
+}
+
+/* Responsive Design for Smaller Screens */
 @media (max-width: 768px) {
   .prescription-manage-heading {
-    font-size: 1.8rem;
+    font-size: 2rem;
+  }
+
+  .prescription-card {
+    padding: 20px;
   }
 
   .prescription-card-title {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
   }
 
   .prescription-card-text {
-    font-size: 0.9rem;
+    font-size: 1rem;
   }
 }

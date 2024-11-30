@@ -1,23 +1,24 @@
 .notifications-container {
+
   width: 80%;
   margin: 40px auto;
   padding: 30px;
   background: rgba(0, 0, 0, 0.6);  /* Dark background with transparency */
   border-radius: 15px;
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 15px rgb(248, 248, 248);
   backdrop-filter: blur(10px);  /* Blurry background */
 }
 
 .notifications-heading {
   text-align: center;
-  font-size: 2rem;
+  font-size: 3rem;
   margin-bottom: 20px;
 }
 
 .delete-all-btn {
   display: block;
-  margin: 20px auto 30px auto;
-  padding: 12px 30px;
+  gap:5px;
+  margin-bottom: 15px;
   font-size: 1.1rem;
   background-color: #f44336;
   color: white;
@@ -40,7 +41,7 @@
   background-color: rgba(0, 0, 0, 0.5);
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px rgba(204, 235, 3, 0.655);
   backdrop-filter: blur(8px);  /* Blurry container */
 }
 
@@ -110,7 +111,7 @@
   background-color: rgba(0, 0, 0, 0.5);
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px rgba(47, 255, 5, 0.749);
   backdrop-filter: blur(8px);  /* Blurry container */
 }
 
@@ -129,7 +130,7 @@
   background-color: rgba(0, 0, 0, 0.6); /* Transparent background */
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 6px rgba(13, 159, 3, 0.2);
   display: flex;
   flex-direction: column;
   gap: 10px;
