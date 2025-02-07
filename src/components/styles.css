@@ -96,6 +96,7 @@ html,body {
 .logo-text {
   display: flex;
   flex-direction: column;
+  
   color: #fff;
 }
 
@@ -190,7 +191,7 @@ html,body {
 }
 
 /* Responsive Styles for smaller devices */
-@media (max-width: 1000px) {
+@media (max-width: 1300px) {
   .nav-links {
     display: none; /* Hide navigation links by default */
     flex-direction: column;
