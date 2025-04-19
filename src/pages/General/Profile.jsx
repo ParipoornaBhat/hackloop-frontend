@@ -123,7 +123,16 @@ const Profile = () => {
           <h1 className="user-profile-header">Profile</h1>
   
           <div className="user-profile-details">
+          <div className="profile-picture-container">
+          <img
+            src={user.profilePic || '/default-profile.png'}
+            alt="Profile"
+            className="profile-picture"
+            
+          />
+        </div>
             <div className="profile-row">
+            
               <p><strong className="user-profile-label">Name:</strong> {user.username}</p>
             </div>
             <div className="profile-row">

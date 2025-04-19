@@ -1,4 +1,33 @@
 /* Main profile container */
+
+/* Profile picture container */
+.profile-picture-container {
+  text-align: center;
+  margin-bottom: 20px;
+  margin-top: 20px;
+
+}
+
+.profile-picture {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%; /* Circular picture */
+  object-fit: cover;
+  border: 3px solid #00bcd4; /* Aqua border */
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  margin: 0 auto;
+  display: block;
+  margin-bottom: 10px;
+  margin-top: 10px;
+
+}
+
+.profile-picture:hover {
+  transform: scale(1.05); /* Slight zoom on hover */
+  box-shadow: 0 4px 10px rgba(0, 188, 212, 0.5); /* Aqua glow */
+}
+
 .user-profile-container {
     position: relative;
     padding: 40px;

@@ -108,6 +108,17 @@ const ManageUser = () => {
             {filteredDoctors.map((doctor) => (
               <div key={doctor.doctorProfile._id} className="doctor-card-item">
                 <h2 className="doctor-card-title">{doctor.doctorProfile.firstname} {doctor.doctorProfile.lastname}</h2>
+                
+                <div className="user-profile-details">
+          <div className="profile-picture-container">
+          <img
+            src={doctor.profilePic || '/default-profile.png'}
+            alt="Profile"
+            className="profile-picture"
+            
+          />
+        </div></div>
+
                 <p className="doctor-card-info"><strong>Specialization:</strong> {doctor.doctorProfile?.specialization || "Not Available"}</p>
                 <p className="doctor-card-info"><strong>Experience:</strong> {doctor.doctorProfile?.experience || "Not Available"} years</p>
                 <p className="doctor-card-info"><strong>Fees per Consultation:</strong> ₹{doctor.doctorProfile?.feeperconsultation || "Not Available"}</p>
