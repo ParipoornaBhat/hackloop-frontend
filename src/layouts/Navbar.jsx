@@ -86,12 +86,11 @@ const Navbar = () => {
               {//
               }
                {userRole === 'PATIENT' && <li><a href="/book">Book Appointment</a></li>}
-               {userRole === 'ADMIN' && <li><a href="/user/manage">Admin Dashboard</a></li>}
               {userRole === 'PATIENT' && <li><a href="/apply">Apply Doctor</a></li>}
               {//pending 
               }
-              {/* 
-              //<li><a href="/notify">Notification</a></li>
+              
+              <li><a href="/notify">Notification</a></li>
               {userRole === 'PATIENT' && <li><a href="/book">Book Appointment</a></li>}
 
               {userRole === 'PATIENT' && <li><a href="/apply">Apply Doctor</a></li>}
@@ -100,7 +99,7 @@ const Navbar = () => {
               {userRole === 'PATIENT' && <li><a href="/prescriptions">Prescriptions</a></li>}
               
               {userRole === 'ADMIN' && <li><a href="/user/manage">Admin Dashboard</a></li>}
-              */}
+              
              
               <li><a href="#" onClick={handleLogout}>Logout</a></li>
             </>

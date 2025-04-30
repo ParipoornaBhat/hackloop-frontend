@@ -6,6 +6,7 @@ const Signup = () => {
   const [user, setUser] = useState('');
   const [email, setEmail] = useState('');
   const [otp, setOtp] = useState('');
+  const [currentOtp, setCurrentOtp] = useState('');
   const [isOtpSent, setIsOtpSent] = useState(false);
   const [otpVerified, setOtpVerified] = useState(false);
   const [password, setPassword] = useState('');
@@ -30,6 +31,7 @@ const Signup = () => {
 
       if (data.success) {
         setIsOtpSent(true);
+        setCurrentOtp(data.otp); // Store the OTP for verification
         setErrorMessage('');
       } else {
         setErrorMessage(data.message);
@@ -43,20 +45,17 @@ const Signup = () => {
   // Handle OTP verification
   const verifyOtp = async () => {
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/verifyotp`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ otp }),
-      });
-
-      const data = await response.json();
-
-      if (data.success) {
+      if (otp !== currentOtp) {
+        setOtpVerified(false);
+        setErrorMessage('Invalid OTP. Please try again.');
+        return;
+      } else{
         setOtpVerified(true);
-        setErrorMessage('');
-      } else {
-        setErrorMessage(data.message);
+        setErrorMessage('Verified successfully!');
       }
+
+
+     
     } catch (error) {
       setErrorMessage('OTP verification failed. Try again.');
     }
@@ -172,9 +171,10 @@ const Signup = () => {
               </div>
             )}
 
-            <div id="otpv" style={{ color: errorMessage ? 'red' : 'green' }}>
-              {errorMessage}
-            </div>
+<p style={{ color: otpVerified ? 'green' : 'red' }}>
+  {errorMessage}
+</p>
+
 
             {otpVerified && (
               <>
